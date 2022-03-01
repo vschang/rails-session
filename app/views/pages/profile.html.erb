@@ -1,0 +1,5 @@
+<h1>Welcome <%=@full_name%> </h1>
+<h2> Your Playlists: </h2>
+<% @all_playlists.each do |playlist| %>
+    <%=  playlist.name %>
+  <% end %>
