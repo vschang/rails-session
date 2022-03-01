@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
     # track_uid = @me.playlists.first.tracks.first.uri.split(':').last
     # @track = RSpotify::Track.find(track_uid)
-    raise
+    # raise
   end
 
   def profile
