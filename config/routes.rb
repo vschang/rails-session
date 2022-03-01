@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'pages#home'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :post do
     resources :repost, only: [:create]
   end
