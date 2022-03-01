@@ -34,7 +34,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.save
     end
-
+    # binding.pry
     return user
   end
 end
