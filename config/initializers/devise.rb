@@ -276,6 +276,15 @@ Devise.setup do |config|
     playlist-read-private
     user-read-private
     user-read-email
+    user-follow-read
+    user-library-read
+    user-library-modify
+    playlist-modify-private
+    playlist-read-collaborative
+    user-top-read
+    playlist-modify-public
+    user-read-currently-playing
+    user-read-recently-played
   ).join(' ')
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
