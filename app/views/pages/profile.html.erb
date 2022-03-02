@@ -1,5 +1,12 @@
-<h1>Welcome <%=@full_name%> </h1>
+<div class="profile-header">
+  <h1 id="profile-username"><%=@username%></h1>
+  <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
+</div>
 <h2> Your Playlists: </h2>
 <% @all_playlists.each do |playlist| %>
-    <%=  playlist.name %>
-  <% end %>
+
+    <div class="playlist-card">
+      <img src="<%=playlist.images[0]["url"]%>" alt="" class="profile-playlist-image">
+      <p><%=  playlist.name %></p>
+    </div>
+<% end %>

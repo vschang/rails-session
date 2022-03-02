@@ -13,7 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # binding.pry
   end
 
-  # def failure
-  #   binding.pry
-  # end
+  def failure
+    # binding.pry
+  end
 end
