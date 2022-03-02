@@ -1,17 +1,25 @@
+.cards-wrapper{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .playlist-card{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
+  width: 80%;
   background-color: white;
-  margin: 20px;
-  padding: 20px;
+  margin-bottom: 16px;
+  padding: 8px;
   border-radius: 16px;
   p{
     flex-grow: 1;
     font-size: 20px;
     color: black;
     padding: 0 10px;
+    margin: 0;
   }
 }
 .profile-playlist-image{
