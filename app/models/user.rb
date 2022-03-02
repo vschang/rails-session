@@ -4,8 +4,8 @@ class User < ApplicationRecord
   # has_one_attached :prof_pic
   has_many :posts
   has_many :reposts
-  validates :first_name, :last_name, :username, presence: true
-  validates :username, uniqueness: true
+  # validates :first_name, :last_name, :username, presence: true
+  # validates :username, uniqueness: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
@@ -34,7 +34,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.save
     end
-
+    # binding.pry
     return user
   end
 end

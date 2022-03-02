@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     # authorize @post
+    @posts = Post.all
   end
 
   def show
@@ -48,6 +49,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:spotify_url, :title, :content)
+    params.require(:post).permit(:title, :content)
   end
 end
