@@ -1,0 +1,7 @@
+<div class="form-container">
+  <%= simple_form_for @post do |f| %>
+    <%= f.input :title, required: true %>
+    <%= f.input :content, required: true %>
+    <%= f.button :submit, class:'form-button'%>
+  <% end %>
+</div>

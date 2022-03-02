@@ -1,0 +1,21 @@
+#profile-username{
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+.profile-avatar{
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  width: 100px;
+  height: 100%;
+}
+.profile-header{
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
