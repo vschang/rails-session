@@ -4,11 +4,23 @@
 </div>
 <h2> Your Playlists: </h2>
 
-<div class="cards-wrapper">
-  <% @all_playlists.each do |playlist| %>
+  <% @user_now.playlists.each do |playlist| %>
       <div class="playlist-card">
-        <img src="<%=playlist.images[0]["url"]%>" alt="" class="profile-playlist-image">
         <p><%=  playlist.name %></p>
       </div>
   <% end %>
-</div>
+
+  <% @user_now.top_artists.each do |artist| %>
+    <div class="playlist-card">
+      <p><%= artist.name %></p>
+      <img src= <%= artist.images[0]["url"]  %> alt="" class="profile-playlist-image">
+    </div>
+
+  <% end %>
+
+  <% @user_now.top_tracks.each do |track| %>
+    <div class="playlist-card">
+      <img src= <%= track.album.images[0]["url"]  %> alt="" class="profile-playlist-image">
+      <p><%= track.name %></p>
+    </div>
+  <% end %>
