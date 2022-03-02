@@ -6,8 +6,8 @@
 <% @all_playlists.each do |playlist| %>
 
     <div class="playlist-card">
-      <p><%=  playlist.name %></p>
       <img src="<%=playlist.images[0]["url"]%>" alt="" class="profile-playlist-image">
-    </div>
+      <p><%=  playlist.name %></p>
 
+    </div>
 <% end %>

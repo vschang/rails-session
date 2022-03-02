@@ -16,7 +16,6 @@ class PagesController < ApplicationController
     @full_name = @user_now.display_name
     @all_playlists = @user_now.playlists
     @prof_pic_url = @user_now.images[0]["url"]
-    
   end
 
   def landing_page

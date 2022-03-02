@@ -1,6 +1,7 @@
 .playlist-card{
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 400px;
   background-color: white;
   margin: 20px;
@@ -10,6 +11,7 @@
     flex-grow: 1;
     font-size: 20px;
     color: black;
+    padding: 0 10px;
   }
 }
 .profile-playlist-image{
