@@ -1,6 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def spotify
-    # raise
     user = User.find_for_oauth(request.env['omniauth.auth'])
 
     if user.persisted?

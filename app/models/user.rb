@@ -5,7 +5,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :reposts
   # validates :first_name, :last_name, :username, presence: true
-  # validates :username, uniqueness: true
+  validates :username, uniqueness: true
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
