@@ -2,6 +2,9 @@
 <% @posts.each do |post| %>
 <h2> <%= post.title %> </h2>
 <p> <%= post.content %> </p>
+
+<%= button_to "Repost", posts_path(repost: {user_id: @user_now.id, post_id: post.id}, method: :put ) %>
+
 <%= link_to "More", post_path(post.id)%>
   <% end %>
 </div>
