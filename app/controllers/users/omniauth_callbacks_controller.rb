@@ -10,10 +10,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session['devise.spotify_data'] = request.env['omniauth.auth']
       redirect_to new_user_registration_url
     end
-    binding.pry
+    # binding.pry
   end
 
   def failure
-    "opa"
+    # binding.pry
   end
 end
