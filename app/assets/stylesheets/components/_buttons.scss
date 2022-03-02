@@ -1,0 +1,56 @@
+.log-in-button {
+  padding: 10px 30px;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: 0.3s ease-in-out;
+  font-size: 24px;
+  background: linear-gradient(359deg, #fd1d1d, #802db8, #1e55cd);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 6s ease infinite;
+  -moz-animation: AnimationName 6s ease infinite;
+  animation: AnimationName 6s ease infinite;
+  }
+
+  @-webkit-keyframes AnimationName {
+    0% {
+      background-position: 52% 0%
+    }
+
+    50% {
+      background-position: 49% 100%
+    }
+
+    100% {
+      background-position: 52% 0%
+    }
+  }
+
+  @-moz-keyframes AnimationName {
+    0% {
+      background-position: 52% 0%
+    }
+
+    50% {
+      background-position: 49% 100%
+    }
+
+    100% {
+      background-position: 52% 0%
+    }
+  }
+
+  @keyframes AnimationName {
+    0% {
+      background-position: 52% 0%
+    }
+
+    50% {
+      background-position: 49% 100%
+    }
+
+    100% {
+      background-position: 52% 0%
+    }
+}
