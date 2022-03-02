@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
+  before_action :get_user
 
   def home
     # @user_now = RSpotify::User.find(current_user.uid)
@@ -18,6 +19,14 @@ class PagesController < ApplicationController
   end
 
   def profile
+
+  end
+
+  def landing_page
+
+  end
+
+  def get_user
     @username = current_user.username
     @user_now = RSpotify::User.find(current_user.uid)
     @full_name = @user_now.display_name
@@ -25,6 +34,4 @@ class PagesController < ApplicationController
     @prof_pic_url = @user_now.images[0]["url"]
   end
 
-  def landing_page
-  end
 end

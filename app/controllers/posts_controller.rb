@@ -1,4 +1,12 @@
 class PostsController < ApplicationController
+  before_action :get_user
+  def get_user
+    @username = current_user.username
+    @user_now = RSpotify::User.find(current_user.uid)
+    @full_name = @user_now.display_name
+    @all_playlists = @user_now.playlists
+    @prof_pic_url = @user_now.images[0]["url"]
+  end
   def index
     @posts = Post.all
   end
