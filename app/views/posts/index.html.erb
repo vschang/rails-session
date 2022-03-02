@@ -1,5 +1,16 @@
-<% @posts.each do |post| %>
-<h2> <%= post.title %> </h2>
-<p> <%= post.content %> </p>
-<%# <%= link_to "More", posts_path%> 
+<div>
+  <% @posts.each do |post| %>
+    <h2> <%= post.title %> </h2>
+    <p> <%= post.content %> </p>
+    <%= link_to "Repost", post_reposts_path(post), method: :post %>
+    <%= link_to "More", post_path(post.id)%>
   <% end %>
+</div>
+
+<div class='repost' >
+  <% @reposts.each do |repost| %>
+    <h2> <%= repost.post.title %> </h2>
+    <p> <%= repost.post.content %> </p>
+    <%= link_to "More", post_path(repost.post.id)%>
+  <% end %>
+</div>

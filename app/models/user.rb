@@ -2,13 +2,17 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # has_one_attached :prof_pic
-  has_many :posts
-  has_many :reposts
+  has_many :posts, dependent: :destroy
+  has_many :reposts, dependent: :destroy
   # validates :first_name, :last_name, :username, presence: true
   # validates :username, uniqueness: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
+
+  def friends
+    # Array OR Active record relation of all users who are your friends
+  end
 
   def self.find_for_oauth(auth)
     # Create the user params
@@ -37,5 +41,9 @@ class User < ApplicationRecord
     end
     # binding.pry
     return user
+  end
+
+  def reposted?(post_id)
+    self.reposts.where(post_id: post_id).exists?
   end
 end
