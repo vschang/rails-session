@@ -1,3 +1,5 @@
+require 'rspotify'
+
 class PostsController < ApplicationController
   before_action :get_user
   def get_user
@@ -7,6 +9,7 @@ class PostsController < ApplicationController
     @all_playlists = @user_now.playlists
     @prof_pic_url = @user_now.images[0]["url"]
   end
+
   def index
     @posts = Post.all
   end
