@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
+
   def self.find_for_oauth(auth)
     # Create the user params
     user_params = auth.slice("provider", "uid")
