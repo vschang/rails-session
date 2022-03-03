@@ -11,6 +11,10 @@ class PagesController < ApplicationController
 
   end
 
+  def destroy_sesh
+    sign_out_and_redirect(current_user)
+  end
+
   def landing_page
   end
 
