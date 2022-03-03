@@ -2,13 +2,22 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # has_one_attached :prof_pic
-  has_many :posts
-  has_many :reposts
+  has_many :posts, dependent: :destroy
+  has_many :reposts, dependent: :destroy
   # validates :first_name, :last_name, :username, presence: true
   # validates :username, uniqueness: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
+
+  def friends
+    @friends = Friendship.all.where(status: "accepted").where(requester_id: self.id).or(Friendship.all.where(status: "accepted").where(receiver_id: self.id))
+    @friends = @friends.select { |friendship| friendship.requester != self || friendship.receiver != self }
+  end
+
+  def not_friends
+    User.all - friends
+  end
 
   def self.find_for_oauth(auth)
     # Create the user params
