@@ -1,18 +1,23 @@
 <div>
-  <% @combined_posts.each do |combined_post| %>
-    <% if combined_post.class == Post %>
-      <h2> <%= combined_post.title %> </h2>
-      <p> <%= combined_post.content %> </p>
-      <%# <p> <%= ((Time.now - combined_post.created_at)/1.hour).to_i hours ago </p> %>
-      <p> <%= combined_post.created_at.strftime("%H:%M %B %d, %Y")%></p>
-      <%= link_to "Repost", post_reposts_path(combined_post), method: :post %>
-      <%= link_to "More", post_path(combined_post.id)%>
-    <% else %>
-      <h2> <%= combined_post.post.title %> </h2>
-      <p> <%= combined_post.post.content %> </p>
-      <%# <p> <%= ((Time.now - combined_post.post.created_at)/1.hour).to_i hours ago </p> %>
-      <p> <%= combined_post.created_at.strftime("%H:%M %B %d, %Y")%> </p>
-      <%= link_to "More", post_repost_path(combined_post.post.id, combined_post.id)%>
+<%# display only your posts (@user.id) and the posts for your friends (friend.id) %>
+    <% @feed_posts.each do |feed_post| %>
+    <%# if it's a post and the post is NOT yours, you can repost it %>
+      <% if feed_post.class == Post%>
+        <h2> <%= feed_post.title %> </h2>
+        <p> <%= feed_post.content %> </p>
+        <%# <p> <%= ((Time.now - feed_post.created_at)/1.hour).to_i hours ago </p> %>
+        <p> <%= feed_post.created_at.strftime("%H:%M %B %d, %Y")%></p>
+        <% if feed_post.id != @user.id%>
+          <%= link_to "Repost", post_reposts_path(feed_post), method: :post %>
+        <% end %>
+        <%= link_to "More", post_path(feed_post.id)%>
+      <% else %>
+        <h2> <%= feed_post.post.title %> </h2>
+        <p> <%= feed_post.post.content %> </p>
+        <%# <p> <%= ((Time.now - feed_post.post.created_at)/1.hour).to_i hours ago </p> %>
+        <p> <%= feed_post.created_at.strftime("%H:%M %B %d, %Y")%> </p>
+        <%= link_to "More", post_repost_path(feed_post.post.id, feed_post.id)%>
+      <% end %>
     <% end %>
-  <% end %>
 </div>
+

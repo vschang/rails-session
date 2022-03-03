@@ -1,40 +1,50 @@
 <div>
-  Here are all your friends:
+  <h2> Your friends </h2>
 </div>
 
 <div>
   <% @friends.each do |friendship| %>
     <% if friendship.receiver_id == @user.id %>
         <div>
-          <%= User.find(friendship.requester_id).email %>
+          <%= User.find(friendship.requester_id).username %>
         </div>
     <% else %>
       <div>
-          <%= User.find(friendship.receiver_id).email %>
+          <%= User.find(friendship.receiver_id).username %>
         </div>
     <% end %>
   <% end %>
+
 </div>
 
 <div>
-  Here are your friend requests:
+ <h2> Friend requests </h2>
 </div>
 <% @pending_friends.each do |friendship| %>
   <div>
-    <%= User.find(friendship.requester_id).email %>
+    <%= User.find(friendship.requester_id).username %>
+    <%= link_to "Accept", accept_friendship_path(friendship), method: 'patch' %>
+    <%= link_to "Reject", reject_friendship_path(friendship), method: 'patch' %>
   </div>
 <% end %>
 
+
 <div>
-  Make a friend request:
+  <h2> Make a friend request </h2>
 </div>
-<% @potential_friends.each do |friend| %>
+<% current_user.not_friends.each do |friend| %>
   <div>
-    <%= friend.email %>
+    <%= friend.username %>
+    <%= friend.id %>
+
+    <%= simple_form_for(@friendship) do |f| %>
+      <%= f.hidden_field :receiver_id, value: friend.id %>
+
+      <% if Friendship.where(requester: current_user, receiver: friend).empty? && Friendship.where(receiver: current_user, requester: friend).empty? %>
+        <%= f.submit "Follow" %>
+      <% else %>
+        <%= f.submit 'Pending', disabled: true %>
+      <% end %>
+    <% end %>
   </div>
-  <%= simple_form_for(@friendship) do |f| %>
-    <%= f.input :requester_id, as: :hidden, html: { value: @user.id, style: "display: none;" } %>
-    <%= f.input :receiver_id, as: :hidden, html: { value: friend.id } %>
-    <%= f.submit "Submit" %>
-  <% end %>
 <% end %>

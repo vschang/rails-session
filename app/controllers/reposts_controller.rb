@@ -34,8 +34,6 @@ class RepostsController < ApplicationController
   def show
     @repost = Repost.find(params[:id])
   end
-
-
   private
 
   def set_post  #Identify the post that pressed the repost button
