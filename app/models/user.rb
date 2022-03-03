@@ -10,9 +10,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
 
-  def friends
-    # Array OR Active record relation of all users who are your friends
-  end
+  # def friends
+  #   # Array OR Active record relation of all users who are your friends
+  # end
 
   def self.find_for_oauth(auth)
     # Create the user params
@@ -43,7 +43,4 @@ class User < ApplicationRecord
     return user
   end
 
-  def reposted?(post_id)
-    self.reposts.where(post_id: post_id).exists?
-  end
 end

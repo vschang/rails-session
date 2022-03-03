@@ -1,0 +1,40 @@
+<div>
+  Here are all your friends:
+</div>
+
+<div>
+  <% @friends.each do |friendship| %>
+    <% if friendship.receiver_id == @user.id %>
+        <div>
+          <%= User.find(friendship.requester_id).email %>
+        </div>
+    <% else %>
+      <div>
+          <%= User.find(friendship.receiver_id).email %>
+        </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  Here are your friend requests:
+</div>
+<% @pending_friends.each do |friendship| %>
+  <div>
+    <%= User.find(friendship.requester_id).email %>
+  </div>
+<% end %>
+
+<div>
+  Make a friend request:
+</div>
+<% @potential_friends.each do |friend| %>
+  <div>
+    <%= friend.email %>
+  </div>
+  <%= simple_form_for(@friendship) do |f| %>
+    <%= f.input :requester_id, as: :hidden, html: { value: @user.id, style: "display: none;" } %>
+    <%= f.input :receiver_id, as: :hidden, html: { value: friend.id } %>
+    <%= f.submit "Submit" %>
+  <% end %>
+<% end %>

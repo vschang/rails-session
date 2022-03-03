@@ -9,8 +9,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
-    @reposts = Repost.all
+    # @posts = Post.all
+    # @reposts = Repost.all
+    # raise
+    combined_arr = Post.all + Repost.all
+    @combined_posts = combined_arr.sort_by{ |combined_post| combined_post.created_at }.reverse
 
     # Post.where(user: current_user)
     # Repost.where(user: current_user)
