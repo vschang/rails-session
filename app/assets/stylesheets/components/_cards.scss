@@ -24,37 +24,45 @@
 }
 .profile-playlist-image{
   object-fit: cover;
-  border-radius: 8px;
+  // border-radius: 8px;
   aspect-ratio: 1 / 1;
-  width: 100px;
+  width: 80px;
   height: 100%;
 }
 
 .results-wrapper{
   display:flex;
+  flex-direction: column;
 
 }
 
-.results-albums, .results-songs{
+.results-container{
   display: flex;
   flex-direction: column;
-  width: 50%;
 }
 .result-card{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
-  width: 80%;
+  flex-direction: row;
+
   background-color: white;
   margin-bottom: 16px;
   padding: 8px;
-  border-radius: 16px;
   p{
     flex-grow: 1;
-    font-size: 20px;
+    font-size: 15px;
     color: black;
-    padding: 0 10px;
+    padding: 0;
     margin: 0;
   }
+}
+.artist-name{
+  display: flex;
+
+  p{
+    font-weight: bold;
+    padding: 0;
+  }
+
 }

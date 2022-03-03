@@ -3,24 +3,60 @@
   <% if params[:query] && params[:query] != "" %>
 
     <div class="results-wrapper">
-      <div class="results-albums">
+      <div class="results-container">
         <h2>Albums</h2>
         <% @album_search = RSpotify::Album.search(search)%>
         <% @album_search[0..5].each do |album| %>
           <div class="result-card">
-            <p><%= album.name %></p>
+            <div>
+              <p><%= album.name.length > 30 ? album.name[0..30]... : album.name %></p>
+              <div class="artist-name">
+                <% @all_artists = [] %>
+                <% album.artists.each do |artist| %>
+                <% @all_artists.push(artist.name) %>
+                <% end %>
+                <%@all_artists = @all_artists.join(", ") %>
+                <p><%= @all_artists.length > 30 ? @all_artists[0..30]... :  @all_artists %></p>
+              </div>
+            </div>
             <img src= <%= album.images[0]["url"] %> alt="" class="profile-playlist-image">
           </div>
         <% end %>
       </div>
 
-      <div class="results-songs">
+      <div class="results-container">
         <h2>Songs</h2>
         <% @song_search = RSpotify::Track.search(search) %>
         <% @song_search[0..5].each do |song| %>
           <div class="result-card">
-            <p><%= song.name %></p>
+
+            <div>
+              <p><%= song.name.length > 30 ? song.name[0..30]... :  song.name %></p>
+              <div class="artist-name">
+
+                <% @all_artists = [] %>
+                <% song.artists.each do |artist| %>
+                <% @all_artists.push(artist.name) %>
+                <% end %>
+                <%@all_artists = @all_artists.join(", ") %>
+                <p><%= @all_artists.length > 30 ? @all_artists[0..30]... :  @all_artists %></p>
+              </div>
+            </div>
+
             <img src= <%= song.album.images[0]["url"] %> alt="" class="profile-playlist-image">
+          </div>
+        <% end %>
+      </div>
+    </div>
+      <div class="results-container">
+        <h2>Artists</h2>
+        <% @artist_search = RSpotify::Artist.search(search) %>
+        <% @artist_search[0..5].each do |artist| %>
+          <div class="result-card">
+            <div class="artist-name">
+              <p><%= artist.name.length > 30 ? artist.name[0..30]... :  artist.name %></p>
+            </div>
+            <img src= <%= artist.images[0]["url"] %> alt="" class="profile-playlist-image">
           </div>
         <% end %>
       </div>
