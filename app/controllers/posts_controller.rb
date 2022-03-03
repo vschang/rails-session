@@ -7,8 +7,18 @@ class PostsController < ApplicationController
     @all_playlists = @user_now.playlists
     @prof_pic_url = @user_now.images[0]["url"]
   end
+
   def index
-    @posts = Post.all
+    # @posts = Post.all
+    # @reposts = Repost.all
+    # raise
+    combined_arr = Post.all + Repost.all
+    @combined_posts = combined_arr.sort_by{ |combined_post| combined_post.created_at }.reverse
+
+    # Post.where(user: current_user)
+    # Repost.where(user: current_user)
+    # Friendships.where(requester: current_user)
+    # Friendships.where(receiver: current_user)
   end
 
   def show
@@ -51,6 +61,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.permit(:title, :content)
   end
 end

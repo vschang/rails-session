@@ -1,5 +1,18 @@
-<% @posts.each do |post| %>
-<h2> <%= post.title %> </h2>
-<p> <%= post.content %> </p>
-<%# <%= link_to "More", posts_path%> 
+<div>
+  <% @combined_posts.each do |combined_post| %>
+    <% if combined_post.class == Post %>
+      <h2> <%= combined_post.title %> </h2>
+      <p> <%= combined_post.content %> </p>
+      <%# <p> <%= ((Time.now - combined_post.created_at)/1.hour).to_i hours ago </p> %>
+      <p> <%= combined_post.created_at.strftime("%H:%M %B %d, %Y")%></p>
+      <%= link_to "Repost", post_reposts_path(combined_post), method: :post %>
+      <%= link_to "More", post_path(combined_post.id)%>
+    <% else %>
+      <h2> <%= combined_post.post.title %> </h2>
+      <p> <%= combined_post.post.content %> </p>
+      <%# <p> <%= ((Time.now - combined_post.post.created_at)/1.hour).to_i hours ago </p> %>
+      <p> <%= combined_post.created_at.strftime("%H:%M %B %d, %Y")%> </p>
+      <%= link_to "More", post_repost_path(combined_post.post.id, combined_post.id)%>
+    <% end %>
   <% end %>
+</div>

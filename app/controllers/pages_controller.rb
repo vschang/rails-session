@@ -6,6 +6,9 @@ class PagesController < ApplicationController
   end
 
   def profile
+    # raise
+
+
   end
 
   def landing_page
@@ -13,7 +16,7 @@ class PagesController < ApplicationController
 
   def get_user
     if user_signed_in?
-      @user_now = RSpotify::User.find(current_user.uid)
+    @user_now = RSpotify::User.find(current_user.uid)
       @username = current_user.username
       if @user_now != nil
         @full_name = @user_now.display_name

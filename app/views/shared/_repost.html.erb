@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <% unless post.user.id == current_user.id %> #I can't repost my post
+    <% if current_user.reposted?(post.id) %>
+      <% link_to "/posts/#{post.id}/reposts/#{post.reposts.ids}", method: :delete, title: "Cannot repost", remote: true %>
+    <% else %>
+      <% link_to "/posts/#{post.id}/reposts", method: :post, title: "Repost", data: {confirm: "Repost this post?"}, remote: true %>
+    <% end %>
+<% end %>
