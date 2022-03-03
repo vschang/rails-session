@@ -13,11 +13,14 @@
   </head>
 
   <body style="overscroll-behavior-y:none;">
-    
-    <%= render 'shared/navbar' if user_signed_in? %>
+
     <%= yield %>
    <%= render 'shared/flashes' %>
-  
+
 
   </body>
+  <nav>
+        <%= render 'shared/navbar' if user_signed_in? %>
+
+  </nav>
 </html>
