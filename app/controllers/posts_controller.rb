@@ -17,6 +17,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+
+    @search = params[:query]
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'posts/results', locals: { search: @search }, formats: [:html] }
+    end
   end
 
   def create

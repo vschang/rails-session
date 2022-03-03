@@ -1,0 +1,33 @@
+<div data-search-music-target= "results">
+
+  <% if params[:query] && params[:query] != "" %>
+
+    <div class="results-wrapper">
+      <div class="results-albums">
+        <h2>Albums</h2>
+        <% @album_search = RSpotify::Album.search(search)%>
+        <% @album_search[0..5].each do |album| %>
+          <div class="result-card">
+            <p><%= album.name %></p>
+            <img src= <%= album.images[0]["url"] %> alt="" class="profile-playlist-image">
+          </div>
+        <% end %>
+      </div>
+
+      <div class="results-songs">
+        <h2>Songs</h2>
+        <% @song_search = RSpotify::Track.search(search) %>
+        <% @song_search[0..5].each do |song| %>
+          <div class="result-card">
+            <p><%= song.name %></p>
+            <img src= <%= song.album.images[0]["url"] %> alt="" class="profile-playlist-image">
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  <% else %>
+    <h2> Start searching!!</h2>
+  <% end %>
+
+</div>

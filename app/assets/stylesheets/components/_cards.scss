@@ -29,3 +29,32 @@
   width: 100px;
   height: 100%;
 }
+
+.results-wrapper{
+  display:flex;
+
+}
+
+.results-albums, .results-songs{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.result-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  background-color: white;
+  margin-bottom: 16px;
+  padding: 8px;
+  border-radius: 16px;
+  p{
+    flex-grow: 1;
+    font-size: 20px;
+    color: black;
+    padding: 0 10px;
+    margin: 0;
+  }
+}
