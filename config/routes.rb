@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'profile', to: 'pages#profile'
   get 'landing_page', to: 'pages#landing_page'
+  
   patch '/friendships/:id', to: 'friendships#accept', as: :accept_friendship
   patch '/friendships/:id', to: 'friendships#reject', as: :reject_friendship
+
+  get 'log_out', to: 'pages#destroy_sesh'
+
 end

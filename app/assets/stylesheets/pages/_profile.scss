@@ -1,0 +1,81 @@
+#profile-username {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: white;
+  margin-right: 8px;
+}
+
+.profile-header {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 68px;
+}
+
+.placehldr-elmn {
+  display: flex;
+  flex-direction: column;
+  margin-left: 33px;
+
+  h2 {
+    margin-bottom: -2px;
+  }
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.nav-tabs {
+  display: flex;
+  border-bottom: none;
+  justify-content: space-around;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: rgb(0, 0, 0);
+  width: 50%;
+  border-radius: 16px 16px 0px 0px;
+  font-weight: bold;
+}
+
+.tab-content>.active {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 0px;
+  align-items: center;
+  background: linear-gradient(360deg, #fd1d1d, #802db8, #1e55cd);
+}
+
+.tab-content>.active .post {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 0px;
+  align-items: center;
+  background: linear-gradient(360deg, #fcaf21, #2c50d2);
+}
+
+.nav-tabs .nav-link {
+  margin-bottom: -1px;
+  background: none;
+  width: 50%;
+}

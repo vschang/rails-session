@@ -1,0 +1,93 @@
+.log-in-button {
+  padding: 10px 30px;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: 0.3s ease-in-out;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  top: 31px;
+  right: 30px;
+  background: linear-gradient(359deg, #fd1d1d, #802db8, #1e55cd);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 6s ease infinite;
+  -moz-animation: AnimationName 6s ease infinite;
+  animation: AnimationName 6s ease infinite;
+  }
+
+  @-webkit-keyframes AnimationName {
+    0% {
+      background-position: 52% 0%
+    }
+
+    50% {
+      background-position: 49% 100%
+    }
+
+    100% {
+      background-position: 52% 0%
+    }
+  }
+
+  @-moz-keyframes AnimationName {
+    0% {
+      background-position: 52% 0%
+    }
+
+    50% {
+      background-position: 49% 100%
+    }
+
+    100% {
+      background-position: 52% 0%
+    }
+  }
+
+  @keyframes AnimationName {
+    0% {
+      background-position: 52% 0%
+    }
+
+    50% {
+      background-position: 49% 100%
+    }
+
+    100% {
+      background-position: 52% 0%
+    }
+}
+
+#spotify_signin {
+  padding: 10px 39px;
+  border-radius: 30px;
+  background-color: #1CCC5B;
+  text-align: center;
+  margin-bottom: 16px;
+  a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
+  }
+}
+
+.user_btn {
+  padding: 10px 30px;
+  border-radius: 30px;
+  background-color: white;
+  text-align: center;
+  a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
+  }
+}
+
+.log-in-title {
+  text-align: center;
+  font-size: 51px;
+  margin-bottom: 16px;
+}
