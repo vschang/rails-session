@@ -10,9 +10,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
 
-  # def friends
-  #   # Array OR Active record relation of all users who are your friends
-  # end
+  def friends
+    @friends = Friendship.all.where(status: "accepted").where(requester_id: self.id).or(Friendship.all.where(status: "accepted").where(receiver_id: self.id))
+    @friends = @friends.select { |friendship| friendship.requester != self || friendship.receiver != self }
+  end
+
+  def not_friends
+    User.all - friends
+  end
 
   def self.find_for_oauth(auth)
     # Create the user params
@@ -42,5 +47,4 @@ class User < ApplicationRecord
     # binding.pry
     return user
   end
-
 end
