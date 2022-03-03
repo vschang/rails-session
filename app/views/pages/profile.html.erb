@@ -1,27 +1,35 @@
-<div class="profile-header">
-  <h1 id="profile-username"><%=@username%></h1>
-  <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
+<div class="container profile">
+  <div class="profile-header">
+    <h1 id="profile-username"><%=@username%></h1>
+    <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
+      <div class="placehldr-elmn">
+        <h2>3000</h2>
+        <p>followers</p>
+      </div>
+      <div class="placehldr-elmn">
+        <h2>3000</h2>
+        <p>following</p>
+      </div>
+  </div>
+    <a href="/log_out" class="user-btn">Sign Out</a>
 </div>
 
-<h2> Your Playlists: </h2>
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">posts.</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">overview.</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active post" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...
 
-  <% @user_now.playlists.each do |playlist| %>
-      <div class="playlist-card">
-        <p><%=  playlist.name %></p>
-      </div>
-  <% end %>
+  </div>
 
-  <% @user_now.top_artists.each do |artist| %>
-    <div class="playlist-card">
-      <p><%= artist.name %></p>
-      <img src= <%= artist.images[0]["url"]  %> alt="" class="profile-playlist-image">
-    </div>
-
-  <% end %>
-
-  <% @user_now.top_tracks.each do |track| %>
-    <div class="playlist-card">
-      <img src= <%= track.album.images[0]["url"]  %> alt="" class="profile-playlist-image">
-      <p><%= track.name %></p>
-    </div>
-  <% end %>
+  <div class="tab-pane fade tab-content" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <% @user_now.playlists.each do |playlist| %>
+        <div class="playlist-card">
+          <p><%=  playlist.name %></p>
+        </div>
+    <% end %>
+  </div>
+</div>
