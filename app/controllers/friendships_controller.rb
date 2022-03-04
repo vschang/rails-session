@@ -42,6 +42,7 @@ class FriendshipsController < ApplicationController
     redirect_to friendships_path
   end
 
+
   def index
     @user = current_user
     @friendship = Friendship.new

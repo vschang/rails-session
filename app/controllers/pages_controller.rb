@@ -6,9 +6,7 @@ class PagesController < ApplicationController
   end
 
   def profile
-    # raise
-
-
+    @user_now = current_user
   end
 
   def destroy_sesh

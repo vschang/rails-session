@@ -26,9 +26,40 @@ class PostsController < ApplicationController
     @feed_posts = @all_posts + @all_reposts
     @feed_posts = @feed_posts.sort_by{ |posts| posts.created_at }.reverse
 
+    @post_time = []
+    time_now = Time.now
+    @feed_posts.each do |post|
+      time_diff = time_now - post.created_at
+      puts time_diff
+      if time_diff < 3600.0
+        puts "less than 3600.0"
+        x = (time_diff/1.minute).to_i.round
+        if x >= 1.5
+          @post_time << "#{(time_diff/1.minute).to_i.round} minutes"
+          puts "pushed to post time"
+        else
+          @post_time << "#{(time_diff/1.minute).to_i.round} minute"
+        end
+      elsif time_diff > 3600.0 && time_diff < 86400.0
+        x = (time_diff/1.hour).to_i.round
+        if x >= 1.5
+          @post_time << "#{(time_diff/1.hour).to_i.round} hours"
+        else
+          @post_time << "#{(time_diff/1.hour).to_i.round} hour"
+        end
+      else
+        x = (time_diff/1.day).to_i.round
+        if x >= 1.5
+          @post_time << "#{(time_diff/1.day).to_i.round} days"
+        else
+          @post_time << "#{(time_diff/1.day).to_i.round} day"
+        end
+      end
+    end
   end
 
   def show
+    @user = current_user
     @post = Post.find(params[:id])
   end
 
@@ -42,7 +73,7 @@ class PostsController < ApplicationController
 
     @post.user = @user
     if @post.save
-      redirect_to post_path(@post), notice: "Posted!"
+      redirect_to posts_path(@post), notice: "Posted!"
     else
       render :new, alert: "Not posted!"
     end

@@ -2,13 +2,13 @@
   <div class="profile-header">
     <h1 id="profile-username"><%=@username%></h1>
     <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
-      <div class="placehldr-elmn">
+      <%# <div class="placehldr-elmn">
         <h2>3000</h2>
         <p>followers</p>
-      </div>
+      </div> %>
       <div class="placehldr-elmn">
-        <h2>3000</h2>
-        <p>following</p>
+        <h2><%= Friendship.all.where(receiver_id: @user_now.id).or(Friendship.all.where(requester_id: @user_now.id)).count %></h2>
+        <p>friends</p>
       </div>
   </div>
     <a href="/log_out" class="user-btn">Sign Out</a>
