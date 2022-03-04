@@ -1,7 +1,13 @@
 <div class="navbar" id="myNavbar">
-  <a href="posts"><i class="fa-solid fa-border-all"></i></a>
-  <a href="search"><i class="fa-solid fa-magnifying-glass"></i></a>
-  <a href="posts/new"><i class="fa-solid fa-circle-plus"></i></a>
+  <%= link_to posts_path do %>
+    <i class="fa-solid fa-border-all"></i>
+  <% end %>
+  <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+  <%= link_to new_post_path do %>
+    <i class="fa-solid fa-circle-plus"></i>
+  <% end %>
   <a href="#"><i class="fa-solid fa-message"></i></a>
-  <a href="profile"><i class="fa-solid fa-circle-user"></i></a>
+  <%= link_to profile_path do  %>
+    <i class="fa-solid fa-circle-user"></i>
+  <% end %>
 </div>
