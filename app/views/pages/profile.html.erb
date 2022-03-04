@@ -1,35 +1,35 @@
-<div class="container profile">
-  <div class="profile-header">
-    <h1 id="profile-username"><%=@username%></h1>
-    <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
-      <%# <div class="placehldr-elmn">
-        <h2>3000</h2>
-        <p>followers</p>
-      </div> %>
-      <div class="placehldr-elmn">
+
+<div class="profile-page" >
+  <div class="container profile">
+    <div class="profile-header">
+      <h1 id="profile-username"><%=@username%></h1>
+      <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
+        <div class="placehldr-elmn">
         <h2><%= Friendship.all.where(receiver_id: @user_now.id).or(Friendship.all.where(requester_id: @user_now.id)).count %></h2>
         <p>friends</p>
-      </div>
-  </div>
-    <a href="/log_out" class="user-btn">Sign Out</a>
-</div>
-
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">posts.</button>
-    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">overview.</button>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active post" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...
-
-  </div>
-
-  <div class="tab-pane fade tab-content" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-    <% @user_now.playlists.each do |playlist| %>
-        <div class="playlist-card">
-          <p><%=  playlist.name %></p>
         </div>
-    <% end %>
+    </div>
+  </div>
+      <a class="user_btn log_out" href="/log_out">Sign Out</a>
+
+  <div class="overall" >
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">posts.</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">overview.</button>
+      </div>
+    </nav>
+    <div class="tab-content post" id="nav-tabContent">
+      <div class="tab-pane fade show active post" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...
+      </div>
+
+      <div class="tab-pane fade tab-content" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <% @user_now.playlists.each do |playlist| %>
+            <div class="playlist-card">
+              <p><%=  playlist.name %></p>
+            </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
