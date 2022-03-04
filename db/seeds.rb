@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
-User.destroy_all
 Post.destroy_all
+User.destroy_all
 
 p "cleaning the DB"
 

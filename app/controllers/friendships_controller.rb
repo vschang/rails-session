@@ -8,18 +8,16 @@ class FriendshipsController < ApplicationController
     @prof_pic_url = @user_now.images[0]["url"]
   end
 
-  # make a friend request- You=requester, friend=receiver
-  # accept a friend request- You=receiver, friend=requester
-  # how to ge the id of your potential friend?
   def create
     @user = current_user
-    @receiver = User.find(params[:friendship][:receiver_id])
-    @friendship = Friendship.new(requester_id: @user.id, receiver_id: @receiver.id, status: "pending")
+    @receiver = User.find(friendship_params[:receiver_id])
+    @friendship = Friendship.new(requester_id: @user.id, receiver_id: @receiver.id)
+    @friendship.receiver = @receiver
 
     if @friendship.save
       redirect_to friendships_path, notice: "Friend request sent!"
     else
-      redirect_to friendships_path, alert: "There is already a friend request"
+      redirect_to friendships_path, alert: "Cannot make a friend request"
     end
   end
 
@@ -61,5 +59,11 @@ class FriendshipsController < ApplicationController
 
     # ALL PENDING FRIENDS
     @pending_friends = @pending_friend_request + @pending_friends_receive
+  end
+
+  private
+
+  def friendship_params
+    params.require(:friendship).permit(:requester_id, :receiver_id, :status)
   end
 end

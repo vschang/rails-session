@@ -12,7 +12,15 @@ class User < ApplicationRecord
 
   def friends
     @friends = Friendship.all.where(status: "accepted").where(requester_id: self.id).or(Friendship.all.where(status: "accepted").where(receiver_id: self.id))
-    @friends = @friends.select { |friendship| friendship.requester != self || friendship.receiver != self }
+    @friends = @friends.select { |friendship| friendship.requester != self || friendship.receiver != self }.map do |friendship|
+      requester = friendship.requester
+      receiver = friendship.receiver
+      if self == requester
+        receiver
+      elsif self == receiver
+        requester
+      end
+    end
   end
 
   def not_friends

@@ -18,7 +18,7 @@ class RepostsController < ApplicationController
     @repost.user = @user
     @repost.post = @post
     if @repost.save
-      redirect_to post_path(@post), notice: "Reposted!"
+      redirect_to posts_path, notice: "Reposted!"
     else
       render "posts/show", alert: "Not reposted!"
     end
