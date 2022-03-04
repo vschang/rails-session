@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="icon" href="s_sunrise.png">
     <title>RailsSession</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -13,12 +14,8 @@
   </head>
 
   <body style="overscroll-behavior-y:none;">
-
-    <%= yield %>
-   <%= render 'shared/flashes' %>
-  <%= render 'shared/navbar' if user_signed_in? %>
-
-
+    <%= render 'shared/flashes' %>
+      <%= yield %>
+    <%= render 'shared/navbar' if user_signed_in? %>
   </body>
-
 </html>

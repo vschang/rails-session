@@ -13,7 +13,7 @@
   margin-top: 40px;
   display: flex;
   align-items: center;
-  margin-bottom: 68px;
+  margin-bottom: 20px;
 }
 
 .placehldr-elmn {
@@ -48,15 +48,12 @@
   border-bottom: none;
   justify-content: space-around;
   border: none;
-  &:hover{
-    border: none;
-  }
 }
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link,
-.nav-link .nav-link:hover {
-  color: rgb(0, 0, 0);
+.nav-link {
+  color: white;
   width: 50%;
   border-radius: 16px 16px 0px 0px;
   font-weight: bold;
@@ -71,19 +68,37 @@
   padding: 20px 20px 0px;
   align-items: center;
   background: linear-gradient(360deg, #fd1d1d, #802db8, #1e55cd);
-  height: 100vh;
+  height: 100%;
+  overflow-y: scroll;
 }
 
+#nav-tabContent {
+  height: 93%;
+}
 .tab-content>.active .post {
   display: flex;
   flex-direction: column;
   padding: 20px 20px 0px;
   align-items: center;
   background: linear-gradient(360deg, #fcaf21, #2c50d2);
+  height: 100%;
+  overflow-y: scroll;
 }
 
 .nav-tabs .nav-link {
   margin-bottom: -1px;
   background: none;
   width: 50%;
+}
+
+.overall {
+  height: 64vh;
+}
+
+.profile-page {
+  height: 93vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
 }
