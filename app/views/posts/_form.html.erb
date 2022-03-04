@@ -1,12 +1,16 @@
-<div class="form-container">
-  <% @playlists_array = [] %>
-    <% @user_now.playlists.each do |playlist| %>
-    <% @playlists_array << (playlist.name)%>
-  <% end %>
-  <%= simple_form_for @post do |f| %>
-    <%= f.input :title, required: true %>
-    <%= f.input :content, required: true %>
-    <%= f.input :music, collection: @playlists_array %>
-    <%= f.button :submit, class:'form-button'%>
-  <% end %>
+<div data-controller = "spotify-card">
+  <div class="form-container">
+    <% @playlists_array = [] %>
+      <% @user_now.playlists.each do |playlist| %>
+      <% @playlists_array << playlist %>
+    <% end %>
+    <% @playlists_array %>
+
+    <%= simple_form_for @post do |f| %>
+      <%= f.input :title, required: true %>
+      <%= f.input :content, required: true %>
+      <%= f.input :music, collection: @playlists_array%>
+      <%= f.button :submit, class:'form-button'%>
+    <% end %>
+  </div>
 </div>

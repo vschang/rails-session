@@ -1,5 +1,9 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
+<%@playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], @post.music) %>
+<p><%= @playlist.name %></p>
+<img src=<%= @playlist.images[0]["url"] %> alt="">
+
 
 <% unless @user.reposts.where(post_id: @post.id)%>
 <%= link_to "Repost", post_reposts_path(@post), method: :post %>
