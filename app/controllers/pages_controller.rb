@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @me = RSpotify::User.find(current_user.uid)
   end
 
   def destroy_sesh

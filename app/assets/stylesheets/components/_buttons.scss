@@ -86,6 +86,20 @@
   }
 }
 
+.log_out {
+  position: absolute;
+  width: fit-content;
+  top: 130px;
+  right: 51px;
+}
+
+.log_out, a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
 .log-in-title {
   text-align: center;
   font-size: 51px;
