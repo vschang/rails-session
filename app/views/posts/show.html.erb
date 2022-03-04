@@ -1,4 +1,6 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
 
+<% unless @user.reposts.where(post_id: @post.id)%>
 <%= link_to "Repost", post_reposts_path(@post), method: :post %>
+<%end%>
