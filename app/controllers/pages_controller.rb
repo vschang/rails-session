@@ -6,9 +6,6 @@ class PagesController < ApplicationController
   end
 
   def profile
-    # raise
-
-
   end
 
   def destroy_sesh

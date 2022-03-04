@@ -1,2 +1,14 @@
 <h1>Create a post</h1>
-<%= render "form", post: @post %>
+<div data-controller="search-music">
+  <%= form_with url: new_post_path, method: :get, html: { class: 'mb-4', data: { search_music_target: 'form' } } do |f| %>
+    <%= f.text_field :query,
+                     class: "form-control",
+                     placeholder: 'Type a music title',
+                     value: params[:query],
+                     data: { search_music_target: 'input',
+                     action: 'keyup->search-music#update'
+                     } %>
+    <% end %>
+  <%= render "results", post: @post %>
+  <%= render "form", post: @post %>
+</div>
