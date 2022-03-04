@@ -6,7 +6,8 @@
       <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
         <div class="placehldr-elmn">
         <h2><%= Friendship.all.where(receiver_id: @user_now.id).or(Friendship.all.where(requester_id: @user_now.id)).count %></h2>
-        <p>friends</p>
+        <%# link here %>
+        <%= link_to "friends", friendships_path, class: 'white-text'%>
         </div>
     </div>
   </div>
