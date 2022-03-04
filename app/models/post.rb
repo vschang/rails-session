@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  has_many :reposts
+  belongs_to :user
+  has_many :reposts, dependent: :destroy
   validates :title, :content, presence: true
 
   def reposted?
