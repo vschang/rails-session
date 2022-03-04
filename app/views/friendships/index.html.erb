@@ -24,8 +24,8 @@
 <% @pending_friends.each do |friendship| %>
   <div>
     <p>@<%= User.find(friendship.requester_id).username %></p>
-    <%= link_to "Accept", accept_friendship_path(friendship), method: 'patch' %>
-    <%= link_to "Reject", reject_friendship_path(friendship), method: 'patch' %>
+    <%= link_to "Accept", accept_friendship_path(friendship), method: 'patch' , class: 'white-text' %>
+    <%= link_to "Reject", reject_friendship_path(friendship), method: 'patch' , class: 'white-text' %>
   </div>
 
 <% end %>
