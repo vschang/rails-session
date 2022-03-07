@@ -1,15 +1,21 @@
 <div class="profile-page" >
   <div class="container profile">
-    <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
-    <h2><strong><%=@user.first_name%> <%=@user.last_name%></strong></h2>
-    <h3>@<%=@user.username%></h3>
+    <div class="profile-header">
+      <h1 id="profile-username"><%=@username%></h1>
+      <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
+      <div class="placehldr-elmn">
+        <h2><%= Friendship.all.where(receiver_id: @user_now.id).or(Friendship.all.where(requester_id: @user_now.id)).count %></h2>
+        <%= link_to "friends", friendships_path, class: 'white-text'%>
+        <h4><strong><%=@user.first_name%> <%=@user.last_name%></strong></h4>
+      </div>
+    </div>
   </div>
   <div class="overall">
     <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <div class="nav nav-tabs friends" id="nav-tab" role="tablist">
         <button class="nav-link active" id="nav-friends-tab" data-bs-toggle="tab" data-bs-target="#nav-friends" type="button" role="tab" aria-controls="nav-friends" aria-selected="true">friends.</button>
-        <button class="nav-link" id="nav-request-tab" data-bs-toggle="tab" data-bs-target="#nav-request" type="button" role="tab" aria-controls="nav-request" aria-selected="false">friend requests.</button>
-        <button class="nav-link" id="nav-add-tab" data-bs-toggle="tab" data-bs-target="#nav-add" type="button" role="tab" aria-controls="nav-add" aria-selected="false">add friends.</button>
+        <button class="nav-link" id="nav-request-tab" data-bs-toggle="tab" data-bs-target="#nav-request" type="button" role="tab" aria-controls="nav-request" aria-selected="false">requests.</button>
+        <button class="nav-link" id="nav-add-tab" data-bs-toggle="tab" data-bs-target="#nav-add" type="button" role="tab" aria-controls="nav-add" aria-selected="false">add new.</button>
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">

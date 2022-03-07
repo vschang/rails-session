@@ -4,8 +4,9 @@
       <h1 id="profile-username"><%=@username%></h1>
       <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
       <div class="placehldr-elmn">
-      <h2><%= Friendship.all.where(receiver_id: @user_now.id).or(Friendship.all.where(requester_id: @user_now.id)).count %></h2>
-      <%= link_to "friends", friendships_path, class: 'white-text'%>
+        <h2><%= Friendship.all.where(receiver_id: @user_now.id).or(Friendship.all.where(requester_id: @user_now.id)).count %></h2>
+        <%= link_to "friends", friendships_path, class: 'white-text'%>
+        <h4><strong><%=@user.first_name%> <%=@user.last_name%></strong></h4>
       </div>
     </div>
   </div>
@@ -57,7 +58,7 @@
               </div>
             </div>
           <% else %>
-          <%# <% playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], profile_post.music) %>
+          <% playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], profile_post.music) %>
             <div class ='repost-card pt-3'>
               <div class='album-and-title d-flex flex-row justify-content-end align-items-center'>
                 <h2> <%= profile_post.post.title %> </h2>
