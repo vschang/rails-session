@@ -1,2 +1,37 @@
-<h1><%= @repost.post.title %></h1>
-<p><%= @repost.post.content %></p>
+<div class='container'>
+  <div class='d-flex'>
+    <%= link_to posts_path do %>
+      <i class="fa-solid fa-arrow-left" style="text-decoration: none; color:white;"></i>
+    <% end %>
+      <p> Repost</p>
+  </div>
+  <div class="profpic-username d-flex flex-row ">
+    <img src="<%= @prof_pic_url %>" alt="" class="index-avatar" style="margin-right:8px;">
+    <div>
+      <p><%=@repost.post.user.first_name %>
+      <%=@repost.post.user.last_name %></p>
+    <div>
+    <div>
+      <p class='username-text'>@<%=@repost.post.user.username %></p>
+      <p class='username-text'>
+        <i class="fa-solid fa-repeat py-1 px-1" style="text-decoration: none; color:white;"></i>reposted by <%= @repost.post.user.username %>
+      </p>
+    </div>
+  </div>
+  <div>
+    <h2><%= @repost.post.title %></h2>
+    <p><%= @repost.post.content %></p>
+    <%@playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], @repost.post.music) %>
+    <h3><%= @playlist.name %></h3>
+    <img src=<%= @playlist.images[0]["url"] %> alt="" width=200px, height=200px>
+    <p> <%= @repost.post.created_at.strftime("%l:%M %p - %B %d, %Y")%></p>
+  </div>
+  <div class="social-icons d-flex flex-row justify-content-between">
+    <div class= 'd-flex flex-row'>
+      <i class="fa-solid fa-heart mx-2"></i><p>6</p>
+    </div>
+    <div class= 'd-flex flex-row'>
+    <i class="fa-solid fa-message mx-2"></i><p>2</p>
+    </div>
+  </div>
+</div>
