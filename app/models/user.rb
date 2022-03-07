@@ -4,6 +4,8 @@ class User < ApplicationRecord
   # has_one_attached :prof_pic
   has_many :posts, dependent: :destroy
   has_many :reposts, dependent: :destroy
+  has_many :repost_comments, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
   # validates :first_name, :last_name, :username, presence: true
   # validates :username, uniqueness: true
 
