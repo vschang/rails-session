@@ -32,16 +32,16 @@
 }
 
 .results-wrapper{
-  display:flex;
+  display: flex;
   flex-direction: column;
+  width: 90%;
+  margin: auto;
 
 }
 
 .results-container{
   display: flex;
   flex-direction: column;
-  width: 90%;
-  margin: auto;
   h2{
     font-size: 20px;
     margin-left: 8px;
