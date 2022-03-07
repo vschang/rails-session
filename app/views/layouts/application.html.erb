@@ -14,8 +14,8 @@
   </head>
 
   <body style="overscroll-behavior-y:none;">
-    <%= render 'shared/flashes' %>
       <%= yield %>
+    <%= render 'shared/flashes' if user_signed_in? %>
     <%= render 'shared/navbar' if user_signed_in? %>
   </body>
 </html>
