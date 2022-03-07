@@ -5,6 +5,19 @@ class PagesController < ApplicationController
   def home
   end
 
+  def search
+    if params[:query].present?
+      sql_query = " \
+        users.first_name ILIKE :query \
+        OR users.last_name ILIKE :query \
+        OR users.username ILIKE :query \
+      "
+      @users = User.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @users = User.all
+    end
+  end
+
   def profile
     @user = current_user
     @user_id_arr = []
@@ -51,9 +64,6 @@ class PagesController < ApplicationController
 
   def destroy_sesh
     sign_out_and_redirect(current_user)
-  end
-
-  def landing_page
   end
 
   def get_user

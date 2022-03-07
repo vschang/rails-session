@@ -82,6 +82,25 @@
   padding: 15px;
   width: 90%;
   max-width: 500px;
+  h2 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    width: 62%;
+  }
+  p {
+    color: white;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    width: 100%;
+  }
 }
 
 .repost-card{
@@ -92,6 +111,24 @@
   padding:15px;
   width: 90%;
   max-width: 500px;
+  h2 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    width: 62%;
+  }
+  p {
+    color: white;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
 }
 
 .bottom-card-content{
@@ -100,11 +137,6 @@
   color:white;
   border-radius: 10px;
   padding: 15px;
-}
-
-.social-icons{
-  display: flex;
-  justify-content: right;
 }
 
 .album-img{
@@ -127,6 +159,10 @@
 .full-width{
   width: 100%
 }
+
+.align-items-center {
+  align-items: center !important;
+
 .spotify-card-info{
   margin-left: 10px;
 }

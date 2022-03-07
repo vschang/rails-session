@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   patch '/friendships/:id/reject', to: 'friendships#reject', as: :reject_friendship
 
   get 'log_out', to: 'pages#destroy_sesh'
-
+  get 'search', to: 'pages#search'
 end
