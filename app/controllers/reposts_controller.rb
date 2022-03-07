@@ -1,5 +1,4 @@
 class RepostsController < ApplicationController
-  before_action :set_post
   before_action :get_user
 
   def get_user
@@ -36,11 +35,11 @@ class RepostsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @repost = Repost.find(params[:id])
+    @repost_comment = RepostComment.new
   end
+
   private
 
-  def set_post  #Identify the post that pressed the repost button
-    @post = Post.find(params[:post_id])
-  end
 end

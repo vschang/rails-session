@@ -26,17 +26,41 @@
   <div class="social-icons d-flex flex-row justify-content-between">
     <div>
     <% if @post.id != @user.id%>
-      <%# <%= link_to "Repost" %>
       <%= link_to post_reposts_path(@post), method: :post do %>
         <i class="fa-solid fa-repeat py-1 px-1" style="text-decoration: none; color:white;"></i>
       <% end %>
     <% end %>
     </div>
     <div class= 'd-flex flex-row'>
-      <i class="fa-solid fa-heart mx-2"></i><p>6</p>
+      <i class="fa-solid fa-heart mx-2"></i><p>5</p>
     </div>
     <div class= 'd-flex flex-row'>
-    <i class="fa-solid fa-message mx-2"></i><p>2</p>
+    <i class="fa-solid fa-message mx-2"></i>
+    <p><%=@post.post_comments.count%></p>
+    </div>
+  </div>
+  <div class='comments'>
+    <div class>
+    <% if @post.post_comments.blank? %>
+      <p>Leave a comment</p>
+    <% else %>
+      <div class='post-comments'>
+      <%# someone please help fix the borders in the class .post-comments %>
+        <% @post.post_comments.each do |post_comment| %>
+          <div class='d-flex'>
+            <p class='username-text margin-r-10'>@<%=User.find(post_comment.post.user_id).username %></p>
+            <p class='content-text'><%= post_comment.created_at.strftime("%l:%M %p, %B %d, %Y")%></p>
+          </div>
+        <p><%= post_comment.content %></p>
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+    <div id='post-comment-form'>
+      <%= simple_form_for([ @post, @post_comment ]) do |f| %>
+      <%= f.input :content, label: 'Your comment', as: :text %>
+      <%= f.button :submit, 'Comment', :class => "white-text friend-button" %>
+      <% end %>
     </div>
   </div>
 </div>
