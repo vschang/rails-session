@@ -11,12 +11,6 @@ class PagesController < ApplicationController
     @user_id = @user.id
     @user_id_arr << @user_id
 
-    # @friends = (Friendship.all.where(status: "accepted").where(requester_id: @user.id).or(Friendship.all.where(status: "accepted").where(receiver_id: @user.id)))
-
-    # @receiving_friends_id = @friends.map(&:receiver_id)
-    # @requesting_friends_id = @friends.map(&:requester_id)
-    # @everyone_id = (@user_id_arr + @receiving_friends_id + @requesting_friends_id).uniq
-
     @user_posts = Post.where(user_id: @user_id)
     @user_reposts = Repost.where(user_id: @user_id)
 
