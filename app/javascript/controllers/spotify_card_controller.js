@@ -1,9 +1,8 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "albumResults", "id"]
-  static values = { album: String }
-  fill() {
-    console.log(this.albumValue);
+  static targets = ["hideclass"]
+  hide() {
+    this.hideclassTarget.classList.toggle("d-none")
   }
 }
