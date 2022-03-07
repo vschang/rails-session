@@ -40,6 +40,9 @@ ActiveRecord::Schema.define(version: 2022_03_07_135926) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "music"
+    t.string "image"
+    t.string "url"
+    t.string "artist"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

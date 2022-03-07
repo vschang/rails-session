@@ -81,7 +81,7 @@ class PostsController < ApplicationController
 
     @post.user = @user
     if @post.save
-      redirect_to posts_path(@post), notice: "Posted!"
+      redirect_to post_path(@post), notice: "Posted!"
     else
       render :new, alert: "Not posted!"
     end
@@ -107,6 +107,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :music)
+    params.require(:post).permit(:title, :content, :music, :image, :artist, :url)
   end
 end
