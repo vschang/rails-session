@@ -14,13 +14,17 @@ class RepostsController < ApplicationController
     @user = current_user
     @post = Post.find(params[:post_id])
     @repost = Repost.new
-
-    @repost.user = @user
-    @repost.post = @post
-    if @repost.save
-      redirect_to posts_path, notice: "Reposted!"
+    found_post = Repost.all.find_by(user: current_user, post: @post)
+    if found_post
+      redirect_to posts_path, notice: "You cannot repost twice!"
     else
-      render "posts/show", alert: "Not reposted!"
+      @repost.user = @user
+      @repost.post = @post
+      if @repost.save
+        redirect_to posts_path, notice: "Reposted!"
+      else
+        render "posts/show", alert: "Not reposted!"
+      end
     end
   end
 

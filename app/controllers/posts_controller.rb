@@ -61,6 +61,7 @@ class PostsController < ApplicationController
   def show
     @user = current_user
     @post = Post.find(params[:id])
+    
   end
 
   def new
@@ -70,6 +71,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # Follow regular flow of Rails
       format.text { render partial: 'posts/results', locals: { search: @search }, formats: [:html] }
+
     end
   end
 
@@ -105,6 +107,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :music)
   end
 end

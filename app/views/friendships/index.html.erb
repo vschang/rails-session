@@ -1,50 +1,57 @@
-<div>
-  <h2> Your friends </h2>
-</div>
-
-<div>
-  <% @friends.each do |friendship| %>
-    <% if friendship.receiver_id == @user.id %>
-        <div>
-          <p>@<%= User.find(friendship.requester_id).username %></p>
-          <%= link_to "Remove friend", friendship_path(friendship.id), method: 'destroy', method: :delete, data: { confirm: "Are you sure?" } %>
-        </div>
-    <% else %>
-      <div>
-          <p>@<%= User.find(friendship.receiver_id).username %></p>
-          <%= link_to "Remove friend", friendship_path(friendship.id), method: 'destroy', method: :delete, data: { confirm: "Are you sure?" } %>
-        </div>
-    <% end %>
-  <% end %>
-</div>
-
-<div>
- <h2> Friend requests </h2>
-</div>
-<% @pending_friends.each do |friendship| %>
+<div class = 'container'>
   <div>
-    <p>@<%= User.find(friendship.requester_id).username %></p>
-    <%= link_to "Accept", accept_friendship_path(friendship), method: 'patch' %>
-    <%= link_to "Reject", reject_friendship_path(friendship), method: 'patch' %>
+    <%# <h2><%= @user.first_name @user.last_name </h2> %>
+    <h3>@<%=@user.username%></h3>
+  <div>
+    <h2> Friends </h2>
   </div>
 
-<% end %>
-
-<div>
-  <h2> Make a friend request </h2>
-</div>
-<% current_user.not_friends.each do |friend| %>
   <div>
-    <% @receiver = User.find(friend.id) %>
-    <%= simple_form_for([@receiver, @friendship]) do |f| %>
-      <%= f.hidden_field :receiver_id, value: friend.id %>
-      <% if Friendship.where(requester: current_user, receiver: friend).empty? && Friendship.where(receiver: current_user, requester: friend).empty? %>
-        <p>@<%= friend.username %></p> <%= f.submit "Follow" %>
-      <% elsif  Friendship.where(status:"accepted")%>
-          <%= f.submit 'friends', hidden: true %>
+    <% @friends.each do |friendship| %>
+      <% if friendship.receiver_id == @user.id %>
+        <div class='d-flex justify-content-between'>
+          <p>@<%= User.find(friendship.requester_id).username %></p>
+          <%= button_to "Remove friend", friendship_path(friendship.id), method: 'destroy', method: :delete, data: { confirm: "Are you sure?" }, class:"friend-button" %>
+        </div>
       <% else %>
-        <p>@<%= friend.username %></p> <%= f.submit 'Pending', disabled: true %>
+        <div class='d-flex justify-content-between'>
+          <p>@<%= User.find(friendship.receiver_id).username %></p>
+          <%= button_to "Remove friend", friendship_path(friendship.id), method: 'destroy', method: :delete, data: { confirm: "Are you sure?" }, class:"friend-button" %>
+        </div>
       <% end %>
     <% end %>
   </div>
-<% end %>
+
+  <div>
+  <h2> Friend requests </h2>
+  </div>
+  <% @pending_friends.each do |friendship| %>
+    <div class='d-flex justify-content-between'>
+      <p>@<%= User.find(friendship.requester_id).username %></p>
+      <%= button_to "Accept", accept_friendship_path(friendship), method: 'patch' , class: 'white-text friend-button' %>
+      <%= button_to "Reject", reject_friendship_path(friendship), method: 'patch' , class: 'white-text friend-button' %>
+    </div>
+
+  <% end %>
+
+  <div>
+    <h2> Add Friends </h2>
+  </div>
+  <% current_user.not_friends.each do |friend| %>
+    <div>
+      <% @receiver = User.find(friend.id) %>
+      <%= simple_form_for([@receiver, @friendship]) do |f| %>
+        <%= f.hidden_field :receiver_id, value: friend.id %>
+        <div class='d-flex flex-row justify-content-between'>
+          <% if Friendship.where(requester: current_user, receiver: friend).empty? && Friendship.where(receiver: current_user, requester: friend).empty? %>
+            <p>@<%= friend.username %></p> <%= f.submit "Follow", class:"friend-button" %>
+          <% elsif  Friendship.where(status:"accepted")%>
+              <%= f.submit 'friends', hidden: true %>
+          <% else %>
+            <p>@<%= friend.username %></p> <%= f.submit 'Pending', class:"friend-button", disabled: true %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

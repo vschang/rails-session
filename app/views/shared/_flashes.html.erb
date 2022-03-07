@@ -1,6 +1,6 @@
 <% if notice %>
   <div class="flash flash-success alert alert-dismissible fade show" role="alert">
-    <span>You've logged in.</span>
+    <%=notice%>
     <a data-bs-dismiss="alert" aria-label="Close">
       <i class="fas fa-times"></i>
     </a>
@@ -8,7 +8,7 @@
 <% end %>
 <% if alert %>
   <div class="flash flash-danger alert alert-dismissible fade show" role="alert">
-    <span>We've found an error.</span>
+    <%=alert%>
     <a data-bs-dismiss="alert" aria-label="Close">
       <i class="fas fa-times"></i>
     </a>
