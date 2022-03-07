@@ -54,7 +54,7 @@
 .nav-tabs .nav-item.show .nav-link,
 .nav-link {
   color: white;
-  width: 50%;
+  width: 30%;
   border-radius: 16px 16px 0px 0px;
   font-weight: bold;
   background-color: #2054CD;
@@ -88,7 +88,7 @@
 .nav-tabs .nav-link {
   margin-bottom: -1px;
   background: none;
-  width: 50%;
+  width: 30%;
 }
 
 .overall {
@@ -105,4 +105,19 @@
 
 .white-text{
   color:white
+}
+
+.flex-grow {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.padding-left{
+  padding-left: 10px;
 }
