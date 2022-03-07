@@ -1,6 +1,5 @@
 
   <div class="form-container">
-
     <%= simple_form_for @post do |f| %>
       <%= f.input :title, required: true %>
       <%= f.input :content, required: true %>
@@ -9,6 +8,6 @@
       <%= f.input :artist, as: :hidden, input_html: {value: artist}%>
       <%= f.input :url, as: :hidden, input_html: {value: url}%>
 
-      <%= f.button :submit, class:'user_btn'%>
+      <%= f.submit "session", class:'session-it-btn pull-right'%>
     <% end %>
   </div>
