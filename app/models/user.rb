@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   def friends
     @friends = Friendship.all.where(status: "accepted").where(requester_id: self.id).or(Friendship.all.where(status: "accepted").where(receiver_id: self.id))
+    @self_friendship = Friendship.where(status: "accepted").where(requester_id: self.id).where(receiver_id: self.id)
     @friends = @friends.select { |friendship| friendship.requester != self || friendship.receiver != self }.map do |friendship|
       requester = friendship.requester
       receiver = friendship.receiver
@@ -24,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def not_friends
-    User.all - friends
+    User.all - friends - [self]
   end
 
   def self.find_for_oauth(auth)
