@@ -25,10 +25,10 @@
 }
 .profile-playlist-image{
   object-fit: cover;
-  // border-radius: 8px;
   aspect-ratio: 1 / 1;
-  width: 80px;
+  width: 57px;
   height: 100%;
+  border-radius: 4px;
 }
 
 .results-wrapper{
@@ -40,29 +40,35 @@
 .results-container{
   display: flex;
   flex-direction: column;
+  width: 90%;
+  margin: auto;
+  h2{
+    font-size: 20px;
+    margin-left: 8px;
+  }
+
 }
 .result-card{
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: row;
-
-  background-color: white;
+  // background-color: white;
   margin-bottom: 16px;
   padding: 8px;
+  border-radius: 8px;
   p{
+    font-weight: bold;
     flex-grow: 1;
     font-size: 15px;
-    color: black;
+    color: white;
     padding: 0;
     margin: 0;
   }
 }
 .artist-name{
   display: flex;
-
   p{
-    font-weight: bold;
+    font-weight: 400;
     padding: 0;
   }
 
@@ -121,7 +127,9 @@
 .full-width{
   width: 100%
 }
-
+.spotify-card-info{
+  margin-left: 10px;
+}
 .margin-r-10{
   margin-right: 10px
 }
