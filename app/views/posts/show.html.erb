@@ -32,13 +32,19 @@
     <% end %>
     </div>
     <div class= 'd-flex flex-row'>
-      <i class="fa-solid fa-heart mx-2"></i><p>5</p>
+      <i class="fa-solid fa-heart mx-2"></i>
+      <p>4</p>
     </div>
     <div class= 'd-flex flex-row'>
     <i class="fa-solid fa-message mx-2"></i>
     <p><%=@post.post_comments.count%></p>
     </div>
   </div>
+
+  <div id="likes">
+    <%= link_to 'Like', post_post_likes_path(@post), method: :post %>
+  </div>
+
   <div class='comments'>
     <div class>
     <% if @post.post_comments.blank? %>

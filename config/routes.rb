@@ -7,12 +7,17 @@ Rails.application.routes.draw do
   resources :posts do
     resources :post_comments, only: [:new, :create, :destroy, :index]
     resources :reposts, only: [:create]
+    resources :post_likes, only: [:create]
   end
   resources :reposts, only: [:create, :destroy, :show] do
     resources :repost_comments, only: [:new, :create]
+    resources :repost_likes, only: [:create]
   end
   resources :repost_comments, only: [:destroy]
   resources :friendships, only: [:destroy, :index]
+  resources :post_likes, only: [:destory]
+  resources :repost_likes, only: [:destory]
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'profile', to: 'pages#profile'

@@ -11,6 +11,14 @@ class RepostCommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @repost_comment = RepostComment.find(params[:id])
+
+    @repost_comment.destroy
+    # change the path
+    redirect_to reposts_path
+  end
+
   private
 
   def repost_comment_params

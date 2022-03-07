@@ -56,12 +56,15 @@ class PostsController < ApplicationController
         end
       end
     end
+
+
   end
 
   def show
     @user = current_user
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    @post_like = PostLike.new
   end
 
   def new

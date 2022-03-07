@@ -38,6 +38,7 @@ class RepostsController < ApplicationController
     @user = current_user
     @repost = Repost.find(params[:id])
     @repost_comment = RepostComment.new
+    @repost_like = RepostLike.new 
   end
 
   private
