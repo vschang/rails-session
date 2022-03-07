@@ -23,12 +23,12 @@
         <%# POST CONTENT HERE %>
         <% @profile_posts.each_with_index do |profile_post, index| %>
           <% if profile_post.class == Post%>
-          <% playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], profile_post.music) %>
+          <%# playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], profile_post.music) %>
             <div class='post-card'>
               <div class='album-and-title d-flex flex-row justify-content-between'>
                 <h2> <%= profile_post.title %> </h2>
                 <%# <img src="https://i.mdel.net/i/db/2019/12/1255378/1255378-800w.jpg" alt="" width="100px" height='100px' class="album-img"> %>
-                <img src=<%= playlist.images[0]["url"] %> alt=""  alt="" width="100px" height='100px' class="album-img">
+                <%# <img src=<%= playlist.images[0]["url"]  alt=""  alt="" width="100px" height='100px' class="album-img"> %>
               </div>
               <div class='bottom-card-content'>
                 <div class="profpic-username d-flex flex-row ">
@@ -58,12 +58,12 @@
               </div>
             </div>
           <% else %>
-          <% playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], profile_post.music) %>
+          <%# playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], profile_post.music) %>
             <div class ='repost-card pt-3'>
               <div class='album-and-title d-flex flex-row justify-content-end align-items-center'>
                 <h2> <%= profile_post.post.title %> </h2>
                 <img src="https://i.mdel.net/i/db/2019/12/1255378/1255378-800w.jpg" alt="" width="100px" height='100px' class="album-img">
-                  <img src=<%= playlist.images[0]["url"]%> alt=""  alt="" width="100px" height='100px' class="album-img">
+                  <%# <img src=<%= playlist.images[0]["url"] alt=""  alt="" width="100px" height='100px' class="album-img"> %>
               </div>
               <div class='bottom-card-content'>
                 <div class="profpic-username d-flex flex-row">
