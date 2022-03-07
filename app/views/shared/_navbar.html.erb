@@ -2,7 +2,9 @@
   <%= link_to posts_path do %>
     <i class="fa-solid fa-border-all"></i>
   <% end %>
-  <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+  <%= link_to search_path do %>
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <% end %>
   <%= link_to new_post_path do %>
     <i class="fa-solid fa-circle-plus"></i>
   <% end %>

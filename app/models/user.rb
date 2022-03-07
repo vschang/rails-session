@@ -10,6 +10,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
 
+  include PgSearch::Model
+    pg_search_scope :search_by_name_and_username,
+    against: [ :first_name, :last_name, :username ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
   def friends
     @friends = Friendship.all.where(status: "accepted").where(requester_id: self.id).or(Friendship.all.where(status: "accepted").where(receiver_id: self.id))
     @self_friendship = Friendship.where(status: "accepted").where(requester_id: self.id).where(receiver_id: self.id)
@@ -56,4 +63,6 @@ class User < ApplicationRecord
     # binding.pry
     return user
   end
+
+
 end

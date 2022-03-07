@@ -1,0 +1,21 @@
+<div class="container form-view">
+<h1>Search for Someone</h1>
+  <div class="searchbar">
+    <%= form_tag search_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a user"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="search-res">
+    <ul style="list-style: none">
+      <% @users.each do |user| %>
+        <li class="user-res"><%= link_to user.username, user_path(user) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

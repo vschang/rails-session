@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def default_url_options
     { host: ENV["sessionapp.xyz"] || "localhost:3000" }
   end
+
+  def signed_in_root_path(*args)
+    "/posts"
+  end
 end
