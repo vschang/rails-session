@@ -153,6 +153,7 @@ width: 30px;
 }
 .content{
   margin-left: 16px;
+  width: 100%;
 }
 .post-title{
   font-weight: 500;
@@ -195,6 +196,8 @@ width: 30px;
   }
 }
 .social-icons{
+  padding-top:5px;
+  padding-bottom: 5px;
   display: flex;
   justify-content: flex-end;
   *{
