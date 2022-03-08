@@ -3,7 +3,7 @@
   <% @feed_posts.each_with_index do |feed_post, index| %>
     <% if feed_post.class == Post%>
       <%= link_to post_path(feed_post.id) do %>
-        <div class='post-card'>
+        <div class='post-card' id='profile-post-card'>
           <div class="profpic-username">
             <img src="<%=feed_post.user.prof_pic%>" alt=""50>
             <% if feed_post.user_id == current_user.id %>
