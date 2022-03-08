@@ -1,7 +1,6 @@
 <div class="posts-wrapper">
   <% @feed_posts.each_with_index do |feed_post, index| %>
     <% if feed_post.class == Post%>
-
       <%= link_to post_path(feed_post.id) do %>
         <div class='post-card'>
           <div class="profpic-username">

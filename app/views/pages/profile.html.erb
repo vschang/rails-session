@@ -1,7 +1,7 @@
 <div class="profile-page" >
   <div class="container profile">
     <div class="profile-header">
-      
+
       <h1 id="profile-username"><%=@username%></h1>
 
       <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
@@ -26,67 +26,108 @@
         <% @profile_posts.each_with_index do |profile_post, index| %>
           <% if profile_post.class == Post%>
             <div class='post-card'>
-              <div class='album-and-title d-flex flex-row justify-content-between'>
-                <h2> <%= profile_post.title %> </h2>
-                <%# IMAGE HERE> %>
+          <div class="profpic-username">
+            <img src="<%=profile_post.user.prof_pic%>" alt=""50>
+            <%= link_to profile_path do %>
+            <h3 class='username-text'><%= profile_post.user.username %>.</h3>
+            <% end %>
+          </div>
+          <div class = 'content'>
+            <h2 class='post-title'> <%= profile_post.title.capitalize %> </h2>
+
+              <p class ='content-text'> <%= profile_post.content %> </p>
+            <a href= <%= profile_post.url %> target="_blank">
+              <div class="spotify-card">
+                <img src=<%= profile_post.image %> alt="">
+                <div class="spotify-card-info">
+                  <p><%= profile_post.music %></p>
+                  <% if !profile_post.artist.nil? %>
+                    <p><%= profile_post.artist %></p>
+                  <% end %>
+                </div>
               </div>
-              <div class='bottom-card-content'>
-                <div class="profpic-username d-flex flex-row ">
-                  <img src="<%= @prof_pic_url %>" alt="" class="index-avatar" style="margin-right:8px;">
-                  <p class='username-text'><%= profile_post.user.username %></p>
-                </div>
-                <div class = 'content'>
-                  <p class ='content-text'> <%= profile_post.content %> </p>
-                </div>
-                <div class="social-icons d-flex flex-row align-items-center justify-content-end">
-                  <% if profile_post.id != @user.id%>
-                    <%# <%= link_to "Repost" %>
-                    <%= link_to post_reposts_path(profile_post), method: :post do %>
-                    <i class="fa-solid fa-arrows-rotate py-1 px-1" style="text-decoration: none; color:white;"></i>
-                    <% end %>
+            </a>
+            <div class="social-icons">
+              <div>
+                <% if profile_post.id != @user.id%>
+                  <%= link_to post_reposts_path(profile_post), method: :post do %>
+                    <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
                   <% end %>
-                  <i class="fa-solid fa-heart mx-2"></i><p><%=profile_post.post_likes.count%></p>
-                  <i class="fa-solid fa-message mx-2"></i><p><%= profile_post.post_comments.count %></p>
-                  <%# link_to "More"%>
-                  <%= link_to post_path(profile_post.id) do %>
-                    <i class="fa-solid fa-arrow-up-right-from-square py-1 px-1 " style="text-decoration: none; color:white;"></i>
+                <% end %>
+              </div>
+              <div>
+                <div>
+                  <%= link_to post_post_likes_path(profile_post), method: :post do %>
+                    <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
                   <% end %>
+                  <p><%=profile_post.post_likes.count%></p>
                 </div>
-                <div class='time-created'>
-                  <p class ='content-text grey-text'> <%= @post_time[index] %> ago </p>
+              </div>
+              <div>
+                <div>
+                  <i class="fa-solid fa-message mx-2"></i>
+                  <p><%=profile_post.post_comments.count%></p>
                 </div>
               </div>
             </div>
+
+            <div class='time-created'>
+              <p class ='content-text grey-text'> <%= @post_time[index] %> ago </p>
+            </div>
+          </div>
+        </div>
           <% else %>
           <%# playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], profile_post.music) %>
-            <div class ='repost-card pt-3'>
-              <div class='album-and-title d-flex flex-row justify-content-end align-items-center'>
-                <h2> <%= profile_post.post.title %> </h2>
-                <img src="https://i.mdel.net/i/db/2019/12/1255378/1255378-800w.jpg" alt="" width="100px" height='100px' class="album-img">
-                  <%# <img src=<%= playlist.images[0]["url"] alt=""  alt="" width="100px" height='100px' class="album-img"> %>
+            <div class='post-card'>
+          <div class="profpic-username">
+            <img src="<%=profile_post.post.user.prof_pic%>" alt=""50>
+            <h3 class='username-text'><%= profile_post.post.user.username %>.</h3>
+          </div>
+          <div class = 'content'>
+            <p>repost by <%=profile_post.user.username %>.</p>
+            <h2 class='post-title'> <%= profile_post.post.title.capitalize %> </h2>
+              <p class ='content-text'> <%= profile_post.post.content %> </p>
+
+            <a href= <%= profile_post.url %> target="_blank">
+              <div class="spotify-card">
+                <img src=<%= profile_post.post.image %> alt="">
+                <div class="spotify-card-info">
+                  <p><%= profile_post.post.music %></p>
+                  <% if !profile_post.post.artist.nil? %>
+                    <p><%= profile_post.post.artist %></p>
+                  <% end %>
+                </div>
               </div>
-              <div class='bottom-card-content'>
-                <div class="profpic-username d-flex flex-row">
-                  <img src="<%= @prof_pic_url %>" alt="" class="index-avatar" style="margin-right:8px;">
-                  <p class='username-text'><%= profile_post.post.user.username %></p>
-                  <p class='username-text'><i class="fa-solid fa-repeat py-1 px-1" style="text-decoration: none; color:white;"></i>Reposted by <%= profile_post.post.user.username %></p>
+            </a>
+            <div class="social-icons">
+              <div>
+                <% if profile_post.id != @user.id%>
+                  <%= link_to post_reposts_path(profile_post), method: :post do %>
+                    <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
+                  <% end %>
+                <% end %>
+              </div>
+              <div>
+                <div>
+                  <%= link_to post_post_likes_path(profile_post), method: :post do %>
+                    <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
+                  <% end %>
+                  <p><%=profile_post.post.post_likes.count%></p>
                 </div>
-                <div class = 'content'>
-                  <p class ='content-text'> <%= profile_post.post.content %> </p>
-                </div>
-                <div class="social-icons d-flex flex-row justify-content-end align-items-center ">
-                  <i class="fa-solid fa-heart mx-2"></i><p><%=profile_post.repost_likes.count%></p>
-                  <i class="fa-solid fa-message mx-2"></i><p><%= profile_post.repost_comments.count %></p>
-                    <%# link_to "More"%>
-                  <%= link_to post_reposts_path(profile_post.post.id, profile_post.id) do %>
-                    <i class="fa-solid fa-arrow-up-right-from-square mx-2" style="text-decoration: none; color:white;"></i>
-                    <% end %>
-                </div>
-                <div class='time-created'>
-                  <p class='content-text grey-text'> <%= @post_time[index] %> ago </p>
+              </div>
+              <div>
+                <div>
+                  <i class="fa-solid fa-message mx-2"></i>
+                  <p><%=profile_post.post.post_comments.count%></p>
                 </div>
               </div>
             </div>
+
+            <div class='time-created'>
+              <p class ='content-text grey-text'> <%= @post_time[index] %> ago </p>
+            </div>
+          </div>
+        </div>
           <% end %>
         <% end %>
         <%# POST CONTENT HERE %>
