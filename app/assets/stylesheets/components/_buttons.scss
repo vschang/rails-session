@@ -84,14 +84,14 @@
     font-weight: bold;
     font-size: 22px;
   }
-  .sign_out, a {
-    font-size: 12px !important;
-  }
 }
 
 span.user_btn.sign_out {
   padding: 0px !important;
   width: 64px !important;
+  .sign_out, a {
+    font-size: 12px !important;
+  }
 }
 
 .log_out {
