@@ -61,16 +61,17 @@
             <h3 class='username-text'><%= feed_post.user.username %>.</h3>
           </div>
           <div class = 'content'>
-            <h2 class='post-title'> <%= feed_post.title.capitalize %> </h2>
-              <p class ='content-text'> <%= feed_post.content %> </p>
+            <p>repost by <%= feed_post.repost.user %> </p>
+            <h2 class='post-title'> <%= feed_post.post.title.capitalize %> </h2>
+              <p class ='content-text'> <%= feed_post.post.content %> </p>
 
             <a href= <%= feed_post.url %> target="_blank">
               <div class="spotify-card">
-                <img src=<%= feed_post.image %> alt="">
+                <img src=<%= feed_post.post.image %> alt="">
                 <div class="spotify-card-info">
-                  <p><%= feed_post.music %></p>
-                  <% if !feed_post.artist.nil? %>
-                    <p><%= feed_post.artist %></p>
+                  <p><%= feed_post.post.music %></p>
+                  <% if !feed_post.post.artist.nil? %>
+                    <p><%= feed_post.post.artist %></p>
                   <% end %>
                 </div>
               </div>
@@ -88,13 +89,13 @@
                   <%= link_to post_post_likes_path(feed_post), method: :post do %>
                     <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
                   <% end %>
-                  <p><%=feed_post.post_likes.count%></p>
+                  <p><%=feed_post.post.post_likes.count%></p>
                 </div>
               </div>
               <div>
                 <div>
                   <i class="fa-solid fa-message mx-2"></i>
-                  <p><%=feed_post.post_comments.count%></p>
+                  <p><%=feed_post.post.post_comments.count%></p>
                 </div>
               </div>
             </div>
