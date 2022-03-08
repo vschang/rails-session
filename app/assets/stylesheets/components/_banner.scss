@@ -2,6 +2,7 @@
   background-color: black;
   height: 60vh;
   padding: 30px;
+
   h1 {
     font-weight: bolder;
     letter-spacing: -1px;
@@ -9,6 +10,7 @@
     margin-bottom: -4px;
     margin-top: 78px;
   }
+
   h2 {
     font-size: 30px;
     margin: 9px 0px 24px;
@@ -25,7 +27,7 @@
   margin-top: 20;
   min-height: 733px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
-  url(https://i.gifer.com/9lhQ.gif);
+    url('background.png');
 }
 
 .howto-content {
@@ -49,7 +51,7 @@
   height: 50px;
 }
 
-.loginscr{
+.loginscr {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,46 +63,46 @@
   -webkit-animation: AnimationName 12s ease infinite;
   -moz-animation: AnimationName 12s ease infinite;
   animation: AnimationName 12s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 51% 0%
   }
 
-  @-webkit-keyframes AnimationName {
-    0% {
-      background-position: 51% 0%
-    }
-
-    50% {
-      background-position: 50% 100%
-    }
-
-    100% {
-      background-position: 51% 0%
-    }
+  50% {
+    background-position: 50% 100%
   }
 
-  @-moz-keyframes AnimationName {
-    0% {
-      background-position: 51% 0%
-    }
+  100% {
+    background-position: 51% 0%
+  }
+}
 
-    50% {
-      background-position: 50% 100%
-    }
-
-    100% {
-      background-position: 51% 0%
-    }
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 51% 0%
   }
 
-  @keyframes AnimationName {
-    0% {
-      background-position: 51% 0%
-    }
+  50% {
+    background-position: 50% 100%
+  }
 
-    50% {
-      background-position: 50% 100%
-    }
+  100% {
+    background-position: 51% 0%
+  }
+}
 
-    100% {
-      background-position: 51% 0%
-    }
+@keyframes AnimationName {
+  0% {
+    background-position: 51% 0%
+  }
+
+  50% {
+    background-position: 50% 100%
+  }
+
+  100% {
+    background-position: 51% 0%
+  }
 }
