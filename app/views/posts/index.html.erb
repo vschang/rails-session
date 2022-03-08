@@ -63,29 +63,9 @@
             <img src="<%=feed_post.post.user.prof_pic%>" alt=""50>
             <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
           </div>
-<<<<<<< HEAD
           <div class = 'content'>
             <p>repost by <%=feed_post.user.username %>.</p>
             <h2 class='post-title'> <%= feed_post.post.title.capitalize %> </h2>
-=======
-            <div class='bottom-card-content'>
-              <div class="profpic-username d-flex flex-row">
-                <img src="<%= @prof_pic_url %>" alt="" class="index-avatar" style="margin-right:8px;">
-                <% if feed_post.user_id == current_user.id %>
-                  <%= link_to profile_path do %>
-                    <p class='username-text'><%= User.find(feed_post.user_id).username %></p>
-                  <% end %>
-                <% else %>
-                  <p class='username-text'><%= User.find(feed_post.user_id).username %></p>
-                <% end %>
-                <% %>
-                <p class='username-text'>
-                  <%# add link to profile of reposter username %>
-                  <i class="fa-solid fa-repeat py-1 px-1" style="text-decoration: none; color:white;"></i>reposted by <%= User.find(feed_post.user_id).username %>
-                </p>
-              </div>
-            <div class = 'content'>
->>>>>>> master
               <p class ='content-text'> <%= feed_post.post.content %> </p>
 
             <a href= <%= feed_post.url %> target="_blank">
