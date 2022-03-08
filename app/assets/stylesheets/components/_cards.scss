@@ -76,7 +76,13 @@
 
 
 // post css
-
+.feed-title{
+  padding-top: 18px;
+  padding-left: 18px;
+  position: sticky;
+  top: 0px;
+  background-color: black;
+}
 
 .posts-wrapper{
   display: flex;
@@ -95,6 +101,11 @@
   margin: auto;
   display: flex;
   margin-top: 10px;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 12px;
+  background-color: black;
+
   h2 {
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -142,6 +153,7 @@ width: 30px;
 }
 .content{
   margin-left: 16px;
+  width: 100%;
 }
 .post-title{
   font-weight: 500;
@@ -184,6 +196,8 @@ width: 30px;
   }
 }
 .social-icons{
+  padding-top:5px;
+  padding-bottom: 5px;
   display: flex;
   justify-content: flex-end;
   *{
@@ -195,9 +209,16 @@ width: 30px;
     }
   }
 }
+.comment-section{
+  padding: 0px 18px;
+
+}
 
 .time-created{
   text-align: left;
+  p{
+    color:rgb(150, 150, 150)
+  }
 }
 
 .grey-text{

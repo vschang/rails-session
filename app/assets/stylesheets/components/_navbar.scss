@@ -20,13 +20,12 @@
 }
 
 /* Change the color of links on hover */
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
+
 
 /* Add a green background color to the active link */
-.navbar a.active {
-  background-color: #04AA6D;
-  color: white;
+.prof-mini{
+  width: 20px;
+  height: 100%;
+  border-radius: 50%;
+
 }
