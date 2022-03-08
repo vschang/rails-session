@@ -1,17 +1,22 @@
 class RepostLikesController < ApplicationController
   def create
     @repost_like = RepostLike.new
-    @repost_like.post = Repost.find(params[:repost_id])
-    @repost_like.user = current_user
-    @repost_like.post = @repost
+    @repost = Repost.find(params[:repost_id])
+    user = current_user
+    liked_repost = RepostLike.find_by(repost_id: @repost.id, user_id: user.id)
+
+    if liked_repost
+      liked_repost.destroy
+      redirect_to repost_path(@repost)
+    else
+      @repost_like.user = user
+      @repost_like.repost = @repost
+      @repost_like.save
+      redirect_to repost_path(@repost) if @repost_like.save!
+    end
+
   end
 
-  def destroy
-    @repost_like = ReostLike.find(params[:id])
-    @repost_like.destroy
-    # change the path
-    redirect_to posts_path
-  end
 
   private
 

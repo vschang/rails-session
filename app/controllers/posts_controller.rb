@@ -56,8 +56,6 @@ class PostsController < ApplicationController
         end
       end
     end
-
-
   end
 
   def show
@@ -110,6 +108,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :music, :image, :artist, :url)
+    params.require(:post).permit(:title, :content, :music, :image, :artist, :url, :user_id)
   end
 end
