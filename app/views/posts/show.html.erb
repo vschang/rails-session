@@ -12,7 +12,15 @@
       <%=@post.user.last_name %></p>
     <div>
     <div>
-      <p class='username-text'>@<%=@post.user.username %></p>
+      <% if @post.user_id == current_user.id %>
+        <%= link_to profile_path do %>
+          <p class='username-text' style="text-decoration: none; color:white;">@<%=@post.user.username %></p>
+        <% end %>
+        <% else %>
+        <%= link_to user_path(@post.user_id) do %>
+          <p class='username-text' style="text-decoration: none; color:white;">@<%=@post.user.username %></p>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <div >
@@ -42,6 +50,9 @@
     <p><%=@post.post_comments.count%></p>
     </div>
   </div>
+  <div>
+    <%= button_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
+  </div>
   <div class='comments'>
     <div class>
     <% if @post.post_comments.blank? %>
@@ -51,7 +62,14 @@
       <%# someone please help fix the borders in the class .post-comments %>
         <% @post.post_comments.each do |post_comment| %>
           <div class='d-flex'>
-            <p class='username-text margin-r-10'>@<%=User.find(post_comment.post.user_id).username %></p>
+            <%# add link to profile of commenter %>
+              <% if @post.user_id == current_user.id %>
+                <%= link_to profile_path do %>
+                  <p class='username-text margin-r-10'>@<%=User.find(post_comment.post.user_id).username %></p>
+                <% end %>
+                <% else %>
+                <p class='username-text'>@<%=@post.user.username %></p>
+              <% end %>
             <p class='content-text'><%= post_comment.created_at.strftime("%l:%M %p, %B %d, %Y")%></p>
           </div>
         <p><%= post_comment.content %></p>
