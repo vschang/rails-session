@@ -4,8 +4,8 @@
       <h1 id="profile-username"><%=@username%></h1>
       <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
       <div class="placehldr-elmn">
-        <h2><%= Friendship.all.where(receiver_id: @user_now.id).or(Friendship.all.where(requester_id: @user_now.id)).count %></h2>
-        <%= link_to "friends", friendships_path, class: 'white-text'%>
+        <%# <h2><%= Friendship.all.where(receiver_id: @user_now.id).or(Friendship.all.where(requester_id: @user_now.id)).count %/h2>
+        <%# <%= link_to "friends", friendships_path, class: 'white-text'%>
         <h4><strong><%=@user.first_name%> <%=@user.last_name%></strong></h4>
       <h2><%= Friendship.all.where(receiver_id: @user.id, status:'accepted').or(Friendship.all.where(requester_id: @user.id, status:'accepted')).count %></h2>
       <%= link_to "friends", friendships_path, class: 'white-text'%>
@@ -47,8 +47,8 @@
                     <i class="fa-solid fa-arrows-rotate py-1 px-1" style="text-decoration: none; color:white;"></i>
                     <% end %>
                   <% end %>
-                  <i class="fa-solid fa-heart mx-2"></i><p>6</p>
-                  <i class="fa-solid fa-message mx-2"></i><p>2</p>
+                  <i class="fa-solid fa-heart mx-2"></i><p><%=profile_post.post_likes.count%></p>
+                  <i class="fa-solid fa-message mx-2"></i><p><%= profile_post.post_comments.count %></p>
                   <%# link_to "More"%>
                   <%= link_to post_path(profile_post.id) do %>
                     <i class="fa-solid fa-arrow-up-right-from-square py-1 px-1 " style="text-decoration: none; color:white;"></i>
@@ -80,7 +80,7 @@
                   <i class="fa-solid fa-heart mx-2"></i><p>3</p>
                   <i class="fa-solid fa-message mx-2"></i><p>4</p>
                     <%# link_to "More"%>
-                  <%= link_to post_repost_path(profile_post.post.id, profile_post.id) do %>
+                  <%= link_to post_reposts_path(profile_post.post.id, profile_post.id) do %>
                     <i class="fa-solid fa-arrow-up-right-from-square mx-2" style="text-decoration: none; color:white;"></i>
                     <% end %>
                 </div>

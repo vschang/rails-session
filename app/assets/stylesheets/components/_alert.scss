@@ -5,23 +5,24 @@
   z-index: 1000;
   font-weight: bold;
   animation: ease-in-out;
-  animation: hideAnimation 0s ease-out 4s;
-  animation-fill-mode: forwards;
+  color: black;
+  // animation: hideAnimation 0s ease-out 4s;
+  // animation-fill-mode: forwards;
 }
 
 .flash {
-  padding: 16px 24px;
+  padding: 4px 8px 4px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.5);
-  color: white !important;
+  background: yellow;
   border-radius: 30px;
   margin: 8px;
   font-weight: bold;
   animation: ease-in-out;
-  animation: hideAnimation 0s ease-out 4s;
-  animation-fill-mode: forwards;
+
+  // animation: hideAnimation 0s ease-out 4s;
+  // animation-fill-mode: forwards;
 }
 
 @keyframes hideAnimation {

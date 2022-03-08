@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :reposts, dependent: :destroy
   has_many :repost_comments, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :post_likes, dependent: :destroy
+  has_many :repost_likes, dependent: :destroy
   # validates :first_name, :last_name, :username, presence: true
   # validates :username, uniqueness: true
 
