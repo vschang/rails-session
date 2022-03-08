@@ -62,7 +62,6 @@
       <%# someone please help fix the borders in the class .post-comments %>
         <% @post.post_comments.each do |post_comment| %>
           <div class='d-flex'>
-            <%# add link to profile of commenter %>
               <% if @post.user_id == current_user.id %>
                 <%= link_to profile_path do %>
                   <p class='username-text margin-r-10'>@<%=User.find(post_comment.post.user_id).username %></p>
