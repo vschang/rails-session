@@ -1,6 +1,6 @@
 
   <div class="form-container">
-    <%= simple_form_for @post do |f| %>
+    <%= simple_form_for @post, html: { autocomplete: 'off' } do |f| %>
       <%= f.input :title, required: true %>
       <%= f.input :content, required: true %>
       <%= f.input :music, as: :hidden, required: true, input_html: {value: name}%>

@@ -58,7 +58,6 @@
 
         <% end %>
       </div>
-    </div>
       <div class="results-container">
         <h2>Artists</h2>
         <% @artist_search = RSpotify::Artist.search(@search) %>
@@ -80,11 +79,13 @@
               </div>
             </div>
             <div data-spotify-card-target='hideclass' class="d-none">
-              <%= render "form", name: artist.name, image: @artist_photo, url: artist.external_urls["spotify"], artist: artist.name%>
+              <%= render "form", name: artist.name, image: @artist_photo, url: artist.external_urls["spotify"] ,artist: ""%>
             </div>
           </div>
         <% end %>
       </div>
+    </div>
+
     </div>
 
 
