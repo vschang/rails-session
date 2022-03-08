@@ -39,7 +39,7 @@ class User < ApplicationRecord
     User.all - friends - [self]
   end
 
-  def self.find_for_oauth(auth)
+  def self.find_for_oauth(auth, form_params)
     # Create the user params
     user_params = auth.slice("provider", "uid")
     user_params.merge! auth.info.slice("email", "first_name", "last_name")
@@ -47,6 +47,9 @@ class User < ApplicationRecord
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
     user_params = user_params.to_h
+    user_params[:username] = auth['extra']['raw_info']['display_name']
+    user_params[:first_name] = form_params['first_name']
+    user_params[:last_name] = form_params['last_name']
     # Finish creating the user params
 
     # Find the user if there was a log in

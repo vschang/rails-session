@@ -5,9 +5,13 @@
 <div id="spotify_signin">
   <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to omniauth_authorize_path(resource_name, provider), method: :post do %>
-        <i class="fa-brands fa-spotify"></i> Log in with Spotify
-      <% end %>
+      <div data-controller='spotify-names'>
+        <%= form_with url: "/users/auth/spotify", method: :post, data: {spotify_names_target: 'form'} do |f| %>
+          <%= f.text_field :first_name, data: {spotify_names_target: "firstName", action: "keyup->spotify-names#changeFormUrl"}%>
+          <%= f.text_field :last_name, data: {spotify_names_target: "lastName", action: "keyup->spotify-names#changeFormUrl"}%>
+          <%= f.submit %>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>
@@ -29,4 +33,3 @@
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end %>
-

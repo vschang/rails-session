@@ -1,6 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def spotify
-    user = User.find_for_oauth(request.env['omniauth.auth'])
+    user = User.find_for_oauth(request.env['omniauth.auth'], request.env['omniauth.params'])
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
 
     # Get user's top played artists and tracks
