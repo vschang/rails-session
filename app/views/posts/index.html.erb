@@ -1,6 +1,7 @@
 <div class='container'>
   <% @feed_posts.each_with_index do |feed_post, index| %>
     <% if feed_post.class == Post%>
+  <%= link_to post_path(feed_post.id) do %>
      <div class='post-card'>
       <div class='album-and-title d-flex flex-row justify-content-between'>
           <h2> <%= feed_post.title %> </h2>
@@ -19,33 +20,37 @@
               <% if feed_post.id != @user.id%>
                 <%# <%= link_to "Repost" %>
                 <%= link_to post_reposts_path(feed_post), method: :post do %>
-                  <i class="fa-solid fa-repeat py-1 px-1" style="text-decoration: none; color:white;"></i>
+                  <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
                 <% end %>
               <% end %>
               </div>
               <div class= 'd-flex flex-row'>
-                <i class="fa-solid fa-heart mx-2"></i><p>6</p>
+                <%= link_to post_post_likes_path(feed_post), method: :post do %>
+                <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
+                <% end %>
+                <p><%=feed_post.post_likes.count%></p>
               </div>
               <div class= 'd-flex flex-row'>
                 <i class="fa-solid fa-message mx-2"></i>
                 <p><%=feed_post.post_comments.count%></p>
               </div>
               <%# link_to "More"%>
-              <%= link_to post_path(feed_post.id) do %>
-                <i class="fa-solid fa-arrow-up-right-from-square py-1 px-1 " style="text-decoration: none; color:white;"></i>
-                <% end %>
+
+                <%# <i class="fa-solid fa-arrow-up-right-from-square py-1 px-1 " style="text-decoration: none; color:white;"></i> %>
+
             </div>
             <div class='time-created'>
               <p class ='content-text grey-text'> <%= @post_time[index] %> ago </p>
             </div>
           </div>
       </div>
+      <% end %>
+
       <% else %>
-      <% playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], feed_post.post.music) %>
+      <%= link_to repost_path(feed_post.id) do %>
         <div class ='repost-card pt-3'>
-          <div class='album-and-title d-flex flex-row align-items-center justify-content-between'>
+          <div class='album-and-title d-flex flex-row  justify-content-between'>
             <h2> <%= feed_post.post.title %> </h2>
-            <%# <img src="https://i.mdel.net/i/db/2019/12/1255378/1255378-800w.jpg" alt="" width="100px" height='100px' class="album-img"> %>
           </div>
             <div class='bottom-card-content'>
               <div class="profpic-username d-flex flex-row">
@@ -60,15 +65,18 @@
             </div>
             <div class="social-icons d-flex flex-row justify-content-between">
               <div class= 'd-flex flex-row'>
-                <i class="fa-solid fa-heart mx-2"></i><p>3</p>
+                <%= link_to repost_repost_likes_path(feed_post), method: :post do %>
+                <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
+                <% end %>
+                <p><%=feed_post.repost_likes.count%></p>
               </div>
               <div class= 'd-flex flex-row'>
                 <i class="fa-solid fa-message mx-2"></i>
                 <p><%=feed_post.repost_comments.count%></p>
               </div>
-              <%= link_to repost_path(feed_post.id) do %>
-               <i class="fa-solid fa-arrow-up-right-from-square mx-2" style="text-decoration: none; color:white;"></i>
-              <% end %>
+              <%# <%= link_to repost_path(feed_post.id) do %>
+               <%# <i class="fa-solid fa-arrow-up-right-from-square mx-2" style="text-decoration: none; color:white;"></i> %>
+              <%# <% end %>
             </div>
             <div class='time-created'>
               <p class='content-text grey-text'> <%= @post_time[index] %> ago </p>
@@ -77,4 +85,5 @@
         </div>
       <% end %>
     <% end %>
+  <%end%>
 </div>

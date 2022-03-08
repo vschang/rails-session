@@ -1,0 +1,5 @@
+meta_product_name: "Session App"
+meta_title: "Session App - Connecting friends through music sessions."
+meta_description: "Share music instantly connecting through Spotify. Interact and chat with your friends and discover their latest interests."
+meta_image: "session-meta-img.png" # should exist in `app/assets/images/`
+twitter_account: "@SessionAppES"   # required for Twitter Cards

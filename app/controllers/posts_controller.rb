@@ -62,6 +62,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    @post_like = PostLike.new
   end
 
   def new
@@ -107,6 +108,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :music, :image, :artist, :url)
+    params.require(:post).permit(:title, :content, :music, :image, :artist, :url, :user_id)
   end
 end

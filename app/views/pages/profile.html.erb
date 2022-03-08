@@ -4,6 +4,9 @@
       <h1 id="profile-username"><%=@username%></h1>
       <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
       <div class="placehldr-elmn">
+        <%# <h2><%= Friendship.all.where(receiver_id: @user_now.id).or(Friendship.all.where(requester_id: @user_now.id)).count %/h2>
+        <%# <%= link_to "friends", friendships_path, class: 'white-text'%>
+        <h4><strong><%=@user.first_name%> <%=@user.last_name%></strong></h4>
       <h2><%= Friendship.all.where(receiver_id: @user.id, status:'accepted').or(Friendship.all.where(requester_id: @user.id, status:'accepted')).count %></h2>
       <%= link_to "friends", friendships_path, class: 'white-text'%>
       </div>
@@ -22,12 +25,12 @@
         <%# POST CONTENT HERE %>
         <% @profile_posts.each_with_index do |profile_post, index| %>
           <% if profile_post.class == Post%>
-          <% playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], profile_post.music) %>
+          <%# playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], profile_post.music) %>
             <div class='post-card'>
               <div class='album-and-title d-flex flex-row justify-content-between'>
                 <h2> <%= profile_post.title %> </h2>
                 <%# <img src="https://i.mdel.net/i/db/2019/12/1255378/1255378-800w.jpg" alt="" width="100px" height='100px' class="album-img"> %>
-                <img src=<%= playlist.images[0]["url"] %> alt=""  alt="" width="100px" height='100px' class="album-img">
+                <%# <img src=<%= playlist.images[0]["url"]  alt=""  alt="" width="100px" height='100px' class="album-img"> %>
               </div>
               <div class='bottom-card-content'>
                 <div class="profpic-username d-flex flex-row ">
@@ -44,8 +47,8 @@
                     <i class="fa-solid fa-arrows-rotate py-1 px-1" style="text-decoration: none; color:white;"></i>
                     <% end %>
                   <% end %>
-                  <i class="fa-solid fa-heart mx-2"></i><p>6</p>
-                  <i class="fa-solid fa-message mx-2"></i><p>2</p>
+                  <i class="fa-solid fa-heart mx-2"></i><p><%=profile_post.post_likes.count%></p>
+                  <i class="fa-solid fa-message mx-2"></i><p><%= profile_post.post_comments.count %></p>
                   <%# link_to "More"%>
                   <%= link_to post_path(profile_post.id) do %>
                     <i class="fa-solid fa-arrow-up-right-from-square py-1 px-1 " style="text-decoration: none; color:white;"></i>
@@ -57,13 +60,12 @@
               </div>
             </div>
           <% else %>
-          <%# <% playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], profile_post.music) %>
+          <%# playlist = RSpotify::Playlist.find(request.env['omniauth.auth'], profile_post.music) %>
             <div class ='repost-card pt-3'>
               <div class='album-and-title d-flex flex-row justify-content-end align-items-center'>
                 <h2> <%= profile_post.post.title %> </h2>
-                <img src="https://i.mdel.net/i/db/2019/12/1255378/1255378-800w.jpg" alt="" width="100px" height='100px' class="album-img"> %>
-                  <%# <img src=<%= playlist.images[0]["url"]%>
-                  <%# alt=""  alt="" width="100px" height='100px' class="album-img"> %>
+                <img src="https://i.mdel.net/i/db/2019/12/1255378/1255378-800w.jpg" alt="" width="100px" height='100px' class="album-img">
+                  <%# <img src=<%= playlist.images[0]["url"] alt=""  alt="" width="100px" height='100px' class="album-img"> %>
               </div>
               <div class='bottom-card-content'>
                 <div class="profpic-username d-flex flex-row">
@@ -78,7 +80,7 @@
                   <i class="fa-solid fa-heart mx-2"></i><p>3</p>
                   <i class="fa-solid fa-message mx-2"></i><p>4</p>
                     <%# link_to "More"%>
-                  <%= link_to post_repost_path(profile_post.post.id, profile_post.id) do %>
+                  <%= link_to post_reposts_path(profile_post.post.id, profile_post.id) do %>
                     <i class="fa-solid fa-arrow-up-right-from-square mx-2" style="text-decoration: none; color:white;"></i>
                     <% end %>
                 </div>

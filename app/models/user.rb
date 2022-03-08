@@ -6,11 +6,20 @@ class User < ApplicationRecord
   has_many :reposts, dependent: :destroy
   has_many :repost_comments, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :post_likes, dependent: :destroy
+  has_many :repost_likes, dependent: :destroy
   # validates :first_name, :last_name, :username, presence: true
   # validates :username, uniqueness: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
+
+  include PgSearch::Model
+    pg_search_scope :search_by_name_and_username,
+    against: [ :first_name, :last_name, :username ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 
   def friends
     @friends = Friendship.all.where(status: "accepted").where(requester_id: self.id).or(Friendship.all.where(status: "accepted").where(receiver_id: self.id))
@@ -58,4 +67,6 @@ class User < ApplicationRecord
     # binding.pry
     return user
   end
+
+
 end
