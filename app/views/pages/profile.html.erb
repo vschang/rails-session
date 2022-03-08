@@ -30,6 +30,7 @@
         <% if profile_post.class == Post%>
           <%= link_to post_path(profile_post.id) do %>
             <div class='post-card'>
+
               <div class="profpic-username">
                 <img src="<%=profile_post.user.prof_pic%>" alt=""50>
                 <%= link_to profile_path do %>
@@ -131,9 +132,16 @@
 
                 <div class='time-created'>
                   <p class ='content-text grey-text'> <%= @post_time[index] %> ago </p>
+
                 </div>
               </div>
             </div>
+
+            <div class='time-created'>
+              <p class ='content-text grey-text'> <%= @post_time[index] %> ago </p>
+            </div>
+          </div>
+        </div>
           <% end %>
         <% end %>
       <%end%>

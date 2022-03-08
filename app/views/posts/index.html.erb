@@ -5,8 +5,14 @@
         <div class='post-card' id='profile-post-card'>
           <div class="profpic-username">
             <img src="<%=feed_post.user.prof_pic%>" alt=""50>
-            <%= link_to profile_path do %>
-            <h3 class='username-text'><%= feed_post.user.username %>.</h3>
+            <% if feed_post.user_id == current_user.id %>
+              <%= link_to profile_path do %>
+              <h3 class='username-text'><%= feed_post.user.username %>.</h3>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(feed_post.user_id) do %>
+                <p class='username-text' style="text-decoration: none; color:white;">@<%=feed_post.user.username %></p>
+              <% end %>
             <% end %>
           </div>
           <div class = 'content'>
@@ -60,13 +66,28 @@
         <div class='post-card'>
           <div class="profpic-username">
             <img src="<%=feed_post.post.user.prof_pic%>" alt=""50>
-            <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
+            <% if feed_post.user_id == current_user.id %>
+              <%= link_to profile_path do %>
+              <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(feed_post.user_id) do %>
+                <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
+              <% end %>
+            <% end %>
           </div>
           <div class = 'content'>
-            <p>repost by <%=feed_post.user.username %>.</p>
+            <% if feed_post.user_id == current_user.id %>
+              <%= link_to profile_path do %>
+              <p class='white-text'><i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i><%=feed_post.user.username %>.</p>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(feed_post.user_id) do %>
+                <p class='white-text'><i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i><%=feed_post.user.username %>.</p>
+              <% end %>
+            <% end %>
             <h2 class='post-title'> <%= feed_post.post.title.capitalize %> </h2>
-              <p class ='content-text'> <%= feed_post.post.content %> </p>
-
+            <p class ='content-text'> <%= feed_post.post.content %> </p>
             <a href= <%= feed_post.url %> target="_blank">
               <div class="spotify-card">
                 <img src=<%= feed_post.post.image %> alt="">
@@ -101,7 +122,6 @@
                 </div>
               </div>
             </div>
-
             <div class='time-created'>
               <p class ='content-text grey-text'> <%= @post_time[index] %> ago </p>
             </div>
