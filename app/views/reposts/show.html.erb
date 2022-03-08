@@ -12,7 +12,13 @@
       <%=@repost.post.user.last_name %></p>
     <div>
     <div>
-      <p class='username-text'>@<%=@repost.post.user.username %></p>
+      <% if @repost.user_id == current_user.id %>
+        <%= link_to profile_path do %>
+          <p class='username-text' style="text-decoration: none; color:white;" >@<%=@repost.post.user.username %></p>
+        <% end %>
+        <% else %>
+          <p class='username-text'>@<%=@repost.post.user.username %></p>
+      <% end %>
       <p class='username-text'>
         <i class="fa-solid fa-repeat py-1 px-1" style="text-decoration: none; color:white;"></i>reposted by <%= @repost.post.user.username %>
       </p>
@@ -39,18 +45,9 @@
       <p><%=@repost.repost_comments.count%></p>
     </div>
   </div>
-
-
-  <%# heart as link %>
-  <%# <%= link_to repost_repost_likes_path(@repost), method: :post do %>
-    <%# <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i> %>
-  <%# <% end %>
-
- <%# button as link %>
-  <%# <div id="likes"> %>
-    <%# <%= button_to 'Like', repost_repost_likes_path(@repost), method: :post  %>
-  <%# </div> %>
-
+  <div>
+    <%= button_to 'Delete', @repost, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button'%>
+  </div>
   <div class='comments'>
     <div class>
     <% if @repost.repost_comments.blank? %>
@@ -60,7 +57,13 @@
       <%# someone please help fix the borders in .post-comments %>
         <% @repost.repost_comments.each do |repost_comment| %>
           <div class='d-flex'>
-            <p class='username-text margin-r-10'>@<%=User.find(repost_comment.repost.user_id).username %></p>
+          <% if @repost.user_id == current_user.id %>
+            <%= link_to profile_path do %>
+              <p class='username-text margin-r-10', style="text-decoration: none; color:white" >@<%=User.find(repost_comment.repost.user_id).username %></p>
+            <% end %>
+            <% else %>
+              <p class='username-text margin-r-10'>@<%=User.find(repost_comment.repost.user_id).username %></p>
+            <% end %>
             <p class='content-text'><%= repost_comment.created_at.strftime("%l:%M %p, %B %d, %Y")%></p>
           </div>
         <p><%= repost_comment.content %></p>
