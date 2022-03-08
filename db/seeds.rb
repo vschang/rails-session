@@ -12,7 +12,7 @@ User.destroy_all
 
 p "cleaning the DB"
 
-pablo = User.create(first_name: 'Pablo', last_name: 'Barcena', username:'pablo_barcena', email: 'pablo@gmail.com', password: '123456', prof_pic:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6sGddmMZFZCqb7aJFx5eV-8FGj2gJWz7abGntj8IuyYdAv7W2HEJyi5WY3xbpLLzf-Zg&usqp=CAU')
+pablo = User.create(first_name:  v'Pablo', last_name: 'Barcena', username:'pablo_barcena', email: 'pablo@gmail.com', password: '123456', prof_pic:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6sGddmMZFZCqb7aJFx5eV-8FGj2gJWz7abGntj8IuyYdAv7W2HEJyi5WY3xbpLLzf-Zg&usqp=CAU')
 victor = User.create(first_name: 'Victor', last_name: 'Sera', username:'victor_sera', email: 'victor@gmail.com', password: '123456', prof_pic:'https://www.pngkey.com/png/detail/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png')
 mojito = User.create(first_name: 'Mojito', last_name: 'S', username:'moji_to', email: 'mojito@gmail.com', password: '123456', prof_pic: 'https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg')
 carlotta = User.create(first_name: 'Calotta', last_name: 'Q', username:'carly_', email: 'carlotta@gmail.com', password: '123456', prof_pic:'https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg')
@@ -47,32 +47,32 @@ p post = Post.new(
 )
 post.save!
 
-# post_comment = PostComment.new(
-#   post_id: 141,
-#   user: ana,
-#   content: 'amazing playlist!'
-# )
-# post_comment.save
+post_comment = PostComment.new(
+  post_id: 141,
+  user: ana,
+  content: 'amazing playlist!'
+)
+post_comment.save
 
-# post_comment = PostComment.new(
-#   post_id: 142,
-#   user: mojito,
-#   content: 'impeccable taste!'
-# )
-# post_comment.save
+post_comment = PostComment.new(
+  post_id: 142,
+  user: mojito,
+  content: 'impeccable taste!'
+)
+post_comment.save
 
-# post_comment = PostComment.new(
-#   post_id: 142,
-#   user: victor,
-#   content: 'great music!'
-# )
-# post_comment.save
+post_comment = PostComment.new(
+  post_id: 142,
+  user: victor,
+  content: 'great music!'
+)
+post_comment.save
 
-# post_comment = PostComment.new(
-#   post_id: 143,
-#   user: lenny,
-#   content: 'This is weird'
-# )
-# post_comment.save
+post_comment = PostComment.new(
+  post_id: 143,
+  user: lenny,
+  content: 'This is weird'
+)
+post_comment.save
 
 p "Finished Seeding!"
