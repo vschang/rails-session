@@ -95,6 +95,11 @@
   margin: auto;
   display: flex;
   margin-top: 10px;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 12px;
+  background-color: black;
+
   h2 {
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -198,6 +203,9 @@ width: 30px;
 
 .time-created{
   text-align: left;
+  p{
+    color:rgb(150, 150, 150)
+  }
 }
 
 .grey-text{
