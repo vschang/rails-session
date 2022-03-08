@@ -11,7 +11,7 @@
               <% end %>
             <% else %>
               <%= link_to user_path(feed_post.user_id) do %>
-                <p class='username-text' style="text-decoration: none; color:white;">@<%=@post.user.username %></p>
+                <p class='username-text' style="text-decoration: none; color:white;">@<%=feed_post.user.username %></p>
               <% end %>
             <% end %>
           </div>
