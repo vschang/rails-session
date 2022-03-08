@@ -51,6 +51,14 @@ p post = Post.new(
 )
 post.save!
 
+<<<<<<< HEAD
+post_comment = PostComment.new(
+  post_id: 141,
+  user: ana,
+  content: 'amazing playlist!'
+)
+post_comment.save
+=======
 
 
 # post_comment = PostComment.new(
@@ -59,26 +67,27 @@ post.save!
 #   content: 'amazing playlist!'
 # )
 # post_comment.save
+>>>>>>> master
 
-# post_comment = PostComment.new(
-#   post_id: 142,
-#   user: mojito,
-#   content: 'impeccable taste!'
-# )
-# post_comment.save
+post_comment = PostComment.new(
+  post_id: 142,
+  user: mojito,
+  content: 'impeccable taste!'
+)
+post_comment.save
 
-# post_comment = PostComment.new(
-#   post_id: 142,
-#   user: victor,
-#   content: 'great music!'
-# )
-# post_comment.save
+post_comment = PostComment.new(
+  post_id: 142,
+  user: victor,
+  content: 'great music!'
+)
+post_comment.save
 
-# post_comment = PostComment.new(
-#   post_id: 143,
-#   user: lenny,
-#   content: 'This is weird'
-# )
-# post_comment.save
+post_comment = PostComment.new(
+  post_id: 143,
+  user: lenny,
+  content: 'This is weird'
+)
+post_comment.save
 
 p "Finished Seeding!"
