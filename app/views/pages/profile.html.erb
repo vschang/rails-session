@@ -9,6 +9,7 @@
         <h4><strong><%=@user.first_name%> <%=@user.last_name%></strong></h4>
       <h2><%= Friendship.all.where(receiver_id: @user.id, status:'accepted').or(Friendship.all.where(requester_id: @user.id, status:'accepted')).count %></h2>
       <%= link_to "friends", friendships_path, class: 'white-text'%>
+    <span class="user_btn sign_out"><%= link_to "log out", log_out_path %></span>
       </div>
     </div>
   </div>

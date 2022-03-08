@@ -46,9 +46,10 @@ class User < ApplicationRecord
     user_params[:prof_pic] = auth.info.image
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
+    user_params[:username] = auth["extra"]["raw_info"]["display_name"]
     user_params = user_params.to_h
     # Finish creating the user params
-
+    # binding.pry
     # Find the user if there was a log in
     user = User.find_by(provider: auth.provider, uid: auth.uid)
 
