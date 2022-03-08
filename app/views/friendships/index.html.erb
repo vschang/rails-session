@@ -75,7 +75,6 @@
                     <p class='padding-left'>@<%= friend.username %></p>
                   </div>
                   <div>
-
                       <%= f.submit "Follow", class:"friend-button" %>
                   </div>
                 <% elsif  Friendship.where(status:"accepted") %>

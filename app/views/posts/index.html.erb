@@ -1,3 +1,4 @@
+
 <div class="posts-wrapper">
   <% @feed_posts.each_with_index do |feed_post, index| %>
     <% if feed_post.class == Post%>
@@ -11,7 +12,7 @@
               <% end %>
             <% else %>
               <%= link_to user_path(feed_post.user_id) do %>
-                <p class='username-text' style="text-decoration: none; color:white;">@<%=feed_post.user.username %></p>
+                <h3 class='username-text' style="text-decoration: none; color:white;"><%=feed_post.user.username %></h3>
               <% end %>
             <% end %>
           </div>
