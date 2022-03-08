@@ -46,7 +46,7 @@
           <% end %>
         </div>
       </div>
-      <div class="tab-pane fade friends-tabs"" id="nav-request" role="tabpanel" aria-labelledby="nav-request-tab">
+      <div class="tab-pane fade friends-tabs" id="nav-request" role="tabpanel" aria-labelledby="nav-request-tab">
         <div class='full-width'>
           <% @pending_friends_receive.each do |friendship| %>
             <div class='flex-grow full-width'>
@@ -75,7 +75,6 @@
                     <p class='padding-left'>@<%= friend.username %></p>
                   </div>
                   <div>
-
                       <%= f.submit "Follow", class:"friend-button" %>
                   </div>
                 <% elsif  Friendship.where(status:"accepted") %>
