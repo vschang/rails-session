@@ -76,7 +76,13 @@
 
 
 // post css
-
+.feed-title{
+  padding-top: 18px;
+  padding-left: 18px;
+  position: sticky;
+  top: 0px;
+  background-color: black;
+}
 
 .posts-wrapper{
   display: flex;
@@ -199,6 +205,10 @@ width: 30px;
       margin: 0;
     }
   }
+}
+.comment-section{
+  padding: 0px 18px;
+
 }
 
 .time-created{
