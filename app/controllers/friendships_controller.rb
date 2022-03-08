@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :get_user
+  
   def get_user
     @username = current_user.username
     @user_now = RSpotify::User.find(current_user.uid)
