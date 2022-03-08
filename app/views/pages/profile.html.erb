@@ -7,7 +7,6 @@
         <h4><strong><%=@user.first_name%> <%=@user.last_name%></strong></h4>
       <h2><%= Friendship.all.where(receiver_id: @user.id, status:'accepted').or(Friendship.all.where(requester_id: @user.id, status:'accepted')).count %></h2>
       <%= link_to "friends", friendships_path, class: 'white-text'%>
-      <span class="user_btn sign_out"><%= link_to "log out", log_out_path %></span>
         <h2><%= @user_posts.count %> </h2>
         <p>posts</p>
       </div>
@@ -98,7 +97,7 @@
               <% end %>
             <% else %>
               <%= link_to user_path(profile_post.user_id) do %>
-              
+
                 <h3 class='username-text'><%= profile_post.post.user.username %>.</h3>
               <% end %>
             <% end %>
@@ -149,10 +148,6 @@
                 </div>
               </div>
             </div>
-
-          <% end %>
-        <% end %>
-
             <div class='time-created'>
               <p class ='content-text grey-text'> <%= @post_time[index] %> ago </p>
             </div>
@@ -163,7 +158,6 @@
   <%end%>
 </div>
 
-
         <%# POST CONTENT HERE %>
       </div>
 
@@ -172,21 +166,6 @@
             <div class="playlist-card">
               <p><%=  playlist.name %></p>
             </div>
-        <% end %>
-          <% @user_now.top_artists.each do |artist| %>
-            <div class="playlist-card">
-              <p><%= artist.name %></p>
-            </div>
-          <% end %>
-        <% @user_now.top_tracks.each do |track| %>
-          <div class="playlist-card">
-            <p><%= track.name %></p>
-          </div>
-        <% end %>
-        <% @user_now.saved_albums.take(10).each do |track| %>
-          <div class="playlist-card">
-            <p><%= track.name %></p>
-          </div>
         <% end %>
       </div>
 
