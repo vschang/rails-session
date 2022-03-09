@@ -149,7 +149,11 @@ width: 30px;
   width: fit-content;
   color: white;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 20px;
+}
+.username-horizontal{
+  color: white;
+  font-weight: bold;
 }
 .content{
   margin-left: 16px;
@@ -238,7 +242,44 @@ width: 30px;
   margin-right: 10px
 }
 
+.margin-l-10{
+  margin-left: 10px
+}
+
+.pad-l-5{
+  padding-left: 8px;
+  margin-bottom: 0px;
+}
+
+.pad-b-5{
+  padding-bottom: 5px;
+}
+
 .post-comments{
   border-top: 0.5px solid white;
   border-bottom: 0.5px solid white;
+}
+
+.comments-username-time{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.one-comment{
+  border-top: 0.5px white solid;
+  margin-top: 5px;
+}
+
+.repost-username{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.flex-end{
+  display:flex;
+  justify-content: flex-end;
+  margin-right: 10px;
 }
