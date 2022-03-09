@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :get_user
-  
+
   def get_user
     @username = current_user.username
     @user_now = RSpotify::User.find(current_user.uid)
@@ -48,6 +48,9 @@ class FriendshipsController < ApplicationController
     # # friends are those whose status is accepted and the requester is current user or all friends where the status is accepted and the receiver is current user
     @friends = Friendship.all.where(status: "accepted").where(requester_id: @user.id).or(Friendship.all.where(status: "accepted").where(receiver_id: @user.id))
     # @friends2 = Friendship.all.where(status: "accepted")
+    @following = Friendship.all.where(requester_id: @user.id)
+    @followers = Friendship.all.where(receiver_id: @user.id)
+
 
     # YOUR REJECTED AND ACCEPTED FRIENDS
     @friends_and_enemies = Friendship.all.where(status: "accepted").or(Friendship.all.where(status: "rejected"))
@@ -60,6 +63,7 @@ class FriendshipsController < ApplicationController
 
     # ALL PENDING FRIENDS
     @pending_friends = @pending_friend_request + @pending_friends_receive
+
   end
 
   private

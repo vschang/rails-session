@@ -4,7 +4,7 @@
 
       <h1 id="profile-username"><%=@username%></h1>
 
-      <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
+      <img src="<%=@user.prof_pic%>" alt="" class="profile-avatar">
       <div class="placehldr-elmn">
         <h4><strong><%=@user.first_name%> <%=@user.last_name%></strong></h4>
       <h2><%= Friendship.all.where(receiver_id: @user.id, status:'accepted').or(Friendship.all.where(requester_id: @user.id, status:'accepted')).count %></h2>
