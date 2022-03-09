@@ -160,3 +160,14 @@ a {
   padding: 5px, 10px;
 }
 
+.comment-button{
+  padding: 5px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: yellow;
+  border-radius: 30px;
+  margin: 8px;
+  font-weight: bold;
+  border: 0px;
+}
