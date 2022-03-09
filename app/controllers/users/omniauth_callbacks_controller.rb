@@ -6,7 +6,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # Get user's top played artists and tracks
     @top_artists = spotify_user.top_artists #=> (Artist array)
     @top_tracks = spotify_user.top_tracks(time_range: 'short_term') #=> (Track array)
-    binding.pry
     if user.persisted?
       sign_in_and_redirect user, event: :authentication
       set_flash_message(:notice, :success, kind: 'Spotify') if is_navigational_format?

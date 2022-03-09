@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :get_user
-  
+
   def get_user
     @username = current_user.username
     @user_now = RSpotify::User.find(current_user.uid)
@@ -16,10 +16,20 @@ class FriendshipsController < ApplicationController
     @friendship.receiver = @receiver
 
     if @friendship.save
-      redirect_to friendships_path, notice: "Friend request sent!"
+      redirect_to friendships_path(@user), notice: "Friend request sent!"
     else
       redirect_to friendships_path, alert: "Cannot make a friend request"
     end
+  end
+
+  def follow
+    @friendship = Friendship.new
+    @friendship.requester = current_user
+    @friendship.receiver = User.find(params[:id])
+    @friendship.status = "pending"
+    @friendship.save
+
+    redirect_to user_path(@friendship.receiver)
   end
 
   def accept
@@ -48,7 +58,8 @@ class FriendshipsController < ApplicationController
     # # friends are those whose status is accepted and the requester is current user or all friends where the status is accepted and the receiver is current user
     @friends = Friendship.all.where(status: "accepted").where(requester_id: @user.id).or(Friendship.all.where(status: "accepted").where(receiver_id: @user.id))
     # @friends2 = Friendship.all.where(status: "accepted")
-
+    @following = Friendship.all.where(requester_id: @user.id)
+    @followers = Friendship.all.where(receiver_id: @user.id)
     # YOUR REJECTED AND ACCEPTED FRIENDS
     @friends_and_enemies = Friendship.all.where(status: "accepted").or(Friendship.all.where(status: "rejected"))
 

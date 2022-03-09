@@ -4,6 +4,9 @@ class UserController < ApplicationController
     @user_id_arr = []
     @user_id = @user.id
     @user_id_arr << @user_id
+    
+    @friendship = Friendship.new
+
 
     @user_posts = Post.where(user_id: @user_id)
     @user_reposts = Repost.where(user_id: @user_id)
