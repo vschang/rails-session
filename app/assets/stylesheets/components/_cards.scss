@@ -59,7 +59,7 @@
   p{
     font-weight: bold;
     flex-grow: 1;
-    font-size: 15px;
+    font-size: 16px;
     color: white;
     padding: 0;
     margin: 0;
@@ -68,6 +68,7 @@
 .artist-name{
   display: flex;
   p{
+    font-size: 16px;
     font-weight: 400;
     padding: 0;
   }
@@ -116,6 +117,7 @@
     color: white;
   }
   p {
+    font-size: 16px;
     color: white;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -177,7 +179,7 @@ width: 30px;
   display: flex;
   align-items: center;
   p{
-    font-size: 12px;
+    font-size: 16px;
   }
   img{
     width: 53px;
@@ -194,6 +196,7 @@ width: 30px;
   margin-left: 8px;
 
   p{
+    font-size:16px;
     margin: 0;
     padding: 0;
 
@@ -221,6 +224,7 @@ width: 30px;
 .time-created{
   text-align: left;
   p{
+    font-size: 16px;
     color:rgb(150, 150, 150)
   }
 }
