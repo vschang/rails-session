@@ -5,8 +5,7 @@ class PostCommentsController < ApplicationController
     @post_comment.post = @post
     @post_comment.user = current_user
     if @post_comment.save
-      
-      redirect_to post_path(@post), notice: 'Commented!'
+      redirect_to post_path(@post)
     else
       render 'post/show', alert: 'Unable to comment.'
     end

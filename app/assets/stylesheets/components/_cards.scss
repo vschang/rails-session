@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: column;
   h2{
-    font-size: 20px;
+    font-size: 22px;
     margin-left: 8px;
   }
 
@@ -57,10 +57,10 @@
   padding: 8px;
   border-radius: 8px;
   p{
-    font-size:16px;
+    font-size:18px;
     font-weight: bold;
     flex-grow: 1;
-    font-size: 15px;
+    font-size: 18px;
     color: white;
     padding: 0;
     margin: 0;
@@ -69,7 +69,7 @@
 .artist-name{
   display: flex;
   p{
-    font-size:16px;
+    font-size:18px;
     font-weight: 400;
     padding: 0;
   }
@@ -125,6 +125,7 @@
     -ms-hyphens: auto;
     hyphens: auto;
     color: white;
+    font-size: 22px;
   }
   p {
     color: white;
@@ -135,7 +136,7 @@
     -ms-hyphens: auto;
     hyphens: auto;
     width: 100%;
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 .profpic-username{
@@ -173,11 +174,11 @@ width: 30px;
 }
 .post-title{
   font-weight: 500;
-  font-size: 20px;
+  font-size: 22px;
 
 }
 .content-text{
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -206,7 +207,7 @@ width: 30px;
   margin-left: 8px;
 
   p{
-    font-size:16px;
+    font-size:18px;
     margin: 0;
     padding: 0;
 
@@ -296,4 +297,17 @@ width: 30px;
   display:flex;
   justify-content: flex-end;
   margin-right: 10px;
+}
+
+.center{
+  display:flex;
+  align-items:center;
+}
+
+.margin-t-10{
+  margin-top:10px;
+}
+
+.margin-t-15{
+  margin-top:15px;
 }
