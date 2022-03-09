@@ -4,14 +4,24 @@
       <h1 id="profile-username"><%=@username%></h1>
       <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
       <div class="placehldr-elmn">
-        <h4><strong><%=@user.first_name%> <%=@user.last_name%></strong></h4>
-      <h2><%= Friendship.all.where(receiver_id: @user.id, status:'accepted').or(Friendship.all.where(requester_id: @user.id, status:'accepted')).count %></h2>
-      <%= link_to "friends", friendships_path, class: 'white-text'%>
-        <h2><%= @user_posts.count %> </h2>
-        <p>posts</p>
+        <%= link_to friendships_path, class: 'white-text' do %>
+          <h2><%= Friendship.where(requester_id: @user.id).count %></h2>
+          <p>following</p>
+        <% end %>
+        <div>
+          <h2><%= @user_posts.count %> </h2>
+          <p>posts</p>
+        </div>
+      </div>
+      <div class="placehldr-elmn">
+        <%= link_to friendships_path, class: 'white-text' do %>
+          <h2><%= Friendship.where(receiver_id: @user.id).count %></h2>
+          <p>followers</p>
+        <% end %>
       </div>
     </div>
   </div>
+
   <div class="overall" >
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">

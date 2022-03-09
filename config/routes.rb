@@ -27,4 +27,5 @@ Rails.application.routes.draw do
 
   get 'log_out', to: 'pages#destroy_sesh'
   get 'search', to: 'pages#search'
+  post "/user/:id/follow", to: "friendships#follow", as: :follow_user
 end
