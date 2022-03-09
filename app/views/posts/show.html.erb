@@ -52,15 +52,12 @@
     </div>
   </div>
 </div>
-
-
-
   <div class="comment-section">
-    <div>
-      <!-- <% if @user = @post.user %>
+    <div class='flex-end'>
+      <% if @user.id = @post.user_id %>
         <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
       <% end %>
-    </div> -->
+    </div>
     <div class='comments-card'>
       <% if @post.post_comments.blank? %>
         <p class=>Leave a comment</p>
