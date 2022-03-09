@@ -1,6 +1,6 @@
 <div data-controller="search-music" >
 <div class="search-header">
-  <h2>Create post.</h2>
+  <h2>create post.</h2>
     <%= form_with url: new_post_path, method: :get, html: { class: 'mb-4', data: { search_music_target: 'form' } } do |f| %>
       <%= f.text_field :query,
                       autocomplete: "off",
@@ -13,5 +13,5 @@
                       } %>
     <% end %>
 </div>
-  <%= render "results", post: @post, class: 'comment-button' %>
+  <%= render "results", post: @post, class: 'comment-button post-margin' %>
 </div>

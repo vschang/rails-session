@@ -114,13 +114,13 @@
                   <%= link_to post_post_likes_path(feed_post), method: :post do %>
                     <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
                   <% end %>
-                  <p><%=feed_post.post.post_likes.count%></p>
+                  <p><%=feed_post.repost_likes.count%></p>
                 </div>
               </div>
               <div>
                 <div>
                   <i class="fa-solid fa-message mx-2"></i>
-                  <p><%=feed_post.post.post_comments.count%></p>
+                  <p><%=feed_post.repost_comments.count%></p>
                 </div>
               </div>
             </div>
