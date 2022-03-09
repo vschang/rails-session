@@ -12,8 +12,8 @@ User.destroy_all
 
 p "cleaning the DB"
 
-pablo = User.create(id: 100, first_name: 'Pablo', last_name: 'Barcena', username: 'pablo_barcena', email: 'pablo@gmail.com', password: '123456', prof_pic: 'https://avatars.githubusercontent.com/u/95871127?v=4')
-victor = User.create(id: 101, first_name: 'Victor', last_name: 'Sera', username: 'victor_sera', email: 'victor@gmail.com', password: '123456', prof_pic: 'https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641543962/edf4n4j98l66qhxysty2.jpg')
+pablo = User.create(id: 100, first_name: 'Pablo', last_name: 'Barcena', username: 'pab_o', email: 'pablo@gmail.com', password: '123456', prof_pic: 'https://avatars.githubusercontent.com/u/95871127?v=4')
+victor = User.create(id: 101, first_name: 'Victor', last_name: 'Sera', username: 'ovtirc', email: 'victor@gmail.com', password: '123456', prof_pic: 'https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641543962/edf4n4j98l66qhxysty2.jpg')
 mojito = User.create(id: 102, first_name: 'Mojito', last_name: 'Hohenlohe', username: 'moji_to', email: 'mojito@gmail.com', password: '123456', prof_pic: 'https://www.petdarling.com/wp-content/uploads/2014/08/perros-jack-russell-terrier.jpg')
 carlotta = User.create(id: 103, first_name: 'Calotta', last_name: 'Ivaylova', username: 'carly_', email: 'carlotta@gmail.com', password: '123456', prof_pic: 'https://i.pinimg.com/474x/1f/f0/07/1ff0079829f25060d761652bb3acfd39--terrier-puppies-terrier-mix.jpg')
 lenny = User.create(id: 104, first_name: 'Lenny', last_name: 'von Velsen', username: 'len_ny', email: 'lenny@gmail.com', password: '123456', prof_pic: 'https://avatars.githubusercontent.com/u/80490570?v=4')
@@ -370,4 +370,174 @@ p comment = PostComment.new(
 )
 comment.save!
 
+p like = PostLike.new(
+  user_id: 113,
+  post_id: 148
+)
+like.save!
+p like = PostLike.new(
+  user_id: 114,
+  post_id: 148
+)
+like.save!
+p like = PostLike.new(
+  user_id: 115,
+  post_id: 148
+)
+like.save!
+p like = PostLike.new(
+  user_id: 116,
+  post_id: 148
+)
+like.save!
+p like = PostLike.new(
+  user_id: 117,
+  post_id: 148
+)
+like.save!
+p like = PostLike.new(
+  user_id: 110,
+  post_id: 148
+)
+like.save!
+p like = PostLike.new(
+  user_id: 111,
+  post_id: 148
+)
+like.save!
+p like = PostLike.new(
+  user_id: 112,
+  post_id: 148
+)
+like.save!
+p like = PostLike.new(
+  user_id: 113,
+  post_id: 149
+)
+like.save!
+p like = PostLike.new(
+  user_id: 114,
+  post_id: 149
+)
+like.save!
+p like = PostLike.new(
+  user_id: 115,
+  post_id: 149
+)
+like.save!
+p like = PostLike.new(
+  user_id: 115,
+  post_id: 149
+)
+like.save!
+p like = PostLike.new(
+  user_id: 116,
+  post_id: 149
+)
+like.save!
+p like = PostLike.new(
+  user_id: 117,
+  post_id: 149
+)
+like.save!
+p like = PostLike.new(
+  user_id: 110,
+  post_id: 149
+)
+like.save!
+p like = PostLike.new(
+  user_id: 111,
+  post_id: 149
+)
+like.save!
+p like = PostLike.new(
+  user_id: 112,
+  post_id: 157
+)
+like.save!
+p like = PostLike.new(
+  user_id: 113,
+  post_id: 157
+)
+like.save!
+p like = PostLike.new(
+  user_id: 114,
+  post_id: 157
+)
+like.save!
+p like = PostLike.new(
+  user_id: 115,
+  post_id: 157
+)
+like.save!
+p like = PostLike.new(
+  user_id: 116,
+  post_id: 157
+)
+like.save!
+p like = PostLike.new(
+  user_id: 116,
+  post_id: 157
+)
+like.save!
+p like = PostLike.new(
+  user_id: 116,
+  post_id: 156
+)
+like.save!
+p like = PostLike.new(
+  user_id: 117,
+  post_id: 156
+)
+like.save!
+p like = PostLike.new(
+  user_id: 117,
+  post_id: 144
+)
+like.save!
+p like = PostLike.new(
+  user_id: 117,
+  post_id: 145
+)
+like.save!
+p like = PostLike.new(
+  user_id: 117,
+  post_id: 146
+)
+like.save!
+p like = PostLike.new(
+  user_id: 117,
+  post_id: 151
+)
+like.save!
+p like = PostLike.new(
+  user_id: 117,
+  post_id: 152
+)
+like.save!
+p like = PostLike.new(
+  user_id: 116,
+  post_id: 152
+)
+like.save!
+p like = PostLike.new(
+  user_id: 116,
+  post_id: 154
+)
+like.save!
+p like = PostLike.new(
+  user_id: 116,
+  post_id: 155
+)
+like.save!
+p like = PostLike.new(
+  user_id: 111,
+  post_id: 155
+)
+like.save!
+p like = PostLike.new(
+  user_id: 111,
+  post_id: 156
+)
+like.save!
 p "Finished Seeding!"

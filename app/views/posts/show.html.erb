@@ -54,7 +54,7 @@
 </div>
   <div class="comment-section">
     <div class='flex-end'>
-      <% if @user.id = @post.user_id %>
+      <% if current_user.id == @post.user_id %>
         <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
       <% end %>
     </div>
@@ -65,13 +65,15 @@
         <% @post.post_comments.each do |post_comment| %>
           <div class='one-comment'>
             <div class='comments-username-time'>
-                <% if @post.user_id == current_user.id %>
-                  <%= link_to profile_path do %>
-                    <p class='username-horizontal margin-r-10'>@<%=User.find(post_comment.post.user_id).username %></p>
-                  <% end %>
-                <% else %>
-                  <p class='username-horizontal'>@<%=@post.user.username %></p>
-                <% end %>
+                <%# if post_comment.user_id == current_user.id %>
+                  <%# <%= link_to profile_path do %>
+                    <p class='username-horizontal'>@<%=User.find(post_comment.user_id).username %></p>
+                  <%# end %>
+                <%# else %>
+                  <%# <%= link_to user_path(@post.user_id) do %>
+                  <%# <p class='username-horizontal margin-r-10'>@<%=User.find(post_comment.user_id).username </p> %>
+                  <%# end %>
+                <%# end %>
               <p class='content-text'><%= post_comment.created_at.strftime("%l:%M %p, %B %d, %Y")%></p>
             </div>
           <p><%= post_comment.content %></p>
