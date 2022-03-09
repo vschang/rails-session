@@ -31,12 +31,19 @@
   border-radius: 4px;
 }
 
+#prof-overview {
+  height: 100%;
+}
+
 .results-wrapper{
   display: flex;
   flex-direction: column;
   width: 90%;
   margin: auto;
-
+ #prof-son {
+   height: 94%;
+   overflow: scroll;
+ }
 }
 
 .results-container{
