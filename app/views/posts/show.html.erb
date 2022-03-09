@@ -1,15 +1,17 @@
 <div class='post-card'>
   <div class="profpic-username">
     <img src="<%=@post.user.prof_pic%>" alt=""50>
-    <% if @post.user_id == current_user.id %>
-      <%= link_to profile_path do %>
-      <h3 class='username-text'><%= @post.user.username %>.</h3>
+    <div class='username'>
+      <% if @post.user_id == current_user.id %>
+        <%= link_to profile_path do %>
+        <h3 class='username-text'><%= @post.user.username %>.</h3>
+        <% end %>
+      <% else %>
+        <%= link_to user_path(@post.user_id) do %>
+          <h3 class='username-text' style="text-decoration: none; color:white;"><%=@post.user.username %></h3>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= link_to user_path(@post.user_id) do %>
-        <h3 class='username-text' style="text-decoration: none; color:white;"><%=@post.user.username %></h3>
-      <% end %>
-    <% end %>
+    </div>
   </div>
   <div class = 'content'>
     <h2 class='post-title'> <%= @post.title.capitalize %> </h2>
@@ -59,19 +61,19 @@
         <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
       <% end %>
     </div> -->
-    <div class='comments'>
+    <div class='comments-card'>
       <% if @post.post_comments.blank? %>
-        <p>Leave a comment</p>
+        <p class=>Leave a comment</p>
       <% else %>
-        <div class='post-comments'>
-          <% @post.post_comments.each do |post_comment| %>
-            <div class='d-flex'>
+        <% @post.post_comments.each do |post_comment| %>
+          <div class='one-comment'>
+            <div class='comments-username-time'>
                 <% if @post.user_id == current_user.id %>
                   <%= link_to profile_path do %>
-                    <p class='username-text margin-r-10'>@<%=User.find(post_comment.post.user_id).username %></p>
+                    <p class='username-horizontal margin-r-10'>@<%=User.find(post_comment.post.user_id).username %></p>
                   <% end %>
                 <% else %>
-                  <p class='username-text'>@<%=@post.user.username %></p>
+                  <p class='username-horizontal'>@<%=@post.user.username %></p>
                 <% end %>
               <p class='content-text'><%= post_comment.created_at.strftime("%l:%M %p, %B %d, %Y")%></p>
             </div>
@@ -79,11 +81,11 @@
         </div>
         <% end %>
       <% end %>
-      </div>
-      <div id='post-comment-form'>
+    </div>
+      <div class='comment-box'>
         <%= simple_form_for([ @post, @post_comment ]) do |f| %>
-          <%= f.input :content, label: 'Your comment', as: :text %>
-          <%= f.submit 'Comment', class:'session-it-btn' %>
+          <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %>
+          <%= f.submit 'post', class:'comment-button' %>
         <% end %>
       </div>
     </div>

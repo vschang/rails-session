@@ -6,8 +6,6 @@
   font-weight: bold;
   animation: ease-in-out;
   color: black;
-  // animation: hideAnimation 0s ease-out 4s;
-  // animation-fill-mode: forwards;
 }
 
 .flash {
@@ -21,8 +19,8 @@
   font-weight: bold;
   animation: ease-in-out;
 
-  // animation: hideAnimation 0s ease-out 4s;
-  // animation-fill-mode: forwards;
+  animation: hideAnimation 0s ease-out 2s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes hideAnimation {

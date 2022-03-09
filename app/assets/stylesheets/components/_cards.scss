@@ -149,7 +149,11 @@ width: 30px;
   width: fit-content;
   color: white;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 20px;
+}
+.username-horizontal{
+  color: white;
+  font-weight: bold;
 }
 .content{
   margin-left: 16px;
@@ -241,4 +245,15 @@ width: 30px;
 .post-comments{
   border-top: 0.5px solid white;
   border-bottom: 0.5px solid white;
+}
+
+.comments-username-time{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.one-comment{
+  border-top: 0.5px white solid;
+  margin-top: 5px;
 }

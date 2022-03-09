@@ -31,7 +31,7 @@
           <div class="profpic-username">
             <img src="<%=profile_post.user.prof_pic%>" alt=""50>
             <% if profile_post.user_id == current_user.id %>
-              <%= link_to profile_path do %>
+              <%= link_to profile_path, class: "" do %>
               <h3 class='username-text'><%= profile_post.user.username %>.</h3>
               <% end %>
             <% else %>
