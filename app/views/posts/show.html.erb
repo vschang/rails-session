@@ -30,9 +30,9 @@
       <div class="spotify-card">
         <img src=<%= @post.image %> alt="">
         <div class="spotify-card-info">
-          <p><%= @post.music %></p>
+          <p><%= @post.music.length > 30 ? @post.music[0..20]... : @post.music %></p>
           <% if !@post.artist.nil? %>
-            <p><%= @post.artist %></p>
+            <p><%= @post.artist.length > 30 ? @post.artist[0..20]... : @post.artist %></p>
           <% end %>
         </div>
       </div>
