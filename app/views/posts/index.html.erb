@@ -13,7 +13,7 @@
               <% end %>
             <% else %>
               <%= link_to user_path(feed_post.user_id) do %>
-                <h3 class='username-text' style="text-decoration: none; color:white;"><%=feed_post.user.username %></h3>
+                <h3 class='username-text' style="text-decoration: none; color:white;"><%=feed_post.user.username %>.</h3>
               <% end %>
             <% end %>
 
@@ -26,9 +26,10 @@
               <div class="spotify-card">
                 <img src=<%= feed_post.image %> alt="">
                 <div class="spotify-card-info">
-                  <p><%= feed_post.music %></p>
+                  <p><%= feed_post.music.length > 30 ? feed_post.music[0..25]... : feed_post.music %></p>
+
                   <% if !feed_post.artist.nil? %>
-                    <p><%= feed_post.artist %></p>
+                    <p><%= feed_post.artist.length > 30 ? feed_post.artist[0..25]... : feed_post.artist %></p>
                   <% end %>
                 </div>
               </div>
@@ -75,7 +76,6 @@
               <% end %>
             <% else %>
               <%= link_to user_path(feed_post.user_id) do %>
-
                 <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
               <% end %>
             <% end %>
@@ -102,9 +102,10 @@
               <div class="spotify-card">
                 <img src=<%= feed_post.post.image %> alt="">
                 <div class="spotify-card-info">
-                  <p><%= feed_post.post.music %></p>
+                  <p><%= feed_post.post.music.length > 30 ? feed_post.post.music[0..25]... : feed_post.post.music %></p>
                   <% if !feed_post.post.artist.nil? %>
-                    <p><%= feed_post.post.artist %></p>
+                    <p><%= feed_post.post.artist.length > 30 ? feed_post.post.artist[0..25]... : feed_post.post.artist %></p>
+
                   <% end %>
                 </div>
               </div>
