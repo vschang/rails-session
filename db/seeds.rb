@@ -80,6 +80,25 @@ p post = Post.new(
 post.save!
 
 p post = Post.new(
+  id: 170,
+  title: 'Going to miss batch #785!',
+  content: 'I\'m so sad you guys are leaving me, you guys are the best batch ever even though you never check slack!! 😢 I\'m going to need to find another pigeon to save because you guys are all leaving me.',
+  music: 'Mad World',
+  artist: 'Gary Jules',
+  user: emi,
+  image: "https://m.media-amazon.com/images/I/71x9RNisZnL._SS500_.jpg",
+  url: 'https://open.spotify.com/track/3JOVTQ5h8HGFnDdp4VT3MP?si=d6cd75a951f24e2b'
+)
+post.save!
+
+p repost = RePost.new(
+  id: 171,
+  post_id: 151,
+  user_id: emi
+)
+repost.save!
+
+p post = Post.new(
   id: 149,
   title: 'Bulgarian Folkmusic Techno-ized',
   content: 'Do you like Bulgarian folk music? Do you like techno? Do you like old men 👴🏻? Do you like being unmarried? Why not enjoy all in one song!',
