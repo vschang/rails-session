@@ -20,7 +20,13 @@
             <p>followers</p>
           <% end %>
         </div>
-        <%= link_to "follow", follow_user_path(@user), method: :post, class:'comment-button-follow' %>
+
+        <% if !Friendship.where(receiver_id: @current_user.id, requester_id:@user.id, status:'accepted').empty? || !Friendship.where(requester_id: @current_user.id, receiver_id:@user.id, status:'accepted').empty? %>
+          <%= link_to "remove", friendship_path(@user_friendship), method: :delete, data: { confirm: 'Are you sure?' }, class:'comment-button-follow' %>
+        <% else %>
+          
+          <%= link_to "follow", follow_user_path(@user), method: :post, class:'comment-button-follow' %>
+        <% end %>
 
       </div>
     </div>
