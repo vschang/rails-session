@@ -91,7 +91,7 @@ p post = Post.new(
 )
 post.save!
 
-p repost = RePost.new(
+p repost = Repost.new(
   id: 171,
   post_id: 151,
   user_id: emi
