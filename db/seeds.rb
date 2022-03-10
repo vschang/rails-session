@@ -167,7 +167,7 @@ post.save!
 p post = Post.new(
   id: 141,
   title: 'Greatest Album ever Created!',
-  content: 'Isolation, paranoia and mental breakdown are the unrelenting themes 🌙 of the last three tracks, Any Colour You Like, Brain Damage and Eclipse. Roger would pursue these themes with a vengeance on later Pink Floyd albums, driven by his hatred of authoritarian leaders and their bureaucratic henchmen, and his rage at the death of his father right at the end of World War II.',
+  content: 'I recommend everyone to listen to this classic album. Isolation, paranoia and mental breakdown are the unrelenting themes 🌙 of the last three tracks.',
   music: 'Dark Side of the Moon',
   user: pablo,
   image: "https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png",
@@ -178,8 +178,8 @@ post.save!
 
 p post = Post.new(
   id: 142,
-  title: 'A Cultural Masterpiece',
-  content: 'And yet, the question remains: what makes the album so extraordinary? On the one hand, the album’s lyrics are an element that contributes to Channel Orange’s greatness. There are four aspects of the album’s lyrics that make them stand out over 2010s music: they uniquely reference cultural art pieces, they discuss social issues and inequality, they raise awareness about the LGBT+ community, and they show a strong cohesion that unites the album under a common mood, tone, and harmony.',
+  title: 'Best Breakup Album',
+  content: 'I love to listen to this whole album when I\'m going through a breakup. 💔 Every song is so relatable! If you\'re going through it, take a listen',
   music: 'Channel Orange',
   user: victor,
   image: "https://m.media-amazon.com/images/I/51Mp2uc8UFL._SL1400_.jpg",
@@ -190,7 +190,7 @@ post.save!
 p post = Post.new(
   id: 143,
   title: 'I love Grunge!',
-  content: 'Nevermind popularized the Seattle grunge movement and brought alternative rock 🎸 as a whole into the mainstream, establishing its commercial and cultural viability and leading to an alternative rock boom in the music industry. Its success surprised Nirvana\'s contemporaries, who felt dwarfed by its impact.',
+  content: 'Greatest grunge and alternative rock 🎸 album. Love to listen to it when I\'m feeling angry which is all the time!',
   music: 'Nevermind',
   artist: 'Nirvana',
   user: ana,
@@ -202,7 +202,7 @@ post.save!
 p post = Post.new(
   id: 144,
   title: 'Love this song',
-  content: 'Nathy Peluso es una de las artistas más relevantes de la nueva generación. Argentina criada en España, con apenas veinticinco años ha conseguido ser reconocida por el público gracias a su reinterpretación de la mezcla de géneros musicales como el hip-hop, el jazz, o el folklore latinoamericano a través de a su prodigiosa voz y a su capacidad de comportarse como una gran diva de los años 50 al estilo de Nina Simone o Ella Fitzgerald, pero también como la artista urbana hija del tiempo que le toca vivir generacionalmente. ',
+  content: 'Nathy Peluso es una de las artistas más relevantes de la nueva generación! Viva Argentina criada en España, con apenas veinticinco años ha conseguido ser reconocida por el público gracias a su reinterpretación de la mezcla de géneros musicales como el hip-hop, el jazz, o el folklore latinoamericano a través de a su prodigiosa voz y a su capacidad de comportarse como una gran diva de los años 50 al estilo de Nina Simone o Ella Fitzgerald, pero también como la artista urbana hija del tiempo que le toca vivir generacionalmente. ',
   music: 'Vivir Así Es Morir de Amor',
   artist: 'Nathy Peluso',
   user: nicky,

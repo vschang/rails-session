@@ -174,9 +174,9 @@
         <div data-search-music-target= "results" id="prof-overview">
             <div class="results-wrapper" id="prof-son" >
               <div class="results-container">
-                <h2>saved playlists.</h2>
+                <strong><h2>saved playlists.</h2></strong>
 
-                <% @user_now.playlists.each do |playlist| %>
+                <% @user_now.playlists.take(5).each do |playlist| %>
 
                   <div data-controller="spotify-card" >
                     <div class="result-card" data-action="click->spotify-card#hide" >
@@ -195,8 +195,8 @@
               </div>
 
               <div class="results-container">
-                <h2>top tracks.</h2>
-                <% @user_now.top_tracks.each do |track| %>
+                <strong><h2>top tracks.</h2></strong>
+                <% @user_now.top_tracks.take(5).each do |track| %>
 
                   <div data-controller="spotify-card" >
                     <div class="result-card" data-action="click->spotify-card#hide" >
@@ -220,8 +220,8 @@
                 <% end %>
               </div>
               <div class="results-container">
-                <h2>top artists.</h2>
-                <% @user_now.top_artists.each do |artist| %>
+                <strong><h2>top artists.</h2></strong>
+                <% @user_now.top_artists.take(5).each do |artist| %>
 
                   <div data-controller="spotify-card">
                     <div class="result-card" data-action="click->spotify-card#hide" >
