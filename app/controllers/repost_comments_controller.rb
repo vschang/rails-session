@@ -5,6 +5,7 @@ class RepostCommentsController < ApplicationController
     @repost_comment.repost = @repost
     @repost_comment.user = current_user
     if @repost_comment.save
+      # raise
       redirect_to repost_path(@repost)
     else
       render 'repost/show', alert: 'Unable to comment.'

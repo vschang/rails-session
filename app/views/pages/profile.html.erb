@@ -40,15 +40,7 @@
         <div class='post-card' id='profile-post-card'>
           <div class="profpic-username">
             <img src="<%=profile_post.user.prof_pic%>" alt=""50>
-            <% if profile_post.user_id == current_user.id %>
-              <%= link_to profile_path, class: "" do %>
-              <h3 class='username-text'><%= profile_post.user.username %>.</h3>
-              <% end %>
-            <% else %>
-              <%= link_to user_path(profile_post.user_id) do %>
-                <p class='username-text' style="text-decoration: none; color:white;">@<%=profile_post.user.username %></p>
-              <% end %>
-            <% end %>
+            <h3 class='username-text'><%= profile_post.user.username %>.</h3>
           </div>
           <div class = 'content'>
             <h2 class='post-title'> <%= profile_post.title.capitalize %> </h2>
@@ -100,34 +92,25 @@
       <%= link_to repost_path(profile_post.id) do %>
         <div class='post-card'>
           <div class="profpic-username">
-            <img src="<%=profile_post.post.user.prof_pic%>" alt=""50>
-            <% if profile_post.user_id == current_user.id %>
-              <%= link_to profile_path do %>
-              <h3 class='username-text'><%= profile_post.post.user.username %>.</h3>
-              <% end %>
-            <% else %>
-              <%= link_to user_path(profile_post.user_id) do %>
 
-                <h3 class='username-text'><%= profile_post.post.user.username %>.</h3>
-              <% end %>
+            <%= link_to user_path(profile_post.post.user_id) do %>
+              <img src="<%=profile_post.post.user.prof_pic%>" alt=""50>
             <% end %>
+
+            <%= link_to user_path(profile_post.post.user_id) do %>
+              <h3 class='username-text'><%= profile_post.post.user.username %>.</h3>
+            <% end %>
+
           </div>
           <div class = 'content'>
-            <% if profile_post.user_id == current_user.id %>
+
               <%= link_to profile_path do %>
               <div class='repost-username pad-b-5'>
                 <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
                 <p class='white-text pad-l-5'><%=profile_post.user.username %>.</p>
               </div>
               <% end %>
-            <% else %>
-              <%= link_to user_path(profile_post.user_id) do %>
-                <div class='repost-username pad-b-5'>
-                  <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
-                  <p class='white-text pad-l-5'><%=profile_post.user.username %>.</p>
-                </div>
-              <% end %>
-            <% end %>
+
             <h2 class='post-title'> <%= profile_post.post.title.capitalize %> </h2>
             <p class ='content-text'> <%= profile_post.post.content %> </p>
             <a href= <%= profile_post.url %> target="_blank">
@@ -174,9 +157,9 @@
         <div data-search-music-target= "results" id="prof-overview">
             <div class="results-wrapper" id="prof-son" >
               <div class="results-container">
-                <h2>saved playlists.</h2>
+                <strong><h2>saved playlists.</h2></strong>
 
-                <% @user_now.playlists.each do |playlist| %>
+                <% @user_now.playlists.take(5).each do |playlist| %>
 
                   <div data-controller="spotify-card" >
                     <div class="result-card" data-action="click->spotify-card#hide" >
@@ -195,8 +178,8 @@
               </div>
 
               <div class="results-container">
-                <h2>top tracks.</h2>
-                <% @user_now.top_tracks.each do |track| %>
+                <strong><h2>top tracks.</h2></strong>
+                <% @user_now.top_tracks.take(5).each do |track| %>
 
                   <div data-controller="spotify-card" >
                     <div class="result-card" data-action="click->spotify-card#hide" >
@@ -220,8 +203,8 @@
                 <% end %>
               </div>
               <div class="results-container">
-                <h2>top artists.</h2>
-                <% @user_now.top_artists.each do |artist| %>
+                <strong><h2>top artists.</h2>
+                <% @user_now.top_artists.take(5).each do |artist| %>
 
                   <div data-controller="spotify-card">
                     <div class="result-card" data-action="click->spotify-card#hide" >
