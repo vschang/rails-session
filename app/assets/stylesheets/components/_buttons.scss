@@ -167,11 +167,32 @@ a {
   align-items: center;
   background: yellow;
   border-radius: 30px;
-  margin: 8px;
   font-weight: bold;
   border: 0px;
   color: black;
+  height: fit-content;
+  width: fit-content;
 }
+.comment-button-follow{
+  padding: 7px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: yellow;
+  border-radius: 51px;
+  font-weight: bold;
+  border: -77px;
+  color: black;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
 .post-margin{
   margin-right: 0px;
   margin-top: 20px;
