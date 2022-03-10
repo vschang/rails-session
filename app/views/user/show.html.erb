@@ -9,7 +9,7 @@
           <p>following</p>
         <% end %>
         <div>
-          <h2><%= @user.posts.count %> </h2>
+          <h2><%= @user.posts.count + @user.reposts.count %> </h2>
           <p><strong>posts</strong></p>
         </div>
       </div>
@@ -24,7 +24,7 @@
         <% if !Friendship.where(receiver_id: @current_user.id, requester_id:@user.id, status:'accepted').empty? || !Friendship.where(requester_id: @current_user.id, receiver_id:@user.id, status:'accepted').empty? %>
           <%= link_to "remove", friendship_path(@user_friendship), method: :delete, data: { confirm: 'Are you sure?' }, class:'comment-button-follow' %>
         <% else %>
-          
+
           <%= link_to "follow", follow_user_path(@user), method: :post, class:'comment-button-follow' %>
         <% end %>
 
