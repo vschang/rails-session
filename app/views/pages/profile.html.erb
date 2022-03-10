@@ -36,16 +36,15 @@
       <%= link_to post_path(feed_post.id) do %>
         <div class='post-card' id='profile-post-card'>
           <div class="profpic-username">
-            <img src="<%=feed_post.user.prof_pic%>" alt=""50>
-            <% if feed_post.user_id == current_user.id %>
-              <%= link_to profile_path do %>
-              <h3 class='username-text'><%= feed_post.user.username %>.</h3>
-              <% end %>
-            <% else %>
-              <%= link_to user_path(feed_post.user_id) do %>
-                <h3 class='username-text' style="text-decoration: none; color:white;"><%=feed_post.user.username %>.</h3>
-              <% end %>
+
+            <%= link_to profile_path do %>
+              <img src="<%=feed_post.user.prof_pic%>" alt=""50>
             <% end %>
+
+            <%= link_to profile_path do %>
+              <h3 class='username-text'><%= feed_post.user.username %>.</h3>
+            <% end %>
+
           </div>
 
           <div class = 'content'>
@@ -99,14 +98,15 @@
       <%= link_to repost_path(feed_post.id) do %>
         <div class='post-card'>
           <div class="profpic-username">
+            <%= link_to user_path(feed_post.post.user_id) do %>
             <img src="<%=feed_post.post.user.prof_pic%>" alt=""50>
-            <% if feed_post.user_id == current_user.id %>
-              <%= link_to profile_path do %>
+            <% end %>
+
+              <%= link_to user_path(feed_post.post.user_id) do %>
               <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
               <% end %>
-            <% else %>
-                <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
-            <% end %>
+
+
 
           </div>
           <div class = 'content'>
