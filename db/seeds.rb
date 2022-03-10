@@ -202,7 +202,7 @@ post.save!
 p post = Post.new(
   id: 144,
   title: 'Love this song',
-  content: 'Nathy Peluso es una de las artistas más relevantes de la nueva generación! Viva Argentina criada en España, con apenas veinticinco años ha conseguido ser reconocida por el público gracias a su reinterpretación de la mezcla de géneros musicales como el hip-hop, el jazz, o el folklore latinoamericano a través de a su prodigiosa voz y a su capacidad de comportarse como una gran diva de los años 50 al estilo de Nina Simone o Ella Fitzgerald, pero también como la artista urbana hija del tiempo que le toca vivir generacionalmente. ',
+  content: 'Nathy Peluso es una de las artistas más relevantes de la nueva generación! Viva Argentina!! Che Boludo!! ',
   music: 'Vivir Así Es Morir de Amor',
   artist: 'Nathy Peluso',
   user: nicky,
@@ -214,7 +214,7 @@ post.save!
 p post = Post.new(
   id: 145,
   title: 'My Favorite German Rapper',
-  content: 'Bushido ist der Sohn eines tunesischen Vaters und einer deutschen Mutter. Sein Vater war in den früheren 70ern aus der tunesischen Hauptstadt Tunis nach Düsseldorf gezogen.[1] Er verließ die Familie, als der Sohn drei Jahre alt war. Bushido hatte zu ihm danach zunächst keinen Kontakt mehr und wuchs bei seiner alleinerziehenden Mutter im Berliner Bezirk Tempelhof auf. Nach der Grundschule besuchte er bis zur elften Klasse zwei Tempelhofer Gymnasien.',
+  content: 'I love German rap and favorit, everyone should listen to it',
   music: 'Bushido',
   user: lenny,
   image: "https://i1.sndcdn.com/artworks-Z8tUgu5jOwqiNayw-Ffkd9g-t500x500.jpg",
