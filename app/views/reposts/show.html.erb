@@ -10,6 +10,12 @@
     </div>
   </div>
   <div class = 'content'>
+    <%= link_to profile_path do %>
+      <div class='repost-username pad-b-5'>
+        <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
+        <p class='white-text pad-l-5'><%=@repost.user.username %>.</p>
+      </div>
+    <% end %>
     <h2 class='post-title'> <%= @repost.post.title.capitalize %> </h2>
       <p class ='content-text'> <%= @repost.post.content %> </p>
     <a href= <%= @repost.post.url %> target="_blank">
@@ -66,7 +72,7 @@
                   <p class='username-horizontal'>@<%=User.find(repost_comment.user_id).username %></p>
                 <% end %>
               <%end %>
-              
+
               <p class='content-text'><%= repost_comment.created_at.strftime("%l:%M %p, %B %d, %Y")%></p>
             </div>
           <p><%= repost_comment.content %></p>

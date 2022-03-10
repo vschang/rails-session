@@ -60,7 +60,6 @@
   border-bottom: none;
   justify-content: space-around;
   border: none;
-  border-color: rgba(0,0,0,0);
 }
 
 .nav-tabs .nav-link.active,
@@ -73,7 +72,6 @@
   background-color: #2054CD;
   border: none;
   flex-grow: 1;
-  border-color: rgba(0,0,0,0);
 }
 
 .tab-content>.active {
@@ -83,18 +81,21 @@
   padding: 20px 20px 0px;
   align-items: center;
   background: linear-gradient(360deg, #fd1d1d, #802db8, #1e55cd);
-  height: 70vh;
+
+  height: 100%;
+
   overflow-y: scroll;
 }
 
 .friends-tabs {
   background: linear-gradient(360deg, #fcaf21, #802db8, #2c50d2) !important;
-  height: 90vh;
+  min-height: 110vh;
 
 }
 
 #nav-tabContent {
-  height: 93%;
+  height: 100%;
+  padding-bottom:15px;
 }
 .tab-content>.active .post {
   display: flex;
