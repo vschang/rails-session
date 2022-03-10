@@ -31,56 +31,62 @@
     </nav>
     <div class="tab-content post" id="nav-tabContent">
       <div class="tab-pane fade show active post" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
-      <%# POST CONTENT HERE %>
-      <div class="posts-wrapper">
-  <% @profile_posts.each_with_index do |profile_post, index| %>
-    <% if profile_post.class == Post%>
-      <%= link_to post_path(profile_post.id) do %>
+        <% @profile_posts.each_with_index do |feed_post, index| %>
+    <% if feed_post.class == Post%>
+      <%= link_to post_path(feed_post.id) do %>
         <div class='post-card' id='profile-post-card'>
           <div class="profpic-username">
-            <img src="<%=profile_post.user.prof_pic%>" alt=""50>
-            <h3 class='username-text'><%= profile_post.user.username %>.</h3>
+            <img src="<%=feed_post.user.prof_pic%>" alt=""50>
+            <% if feed_post.user_id == current_user.id %>
+              <%= link_to profile_path do %>
+              <h3 class='username-text'><%= feed_post.user.username %>.</h3>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(feed_post.user_id) do %>
+                <h3 class='username-text' style="text-decoration: none; color:white;"><%=feed_post.user.username %>.</h3>
+              <% end %>
+            <% end %>
           </div>
-          <div class = 'content'>
-            <h2 class='post-title'> <%= profile_post.title.capitalize %> </h2>
 
-              <p class ='content-text'> <%= profile_post.content %> </p>
-            <a href= <%= profile_post.url %> target="_blank">
+          <div class = 'content'>
+            <h2 class='post-title'> <%= feed_post.title.capitalize %> </h2>
+              <p class ='content-text'> <%= feed_post.content %> </p>
+
+            <a href= <%= feed_post.url %> target="_blank">
               <div class="spotify-card">
-                <img src=<%= profile_post.image %> alt="">
+                <img src=<%= feed_post.image %> alt="">
                 <div class="spotify-card-info">
-                  <p><%= profile_post.music %></p>
-                  <% if !profile_post.artist.nil? %>
-                    <p><%= profile_post.artist %></p>
+                  <p><%= feed_post.music.length > 30 ? feed_post.music[0..20]... : feed_post.music %></p>
+
+                  <% if !feed_post.artist.nil? %>
+                    <p><%= feed_post.artist.length > 30 ? feed_post.artist[0..20]... : feed_post.artist %></p>
                   <% end %>
                 </div>
               </div>
             </a>
             <div class="social-icons">
               <div>
-                <% if profile_post.id != @user.id%>
-                  <%= link_to post_reposts_path(profile_post), method: :post do %>
+                <% if feed_post.user_id != @user.id%>
+                  <%= link_to post_reposts_path(feed_post), method: :post do %>
                     <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
                   <% end %>
                 <% end %>
               </div>
               <div>
                 <div>
-                  <%= link_to post_post_likes_path(profile_post), method: :post do %>
+                  <%= link_to post_post_likes_path(feed_post), method: :post do %>
                     <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
                   <% end %>
-                  <p><%=profile_post.post_likes.count%></p>
+                  <p><%=feed_post.post_likes.count%></p>
                 </div>
               </div>
               <div>
                 <div>
                   <i class="fa-solid fa-message mx-2"></i>
-                  <p><%=profile_post.post_comments.count%></p>
+                  <p><%=feed_post.post_comments.count%></p>
                 </div>
               </div>
             </div>
-
             <div class='time-created'>
               <p class ='content-text grey-text'> <%= @post_time[index] %> ago </p>
             </div>
@@ -89,37 +95,48 @@
       <% end %>
 
       <% else %>
-      <%= link_to repost_path(profile_post.id) do %>
+
+      <%= link_to repost_path(feed_post.id) do %>
         <div class='post-card'>
           <div class="profpic-username">
-
-            <%= link_to user_path(profile_post.post.user_id) do %>
-              <img src="<%=profile_post.post.user.prof_pic%>" alt=""50>
+            <img src="<%=feed_post.post.user.prof_pic%>" alt=""50>
+            <% if feed_post.user_id == current_user.id %>
+              <%= link_to profile_path do %>
+              <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
+              <% end %>
+            <% else %>
+                <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
             <% end %>
 
-            <%= link_to user_path(profile_post.post.user_id) do %>
-              <h3 class='username-text'><%= profile_post.post.user.username %>.</h3>
-            <% end %>
+              <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
 
           </div>
           <div class = 'content'>
-
+            <% if feed_post.user_id == current_user.id %>
               <%= link_to profile_path do %>
               <div class='repost-username pad-b-5'>
                 <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
-                <p class='white-text pad-l-5'><%=profile_post.user.username %>.</p>
+                <p class='white-text pad-l-5'><%=feed_post.user.username %>.</p>
               </div>
               <% end %>
-
-            <h2 class='post-title'> <%= profile_post.post.title.capitalize %> </h2>
-            <p class ='content-text'> <%= profile_post.post.content %> </p>
-            <a href= <%= profile_post.url %> target="_blank">
+            <% else %>
+              <%= link_to user_path(feed_post.user_id) do %>
+                <div class='repost-username pad-b-5'>
+                  <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
+                  <p class='white-text pad-l-5'><%=feed_post.user.username %>.</p>
+                </div>
+              <% end %>
+            <% end %>
+            <h2 class='post-title'> <%= feed_post.post.title.capitalize %> </h2>
+            <p class ='content-text'> <%= feed_post.post.content %> </p>
+            <a href= <%= feed_post.post.url %> target="_blank">
               <div class="spotify-card">
-                <img src=<%= profile_post.post.image %> alt="">
+                <img src=<%= feed_post.post.image %> alt="">
                 <div class="spotify-card-info">
-                  <p><%= profile_post.post.music %></p>
-                  <% if !profile_post.post.artist.nil? %>
-                    <p><%= profile_post.post.artist %></p>
+                  <p><%= feed_post.post.music.length > 30 ? feed_post.post.music[0..20]... : feed_post.post.music %></p>
+                  <% if !feed_post.post.artist.nil? %>
+                    <p><%= feed_post.post.artist.length > 30 ? feed_post.post.artist[0..20]... : feed_post.post.artist %></p>
+
                   <% end %>
                 </div>
               </div>
@@ -127,16 +144,16 @@
             <div class="social-icons">
               <div>
                 <div>
-                  <%= link_to post_post_likes_path(profile_post), method: :post do %>
+                  <%= link_to post_post_likes_path(feed_post), method: :post do %>
                     <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
                   <% end %>
-                  <p><%=profile_post.repost_likes.count%></p>
+                  <p><%=feed_post.repost_likes.count%></p>
                 </div>
               </div>
               <div>
                 <div>
                   <i class="fa-solid fa-message mx-2"></i>
-                  <p><%=profile_post.repost_comments.count%></p>
+                  <p><%=feed_post.repost_comments.count%></p>
                 </div>
               </div>
             </div>
@@ -148,8 +165,6 @@
       <% end %>
     <% end %>
   <%end%>
-</div>
-
       </div>
 
       <div class="tab-pane fade tab-content" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">

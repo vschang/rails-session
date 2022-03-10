@@ -18,17 +18,19 @@
         <div class='content'>
           <%= link_to post_path(feed_post.id) do %>
             <h2 class='post-title'> <%= feed_post.title.capitalize %> </h2>
+
             <p class='content-text'> <%= feed_post.content %> </p>
           <% end %>
           <a href=<%= feed_post.url %> target="_blank">
             <div class="spotify-card">
               <img src=<%= feed_post.image %> alt="">
               <div class="spotify-card-info">
-                  <p><%= feed_post.music %></p>
-                <% if !feed_post.artist.nil? %>
-                  <p><%= feed_post.artist %></p>
-                <% end %>
-              </div>
+                  <p><%= feed_post.music.length > 30 ? feed_post.music[0..25]... : feed_post.music %></p>
+
+                  <% if !feed_post.artist.nil? %>
+                    <p><%= feed_post.artist.length > 30 ? feed_post.artist[0..25]... : feed_post.artist %></p>
+                  <% end %>
+                </div>
             </div>
           </a>
           <div class="social-icons">
@@ -101,9 +103,10 @@
               <div class="spotify-card">
                 <img src=<%= feed_post.post.image %> alt="">
                 <div class="spotify-card-info">
-                  <p><%= feed_post.post.music %></p>
+                  <p><%= feed_post.post.music.length > 30 ? feed_post.post.music[0..25]... : feed_post.post.music %></p>
                   <% if !feed_post.post.artist.nil? %>
-                    <p><%= feed_post.post.artist %></p>
+                    <p><%= feed_post.post.artist.length > 30 ? feed_post.post.artist[0..25]... : feed_post.post.artist %></p>
+
                   <% end %>
                 </div>
               </div>

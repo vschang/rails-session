@@ -152,18 +152,16 @@ width: 30px;
   }
 }
 .username-text{
+  -ms-writing-mode: tb-lr;
   writing-mode: vertical-lr;
   transform: rotate(180deg);
   margin: 0;
   padding: 0;
-  /* line-height: 0; */
   text-align: center;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
   width: fit-content;
   color: white;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 14px;
 }
 .username-horizontal{
   color: white;
@@ -211,7 +209,7 @@ width: 30px;
     font-size:18px;
     margin: 0;
     padding: 0;
-
+    font-weight: 400;
   }
 }
 .social-icons{
