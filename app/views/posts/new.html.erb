@@ -5,7 +5,7 @@
       <%= f.text_field :query,
                       autocomplete: "off",
                       class: "form-control search-bar",
-                      placeholder: 'type a music title',
+                      placeholder: 'search for music.',
                       value: params[:query],
                       data: { search_music_target: 'input',
                       action: 'keyup->search-music#update'
