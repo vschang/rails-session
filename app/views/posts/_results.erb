@@ -10,14 +10,14 @@
             <div class="result-card" data-action="click->spotify-card#hide" >
               <img src= <%= album.images[0]["url"] %> alt="" class="profile-playlist-image">
               <div class="spotify-card-info">
-                <p><%= album.name.length > 30 ? album.name[0..30]... : album.name %></p>
+                <p><%= album.name.length > 25 ? album.name[0..25]... : album.name %></p>
                 <div class="artist-name">
                   <% @all_artists = [] %>
                   <% album.artists.each do |artist| %>
                   <% @all_artists.push(artist.name) %>
                   <% end %>
                   <% @all_artists = @all_artists.join(", ") %>
-                  <p><%= @all_artists.length > 30 ? @all_artists[0..30]... :  @all_artists %></p>
+                  <p><%= @all_artists.length > 25 ? @all_artists[0..25]... :  @all_artists %></p>
                 </div>
               </div>
             </div>
@@ -38,14 +38,14 @@
             <div class="result-card" data-action="click->spotify-card#hide" >
             <img src= <%= song.album.images[0]["url"] %> alt="" class="profile-playlist-image">
               <div class="spotify-card-info">
-                <p><%= song.name.length > 30 ? song.name[0..30]... :  song.name %></p>
+                <p><%= song.name.length > 25 ? song.name[0..25]... :  song.name %></p>
                 <div class="artist-name">
                   <% @all_artists = [] %>
                   <% song.artists.each do |artist| %>
                   <% @all_artists.push(artist.name) %>
                   <% end %>
                   <%@all_artists = @all_artists.join(", ") %>
-                  <p><%= @all_artists.length > 30 ? @all_artists[0..30]... :  @all_artists %></p>
+                  <p><%= @all_artists.length > 25 ? @all_artists[0..25]... :  @all_artists %></p>
                 </div>
               </div>
 
@@ -75,7 +75,7 @@
                 <img src= <%= @artist_photo %>  alt="" class="profile-playlist-image">
               <% end %>
               <div class="spotify-card-info">
-                <p><%= artist.name.length > 30 ? artist.name[0..30]... :  artist.name %></p>
+                <p><%= artist.name.length > 25 ? artist.name[0..25]... :  artist.name %></p>
               </div>
             </div>
             <div data-spotify-card-target='hideclass' class="d-none">
