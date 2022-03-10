@@ -98,7 +98,7 @@
             <% end %>
             <h2 class='post-title'> <%= feed_post.post.title.capitalize %> </h2>
             <p class ='content-text'> <%= feed_post.post.content %> </p>
-            <a href= <%= feed_post.url %> target="_blank">
+            <a href= <%= feed_post.post.url %> target="_blank">
               <div class="spotify-card">
                 <img src=<%= feed_post.post.image %> alt="">
                 <div class="spotify-card-info">

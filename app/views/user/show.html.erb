@@ -15,10 +15,7 @@
           <h2><%= Friendship.where(receiver_id: @user.id).count %></h2>
           <p>followers</p>
 
-
-
         <%= link_to "follow", follow_user_path(@user), method: :post, class:'comment-button' %>
-
 
       </div>
     </div>
