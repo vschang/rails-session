@@ -47,7 +47,7 @@
               <% end %>
             <% end %>
           </div>
-          
+
           <div class = 'content'>
             <h2 class='post-title'> <%= feed_post.title.capitalize %> </h2>
               <p class ='content-text'> <%= feed_post.content %> </p>
@@ -105,10 +105,11 @@
               <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
               <% end %>
             <% else %>
-              <%= link_to user_path(feed_post.user_id) do %>
                 <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
-              <% end %>
             <% end %>
+
+              <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
+
           </div>
           <div class = 'content'>
             <% if feed_post.user_id == current_user.id %>
@@ -171,9 +172,9 @@
         <div data-search-music-target= "results" id="prof-overview">
             <div class="results-wrapper" id="prof-son" >
               <div class="results-container">
-                <h2>saved playlists.</h2>
+                <strong><h2>saved playlists.</h2></strong>
 
-                <% @user_now.playlists.each do |playlist| %>
+                <% @user_now.playlists.take(5).each do |playlist| %>
 
                   <div data-controller="spotify-card" >
                     <div class="result-card" data-action="click->spotify-card#hide" >
@@ -192,8 +193,8 @@
               </div>
 
               <div class="results-container">
-                <h2>top tracks.</h2>
-                <% @user_now.top_tracks.each do |track| %>
+                <strong><h2>top tracks.</h2></strong>
+                <% @user_now.top_tracks.take(5).each do |track| %>
 
                   <div data-controller="spotify-card" >
                     <div class="result-card" data-action="click->spotify-card#hide" >
@@ -217,8 +218,8 @@
                 <% end %>
               </div>
               <div class="results-container">
-                <h2>top artists.</h2>
-                <% @user_now.top_artists.each do |artist| %>
+                <strong><h2>top artists.</h2>
+                <% @user_now.top_artists.take(5).each do |artist| %>
 
                   <div data-controller="spotify-card">
                     <div class="result-card" data-action="click->spotify-card#hide" >

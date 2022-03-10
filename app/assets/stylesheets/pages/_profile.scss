@@ -60,6 +60,7 @@
   border-bottom: none;
   justify-content: space-around;
   border: none;
+  border-color: rgba(0,0,0,0);
 }
 
 .nav-tabs .nav-link.active,
@@ -72,6 +73,7 @@
   background-color: #2054CD;
   border: none;
   flex-grow: 1;
+  border-color: rgba(0,0,0,0);
 }
 
 .tab-content>.active {

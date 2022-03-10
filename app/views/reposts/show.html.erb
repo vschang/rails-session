@@ -1,15 +1,11 @@
 <div class='post-card'>
   <div class="profpic-username">
-    <img src="<%=@repost.post.user.prof_pic%>" alt=""50>
+    <%= link_to user_path(@repost.post.user_id) do %>
+      <img src="<%=@repost.post.user.prof_pic%>" alt=""50>
+    <% end %>
     <div class='username'>
-      <% if @repost.post.user_id == current_user.id %>
-        <%= link_to profile_path do %>
-        <h3 class='username-text'><%= @repost.post.user.username %>.</h3>
-        <% end %>
-      <% else %>
-        <%= link_to user_path(@repost.user_id) do %>
-          <h3 class='username-text' style="text-decoration: none; color:white;"><%=@repost.post.user.username %></h3>
-        <% end %>
+      <%= link_to user_path(@repost.post.user_id) do %>
+      <h3 class='username-text'><%= @repost.post.user.username %>.</h3>
       <% end %>
     </div>
   </div>
@@ -60,7 +56,17 @@
         <% @repost.repost_comments.each do |repost_comment| %>
           <div class='one-comment'>
             <div class='comments-username-time'>
-              <p class='username-horizontal'>@<%=User.find(repost_comment.user_id).username %></p>
+
+              <%if repost_comment.user_id == current_user.id %>
+              <%= link_to profile_path do %>
+                <p class='username-horizontal'>@<%=User.find(repost_comment.user_id).username %></p>
+                <% end %>
+              <% else %>
+                <%= link_to user_path(repost_comment.user_id) do %>
+                  <p class='username-horizontal'>@<%=User.find(repost_comment.user_id).username %></p>
+                <% end %>
+              <%end %>
+              
               <p class='content-text'><%= repost_comment.created_at.strftime("%l:%M %p, %B %d, %Y")%></p>
             </div>
           <p><%= repost_comment.content %></p>
