@@ -1,0 +1,15 @@
+{
+  "background_color": "COLOR HEX HERE",
+  "description": "REPLACE WITH YOUR APP DESCRIPTION",
+  "display": "fullscreen",
+  "icons": [
+    {
+       "src": "URL TO SOME IMAGE HERE",
+       "sizes": "192x192",
+       "type": "image/png"
+    }
+  ],
+  "name": "Session",
+  "short_name": "Session",
+  "start_url": "/"
+}

@@ -14,7 +14,6 @@ class FriendshipsController < ApplicationController
     @receiver = User.find(friendship_params[:receiver_id])
     @friendship = Friendship.new(requester_id: @user.id, receiver_id: @receiver.id)
     @friendship.receiver = @receiver
-
     if @friendship.save
       redirect_to friendships_path(@user), notice: "Friend request sent!"
     else

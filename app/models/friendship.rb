@@ -10,7 +10,6 @@ class Friendship < ApplicationRecord
 
   validates :receiver_id, uniqueness: { scope: :requester_id,
     message: "No more requests can be made between you two" }
-
   validate :cannot_friend_self
 
   def cannot_friend_self

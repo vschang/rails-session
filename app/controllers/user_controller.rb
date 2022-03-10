@@ -1,12 +1,18 @@
 class UserController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @current_user = current_user
     @user_id_arr = []
     @user_id = @user.id
     @user_id_arr << @user_id
 
     @friendship = Friendship.new
 
+    if Friendship.where(requester: current_user, receiver: @user, status: 'accepted').empty?
+      @user_friendship = Friendship.where(receiver: current_user, requester: @user, status: 'accepted').first
+    else
+      @user_friendship = Friendship.where(requester: current_user, receiver: @user, status: 'accepted').first
+    end
     @user_posts = Post.where(user_id: @user_id)
     @user_reposts = Repost.where(user_id: @user_id)
 
