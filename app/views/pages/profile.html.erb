@@ -10,7 +10,7 @@
         <% end %>
         <div>
           <h2><%= @user_posts.count %> </h2>
-          <p>posts</p>
+          <p><strong>posts</strong></p>
         </div>
       </div>
       <div class="placehldr-elmn">
@@ -174,7 +174,7 @@
         <div data-search-music-target= "results" id="prof-overview">
             <div class="results-wrapper" id="prof-son" >
               <div class="results-container">
-                <h2>Saved Playlist</h2>
+                <h2>saved playlists.</h2>
 
                 <% @user_now.playlists.each do |playlist| %>
 
@@ -195,7 +195,7 @@
               </div>
 
               <div class="results-container">
-                <h2>Top Tracks</h2>
+                <h2>top tracks.</h2>
                 <% @user_now.top_tracks.each do |track| %>
 
                   <div data-controller="spotify-card" >
@@ -220,7 +220,7 @@
                 <% end %>
               </div>
               <div class="results-container">
-                <h2>Top Artists</h2>
+                <h2>top artists.</h2>
                 <% @user_now.top_artists.each do |artist| %>
 
                   <div data-controller="spotify-card">

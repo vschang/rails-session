@@ -47,8 +47,10 @@
 </div>
   <div class="comment-section">
     <div class='flex-end'>
-      <% if current_user.id == @repost.post.user_id %>
-        <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
+      <% if current_user.id == @repost.user_id %>
+        <%= link_to repost_path(@repost), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa-solid fa-trash" style="text-decoration: none; color:red;"></i>
+        <% end %>
       <% end %>
     </div>
     <div class='comments-card'>

@@ -2,7 +2,7 @@
   <% if params[:query] && params[:query] != "" %>
     <div class="results-wrapper" >
       <div class="results-container">
-        <h2>Albums</h2>
+        <h2>albums.</h2>
         <% @album_search = RSpotify::Album.search(@search)%>
         <% @album_search[0..5].each do |album| %>
 
@@ -30,7 +30,7 @@
       </div>
 
       <div class="results-container">
-        <h2>Songs</h2>
+        <h2>songs.</h2>
         <% @song_search = RSpotify::Track.search(@search) %>
         <% @song_search[0..5].each do |song| %>
 
@@ -59,7 +59,7 @@
         <% end %>
       </div>
       <div class="results-container">
-        <h2>Artists</h2>
+        <h2>artists.</h2>
         <% @artist_search = RSpotify::Artist.search(@search) %>
         <% @artist_search[0..5].each do |artist| %>
 

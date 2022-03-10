@@ -1,5 +1,6 @@
 
 <div class="posts-wrapper">
+  <h2 class='margin-t-15'>feed.</h2>
   <% @feed_posts.each_with_index do |feed_post, index| %>
     <% if feed_post.class == Post%>
       <%= link_to post_path(feed_post.id) do %>
@@ -97,7 +98,7 @@
             <% end %>
             <h2 class='post-title'> <%= feed_post.post.title.capitalize %> </h2>
             <p class ='content-text'> <%= feed_post.post.content %> </p>
-            <a href= <%= feed_post.url %> target="_blank">
+            <a href= <%= feed_post.post.url %> target="_blank">
               <div class="spotify-card">
                 <img src=<%= feed_post.post.image %> alt="">
                 <div class="spotify-card-info">

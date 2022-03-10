@@ -11,14 +11,14 @@
       <div class="tab-pane fade show active friends-tabs" id="nav-request" role="tabpanel" aria-labelledby="nav-friends-tab">
         <div class='full-width'>
           <% @pending_friends_receive.each do |friendship| %>
-            <div class='flex-grow full-width'>
-              <div class='flex-grow'>
+            <div class='d-flex justify-content-between align-items-center'>
+              <div class='flex-grow center'>
                 <img src="<%= User.find(friendship.requester_id).prof_pic %>" alt="" class="index-avatar">
-                <p class='padding-left'>@<%= User.find(friendship.requester_id).username %></p>
+                <strong><p class='padding-left margin-t-10'>@<%= User.find(friendship.requester_id).username %></p></strong>
               </div>
-              <div>
-                <%= link_to "Accept", accept_friendship_path(friendship), method: 'patch' , class: 'white-text friend-button' %>
-                <%= link_to "Reject", reject_friendship_path(friendship), method: 'patch' , class: 'white-text friend-button' %>
+              <div class='d-flex'>
+                <%= link_to "Accept", accept_friendship_path(friendship), method: 'patch' , class: 'comment-button' %>
+                <%= link_to "Reject", reject_friendship_path(friendship), method: 'patch' , class: 'comment-button' %>
               </div>
             </div>
           <% end %>
@@ -30,7 +30,7 @@
           <% @following.each do |follower| %>
             <div class='flex-grow'>
               <img src=<%= follower.receiver.prof_pic %> alt="" class="index-avatar">
-              <p class='padding-left'>@<%= follower.receiver.username %></p>
+              <strong><p class='padding-left'>@<%= follower.receiver.username %></p></strong>
             </div>
           <% end %>
         </div>
@@ -40,7 +40,7 @@
           <% @followers.each do |follower| %>
             <div class='flex-grow'>
               <img src=<%= follower.requester.prof_pic %> alt="" class="index-avatar">
-              <p class='padding-left'>@<%= follower.requester.username %></p>
+              <strong><p class='padding-left'>@<%= follower.requester.username %></p></strong>
             </div>
           <% end %>
         </div>
