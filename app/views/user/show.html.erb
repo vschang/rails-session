@@ -2,9 +2,14 @@
   <div class="container profile">
     <div class="profile-header">
       <h1 id="profile-username"><%=@user.username%></h1>
-      <img src="<%= @user.prof_pic %>" alt="" class="profile-avatar">
+      <% if @user.prof_pic != nil %>
+        <img src="<%= @user.prof_pic %>" alt="" class="profile-avatar">
+      <% else %>
+        <img src="app/assets/images/prof_pic.jpeg" alt="" class="profile-avatar">
+      <% end %>
       <div class="placehldr-elmn">
-        <%= link_to friendships_path, class: 'white-text' do %>
+        <%= link_to "/user/#{@user.id}/friendship_index", class: 'white-text' do %>
+
           <h2><%= Friendship.where(requester_id: @user.id).count %></h2>
           <p>following</p>
         <% end %>
@@ -15,7 +20,7 @@
       </div>
       <div class="placehldr-elmn">
         <div>
-          <%= link_to friendships_path, class: 'white-text' do %>
+          <%= link_to "/user/#{@user.id}/friendship_index", class: 'white-text' do %>
             <h2><%= Friendship.where(receiver_id: @user.id).count %></h2>
             <p>followers</p>
           <% end %>
@@ -178,11 +183,7 @@
 
       </div>
       <div class="tab-pane fade tab-content" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <%# <% @user_now.playlists.each do |playlist| %>
-            <%# <div class="playlist-card"> %>
-              <%# <p><%=  playlist.name %>
-            <%# </div> %>
-        <%# <% end %>
+        <%# spotify stats here %>
       </div>
     </div>
   </div>

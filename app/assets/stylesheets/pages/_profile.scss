@@ -69,8 +69,8 @@
   width: 30%;
   border-radius: 16px 16px 0px 0px;
   font-weight: bold;
+  border: transparent;
   background-color: #2054CD;
-  border: none;
   flex-grow: 1;
 }
 
@@ -109,7 +109,7 @@
 }
 
 .profile-page {
-  height: 93vh;
+  max-height: 93vh;
   display: flex;
   flex-direction: column;
   position: relative;

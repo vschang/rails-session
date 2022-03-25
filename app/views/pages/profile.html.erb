@@ -48,9 +48,10 @@
           </div>
 
           <div class = 'content'>
-            <h2 class='post-title'> <%= feed_post.title.capitalize %> </h2>
+            <%= link_to post_path(feed_post.id) do %>
+              <h2 class='post-title'> <%= feed_post.title.capitalize %> </h2>
               <p class ='content-text'> <%= feed_post.content %> </p>
-
+            <% end %>
             <a href= <%= feed_post.url %> target="_blank">
               <div class="spotify-card">
                 <img src=<%= feed_post.image %> alt="">
@@ -125,8 +126,10 @@
                 </div>
               <% end %>
             <% end %>
-            <h2 class='post-title'> <%= feed_post.post.title.capitalize %> </h2>
-            <p class ='content-text'> <%= feed_post.post.content %> </p>
+            <%= link_to post_path(feed_post.post.id) do %>
+              <h2 class='post-title'> <%= feed_post.post.title.capitalize %> </h2>
+              <p class ='content-text'> <%= feed_post.post.content %> </p>
+            <% end %>
             <a href= <%= feed_post.post.url %> target="_blank">
               <div class="spotify-card">
                 <img src=<%= feed_post.post.image %> alt="">
@@ -164,16 +167,12 @@
     <% end %>
   <%end%>
       </div>
-
       <div class="tab-pane fade tab-content" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-
         <div data-search-music-target= "results" id="prof-overview">
             <div class="results-wrapper" id="prof-son" >
               <div class="results-container">
                 <strong><h2>saved playlists.</h2></strong>
-
                 <% @user_now.playlists.take(5).each do |playlist| %>
-
                   <div data-controller="spotify-card" >
                     <div class="result-card" data-action="click->spotify-card#hide" >
                     <% if playlist.images[0] != nil %>
@@ -186,14 +185,11 @@
                       </div>
                     </div>
                   </div>
-
                 <% end %>
               </div>
-
               <div class="results-container">
                 <strong><h2>top tracks.</h2></strong>
                 <% @user_now.top_tracks.take(5).each do |track| %>
-
                   <div data-controller="spotify-card" >
                     <div class="result-card" data-action="click->spotify-card#hide" >
                     <img src= <%= track.album.images[0]["url"] %> alt="" class="profile-playlist-image">
@@ -208,20 +204,15 @@
                           <p><%= @all_artists.length > 30 ? @all_artists[0..30]... :  @all_artists %></p>
                         </div>
                       </div>
-
                     </div>
                   </div>
-
-
                 <% end %>
               </div>
               <div class="results-container">
                 <strong><h2>top artists.</h2>
                 <% @user_now.top_artists.take(5).each do |artist| %>
-
                   <div data-controller="spotify-card">
                     <div class="result-card" data-action="click->spotify-card#hide" >
-
                       <%= @artist_photo = "" %>
                       <% if artist.images[0] != nil  %>
                         <% @artist_photo = artist.images[0]["url"] %>

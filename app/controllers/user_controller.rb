@@ -51,6 +51,28 @@ class UserController < ApplicationController
     end
   end
 
+  def friendship_index
+    @user = User.find(params[:id])
+    @friendship = Friendship.new
+
+    # # friends are those whose status is accepted and the requester is current user or all friends where the status is accepted and the receiver is current user
+    @friends = Friendship.all.where(status: "accepted").where(requester_id: @user.id).or(Friendship.all.where(status: "accepted").where(receiver_id: @user.id))
+    # @friends2 = Friendship.all.where(status: "accepted")
+    @following = Friendship.all.where(requester_id: @user.id)
+    @followers = Friendship.all.where(receiver_id: @user.id)
+    # YOUR REJECTED AND ACCEPTED FRIENDS
+    @friends_and_enemies = Friendship.all.where(status: "accepted").or(Friendship.all.where(status: "rejected"))
+
+    # YOUR FRIEND REQUESTS PENDING YOU REQUEST - these are the requests you shouldn't see but are showing
+    @pending_friend_request = Friendship.all.where(requester_id: @user.id, status: "pending")
+
+    # YOUR FRIEND REQUESTS PENDING YOU RECEIVE - these are the only requests you hosuld see
+    @pending_friends_receive = Friendship.all.where(receiver_id: @user.id, status: "pending")
+
+    # ALL PENDING FRIENDS
+    @pending_friends = @pending_friend_request + @pending_friends_receive
+  end
+
   private
 
   def user_params

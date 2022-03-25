@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :user, only: [:show] do
     resources :friendships, only: [:create]
   end
+  get '/user/:id/friendship_index', to: 'user#friendship_index'
   resources :posts do
     resources :post_comments, only: [:new, :create, :destroy, :index]
     resources :reposts, only: [:create]

@@ -28,7 +28,6 @@
         <div class='content'>
           <%= link_to post_path(feed_post.id) do %>
             <h2 class='post-title'> <%= feed_post.title.capitalize %> </h2>
-
             <p class='content-text'> <%= feed_post.content %> </p>
           <% end %>
           <a href=<%= feed_post.url %> target="_blank">
