@@ -9,28 +9,87 @@
   margin-right: 8px;
 }
 
-.profile-header {
-  margin-top: 18px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  min-height: 143px;
+@media (min-width: 960px) {
+  .profile-header{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 35px;
+    margin-bottom: 35px;
+    border-bottom: 1px solid yellow;
+  }
+
+  .profile-img{
+    padding:40px;
+  }
+
+  .profile-stats{
+    display: flex;
+    flex-direction: flex-start;
+    padding-left: 100px;
+  }
+
+  .following-posts {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin-bottom: -2px;
+    }
+
+    .m-b-50{
+      margin-bottom: 50px;
+    }
+  }
+
+  .followers {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    height: 100px;
+
+    h2 {
+      margin-bottom: -2px;
+    }
+  }
+}
+@media (max-width: 959px) {
+  .profile-header {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    min-height: 143px;
+  }
+  .following-posts {
+    display: flex;
+    flex-direction: column;
+    margin-left: 33px;
+    height: 100px;
+
+    h2 {
+      margin-bottom: -2px;
+    }
+  }
+
+  .followers {
+    display: flex;
+    flex-direction: column;
+    margin-left: 33px;
+    height: 100px;
+
+    h2 {
+      margin-bottom: -2px;
+    }
+  }
 }
 .user-header{
   display: flex;
   flex-direction: column;
 
 }
-.placehldr-elmn {
-  display: flex;
-  flex-direction: column;
-  margin-left: 33px;
-  height: 100px;
 
-  h2 {
-    margin-bottom: -2px;
-  }
-}
+
 .profile-status{
   display: flex;
   justify-content: space-between;
@@ -104,9 +163,41 @@
   background: none;
 }
 
-.overall {
-  height: 64vh;
+@media (min-width: 960px) {
+  /* For a screen < 960px, this CSS will be read */
+  .profile-container{
+    margin-left: 250px;
+    margin-right: 100px;
+    padding-left: 50px;
+    margin-top: 50px;
+  }
+  .friends-container-desktop{
+      margin-left: 250px;
+      margin-right: 100px;
+      padding-left: 50px;
+      margin-top: 0px;
+  }
 }
+
+@media (max-width: 720px) {
+  /* For a screen < 720px, this CSS will be read */
+  .overall {
+    width: 500px;
+    height: 64vh;
+  }
+}
+
+@media (max-width: 959px) {
+  /* For a screen < 540px, this CSS will be read */
+  .overall {
+    width: 300px;
+    height: 64vh;
+  }
+}
+
+// .overall {
+//   height: 64vh;
+// }
 
 .profile-page {
   max-height: 93vh;
