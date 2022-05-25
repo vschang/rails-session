@@ -1,44 +1,47 @@
 <div class="overall">
-  <h2 class='margin-t-15 text-center'>friends.</h2>
-  <nav>
-    <div class="nav nav-tabs friends" id="nav-tab" role="tablist">
-      <button class="nav-link active" id="nav-following-tab" data-bs-toggle="tab" data-bs-target="#nav-following" type="button" role="tab" aria-controls="nav-following" aria-selected="false">following.</button>
-      <button class="nav-link" id="nav-followers-tab" data-bs-toggle="tab" data-bs-target="#nav-followers" type="button" role="tab" aria-controls="nav-followers" aria-selected="false">followers.</button>
-    </div>
-  </nav>
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active friends-tabs" id="nav-following" role="tabpanel" aria-labelledby="nav-following-tab">
-      <div class='full-width'>
-        <% @following.each do |follower| %>
-          <div class='d-flex justify-content-start'>
-            <%= link_to user_path(follower.receiver_id) do %>
-            <img src=<%= follower.receiver.prof_pic %> alt="" class="index-avatar">
-            <% end %>
-            <%= link_to user_path(follower.receiver_id) do %>
-            <strong><p class='padding-left' style="color: white;">@<%= follower.receiver.username %></p></strong>
-            <% end %>
-          </div>
-        <% end %>
+  <h2 class='margin-t-15 '>friends.</h2>
+
+  <div class="friends-info-container">
+    <nav>
+      <div class="nav nav-tabs friends" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-following-tab" data-bs-toggle="tab" data-bs-target="#nav-following" type="button" role="tab" aria-controls="nav-following" aria-selected="false">following.</button>
+        <button class="nav-link" id="nav-followers-tab" data-bs-toggle="tab" data-bs-target="#nav-followers" type="button" role="tab" aria-controls="nav-followers" aria-selected="false">followers.</button>
       </div>
-    </div>
-    <div class="tab-pane fade friends-tabs" id="nav-followers" role="tabpanel" aria-labelledby="nav-followers-tab">
-      <div class='full-width'>
-        <% @followers.each do |follower| %>
-          <div class='d-flex justify-content-start'>
-            <% if follower.requester != nil %>
-              <%= link_to user_path(follower.requester_id) do %>
-                <img src=<%= follower.requester.prof_pic %> alt="" class="index-avatar">
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active friends-tabs" id="nav-following" role="tabpanel" aria-labelledby="nav-following-tab">
+        <div class='full-width'>
+          <% @following.each do |follower| %>
+            <div class='d-flex justify-content-start'>
+              <%= link_to user_path(follower.receiver_id) do %>
+              <img src=<%= follower.receiver.prof_pic %> alt="" class="index-avatar">
               <% end %>
-              <% else %>
-                <img src='app/assets/images/prof_pic.jpeg' alt="" class="index-avatar">
-            <% end %>
-            <% if follower.requester != nil %>
-              <%= link_to user_path(follower.requester_id) do %>
-                <strong><p class='padding-left' style="color: white;">@<%= follower.requester.username %></p></strong>
+              <%= link_to user_path(follower.receiver_id) do %>
+              <strong><p class='padding-left' style="color: white;">@<%= follower.receiver.username %></p></strong>
               <% end %>
-            <% end %>
-          </div>
-        <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="tab-pane fade friends-tabs" id="nav-followers" role="tabpanel" aria-labelledby="nav-followers-tab">
+        <div class='full-width'>
+          <% @followers.each do |follower| %>
+            <div class='d-flex justify-content-start'>
+              <% if follower.requester != nil %>
+                <%= link_to user_path(follower.requester_id) do %>
+                  <img src=<%= follower.requester.prof_pic %> alt="" class="index-avatar">
+                <% end %>
+                <% else %>
+                  <img src='app/assets/images/prof_pic.jpeg' alt="" class="index-avatar">
+              <% end %>
+              <% if follower.requester != nil %>
+                <%= link_to user_path(follower.requester_id) do %>
+                  <strong><p class='padding-left' style="color: white;">@<%= follower.requester.username %></p></strong>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -351,6 +351,19 @@ width: 30px;
   margin-top:10px;
 }
 
-.margin-t-15{
-  margin-top:15px;
+@media (max-width: 960px) {
+  .margin-t-15{
+    margin-top:15px;
+  }
+}
+@media (min-width: 960px) {
+  .margin-t-15{
+    margin-top:0px;
+    margin-right: 500px;
+    margin-bottom: 15px;
+  }
+  .feed-text{
+    margin-top:10px;
+    margin-right: 650px;
+  }
 }

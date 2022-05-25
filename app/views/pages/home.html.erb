@@ -1,28 +1,30 @@
-<div class="banner home-banner">
-  <%= image_tag "session-logo.png", class: "logo" %>
-  <h1>Session</h1>
-  <h2>Connecting friends through music sessions.</h2>
-  <% if user_signed_in? == false %>
-  <%= link_to "Log In", new_user_session_path, class: "log-in-button" %>
-  <% end %>
-</div>
-
-<div class="banner-container">
-  <div id="how-we-work">
-    <div class="howto-title">
-      <h2>Share music and insights with your friends.</h2>
-    </div>
-    <div class="howto-content">
-      <p>Connect your Spotify account and start discovering new music with your friends. Share your takes on new trends your friends are listening to and comming soon, we'll implement a messaging function!</p>
-    </div>
-</div>
-
-<div class="footer">
-  <div class="footer-links">
-    <a href="https://github.com/vschang/rails-session"><i class="fab fa-github"></i></a>
-    <a href="https://twitter.com/SessionAppES"><i class="fab fa-twitter"></i></a>
+<div class="home-container">
+  <div class="banner home-banner">
+    <%= image_tag "session-logo.png", class: "logo" %>
+    <h1 class="gradient">Session</h1>
+    <h2>Connecting friends through music sessions.</h2>
+    <% if user_signed_in? == false %>
+    <%= link_to "Log In", new_user_session_path, class: "log-in-button" %>
+    <% end %>
   </div>
-  <div class="footer-copyright">
-    Session was made by Pablo, Valerie and Victor with <i class="fas fa-heart"></i> at Le Wagon.
+
+  <div class="banner-container">
+    <div id="how-we-work">
+      <div class="howto-title">
+        <h2>Share music and insights with your friends.</h2>
+      </div>
+      <div class="howto-content">
+        <p>Connect your Spotify account and start discovering new music with your friends. Share your takes on new trends your friends are listening to. Coming soon, we'll implement a messaging function!</p>
+      </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-links">
+      <a href="https://github.com/vschang/rails-session"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/SessionAppES"><i class="fab fa-twitter"></i></a>
+    </div>
+    <div class="footer-copyright">
+      Session was made by Pablo, Valerie and Victor with <i class="fas fa-heart"></i> at Le Wagon.
+    </div>
   </div>
 </div>
