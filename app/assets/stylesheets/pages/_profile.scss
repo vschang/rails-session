@@ -8,7 +8,7 @@
     margin: 0;
     padding: 0;
     color: white;
-    margin-right: 8px;
+    margin-right: -170px;
   }
   .profile-container{
     margin-left: 250px;
@@ -27,6 +27,8 @@
     margin-top: -10px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+
     padding-bottom: 15px;
     margin-bottom: 25px;
     border-bottom: 1px solid yellow;
@@ -146,12 +148,17 @@
     margin-bottom: -1px;
     background: none;
   }
-
+///////////
   .profile-page {
     max-height: 93vh;
     display: flex;
     flex-direction: column;
     position: relative;
+    margin-top: 20px;
+    // margin-left: 250px;
+    // margin-right: 100px;
+    // padding-left: 50px;
+    // margin-top: 30px;
   }
 
   .white-text{

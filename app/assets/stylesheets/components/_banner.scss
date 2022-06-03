@@ -1,3 +1,4 @@
+//desktop//
 @media (min-width: 959px) {
   .home-container{
     width: 100vw
@@ -11,7 +12,7 @@
       letter-spacing: -1px;
       font-size: 110px;
       margin-bottom: -4px;
-      margin-top: 78px;
+      margin-top: 180px;
       text-align:center;
       background: linear-gradient(95deg, #2c50d2, #fcaf21, #fd1d1d);
       background-clip: text;
@@ -21,7 +22,7 @@
 
     h2 {
       font-size: 25px;
-      margin: 25px 0px 24px;
+      margin: 0px 0px 25px;
       text-align:center;
       background: linear-gradient(271deg, #2c50d2, #fcaf21, #fd1d1d);
       background-clip: text;
@@ -59,7 +60,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom:-60px;
-  
+
 }
 
 .logo {
@@ -126,10 +127,17 @@
 }
 
 @media (max-width: 959px) {
-.home-banner {
-  background-color: black;
-  height: 65vh;
-  padding: 30px;
+  .home-banner {
+    background-color: black;
+    height: 65vh;
+    padding: 30px;
+    position: relative;
+
+  .home-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   h1 {
     font-weight: bolder;

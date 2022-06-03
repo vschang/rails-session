@@ -1,11 +1,13 @@
 <div class="home-container">
   <div class="banner home-banner">
-    <%= image_tag "session-logo.png", class: "logo" %>
-    <h1 class="gradient">Session</h1>
-    <h2>Connecting friends through music sessions.</h2>
-    <% if user_signed_in? == false %>
-    <%= link_to "Log In", new_user_session_path, class: "log-in-button" %>
-    <% end %>
+    <div class="home-flex">
+      <%= image_tag "session-logo.png", class: "logo" %>
+      <h1 class="gradient">Session</h1>
+      <h2>Connecting friends through music sessions.</h2>
+      <% if user_signed_in? == false %>
+      <%= link_to "Log In", new_user_session_path, class: "log-in-button" %>
+      <% end %>
+      </div>
   </div>
 
   <div class="banner-container">
