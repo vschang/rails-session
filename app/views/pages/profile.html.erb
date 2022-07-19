@@ -24,7 +24,7 @@
             <h2><%= Friendship.where(receiver_id: @user.id).count %></h2>
             <p>followers</p>
           <% end %>
-          <%= link_to destroy_user_session_path, method: :delete do %>
+          <%= link_to destroy_user_session_path, method: :get do %>
           <i class="fa-solid fa-right-from-bracket yellow-icon"></i>
           <% end %>
         </div>
