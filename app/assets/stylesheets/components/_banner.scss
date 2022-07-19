@@ -1,5 +1,13 @@
 //desktop//
 @media (min-width: 959px) {
+
+  .home-flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .home-container{
     width: 100vw
   }

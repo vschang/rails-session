@@ -4,7 +4,11 @@
     <div class="profile-header">
       <h1 id="profile-username"><%=@username%>.</h1>
       <div class="profile-img">
-        <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
+      <% if @user.prof_pic != nil %>
+        <img src="<%= @prof_pic_url %>" alt="profile picture" class="profile-avatar">
+      <% else %>
+        <img src="app/assets/images/prof_pic.jpeg" alt="default profile picture" class="profile-avatar">
+      <% end %>
       </div>
       <div class="profile-stats">
         <div class="following-posts">
@@ -20,7 +24,11 @@
             <h2><%= Friendship.where(receiver_id: @user.id).count %></h2>
             <p>followers</p>
           <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa-solid fa-right-from-bracket yellow-icon"></i>
+          <% end %>
         </div>
+
       </div>
     </div>
   </div>

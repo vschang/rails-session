@@ -15,6 +15,12 @@
     -moz-animation: AnimationName 6s ease infinite;
     animation: AnimationName 6s ease infinite;
   }
+
+  .yellow-icon{
+    color: yellow;
+    margin-top: 70px;
+    margin-left: 45px;
+  }
 }
 
 @media (max-width: 959px) {
@@ -35,6 +41,12 @@
     -webkit-animation: AnimationName 6s ease infinite;
     -moz-animation: AnimationName 6s ease infinite;
     animation: AnimationName 6s ease infinite;
+  }
+
+  .yellow-icon{
+    color: yellow;
+    margin-left: 47px;
+    margin-top: 27px;
   }
 }
 @-webkit-keyframes AnimationName {

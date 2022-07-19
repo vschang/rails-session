@@ -22,7 +22,7 @@
         <div>
           <%= link_to "/user/#{@user.id}/friendship_index", class: 'white-text' do %>
             <h2><%= Friendship.where(receiver_id: @user.id).count %></h2>
-            <p>followers</p>
+            <p class="mb-45">followers</p>
           <% end %>
         </div>
 
@@ -30,7 +30,7 @@
           <%= link_to "remove", friendship_path(@user_friendship), method: :delete, data: { confirm: 'Are you sure?' }, class:'comment-button-follow' %>
         <% else %>
 
-          <%= link_to "follow", follow_user_path(@user), method: :post, class:'comment-button-follow' %>
+          <%= link_to "follow", follow_user_path(@user), method: :post, class:'comment-button-follow mb-10' %>
         <% end %>
 
       </div>
