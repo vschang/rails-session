@@ -1,23 +1,34 @@
+<div class="profile-container">
 <div class="profile-page" >
-  <div class="container profile">
+  <div class="">
     <div class="profile-header">
       <h1 id="profile-username"><%=@username%>.</h1>
-      <img src="<%= @prof_pic_url %>" alt="" class="profile-avatar">
-      <div class="placehldr-elmn">
-        <%= link_to friendships_path, class: 'white-text' do %>
-          <h2><%= Friendship.where(requester_id: @user.id).count %></h2>
-          <p>following</p>
-        <% end %>
-        <div>
-          <h2><%= @profile_posts.count %> </h2>
-          <p><strong>posts</strong></p>
-        </div>
+      <div class="profile-img">
+      <% if @user.prof_pic != nil %>
+        <img src="<%= @prof_pic_url %>" alt="profile picture" class="profile-avatar">
+      <% else %>
+        <img src="app/assets/images/prof_pic.jpeg" alt="default profile picture" class="profile-avatar">
+      <% end %>
       </div>
-      <div class="placehldr-elmn">
-        <%= link_to friendships_path, class: 'white-text' do %>
-          <h2><%= Friendship.where(receiver_id: @user.id).count %></h2>
-          <p>followers</p>
-        <% end %>
+      <div class="profile-stats">
+        <div class="following-posts">
+          <%= link_to friendships_path, class: 'white-text' do %>
+            <h2><%= Friendship.where(requester_id: @user.id).count %></h2>
+            <p class='m-b-50'>following</p>
+          <% end %>
+            <h2><%= @profile_posts.count %> </h2>
+            <p><strong>posts</strong></p>
+        </div>
+        <div class="followers">
+          <%= link_to friendships_path, class: 'white-text' do %>
+            <h2><%= Friendship.where(receiver_id: @user.id).count %></h2>
+            <p>followers</p>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa-solid fa-right-from-bracket yellow-icon"></i>
+          <% end %>
+        </div>
+
       </div>
     </div>
   </div>
@@ -36,22 +47,22 @@
       <%= link_to post_path(feed_post.id) do %>
         <div class='post-card' id='profile-post-card'>
           <div class="profpic-username">
-            <img src="<%=feed_post.user.prof_pic%>" alt=""50>
-            <% if feed_post.user_id == current_user.id %>
-              <%= link_to profile_path do %>
-              <h3 class='username-text'><%= feed_post.user.username %>.</h3>
-              <% end %>
-            <% else %>
-              <%= link_to user_path(feed_post.user_id) do %>
-                <h3 class='username-text' style="text-decoration: none; color:white;"><%=feed_post.user.username %>.</h3>
-              <% end %>
+
+            <%= link_to profile_path do %>
+              <img src="<%=feed_post.user.prof_pic%>" alt=""50>
             <% end %>
+
+            <%= link_to profile_path do %>
+              <h3 class='username-text'><%= feed_post.user.username %>.</h3>
+            <% end %>
+
           </div>
 
           <div class = 'content'>
-            <h2 class='post-title'> <%= feed_post.title.capitalize %> </h2>
+            <%= link_to post_path(feed_post.id) do %>
+              <h2 class='post-title'> <%= feed_post.title.capitalize %> </h2>
               <p class ='content-text'> <%= feed_post.content %> </p>
-
+            <% end %>
             <a href= <%= feed_post.url %> target="_blank">
               <div class="spotify-card">
                 <img src=<%= feed_post.image %> alt="">
@@ -99,14 +110,15 @@
       <%= link_to repost_path(feed_post.id) do %>
         <div class='post-card'>
           <div class="profpic-username">
+            <%= link_to user_path(feed_post.post.user_id) do %>
             <img src="<%=feed_post.post.user.prof_pic%>" alt=""50>
-            <% if feed_post.user_id == current_user.id %>
-              <%= link_to profile_path do %>
+            <% end %>
+
+              <%= link_to user_path(feed_post.post.user_id) do %>
               <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
               <% end %>
-            <% else %>
-                <h3 class='username-text'><%= feed_post.post.user.username %>.</h3>
-            <% end %>
+
+
 
           </div>
           <div class = 'content'>
@@ -125,8 +137,10 @@
                 </div>
               <% end %>
             <% end %>
-            <h2 class='post-title'> <%= feed_post.post.title.capitalize %> </h2>
-            <p class ='content-text'> <%= feed_post.post.content %> </p>
+            <%= link_to post_path(feed_post.post.id) do %>
+              <h2 class='post-title'> <%= feed_post.post.title.capitalize %> </h2>
+              <p class ='content-text'> <%= feed_post.post.content %> </p>
+            <% end %>
             <a href= <%= feed_post.post.url %> target="_blank">
               <div class="spotify-card">
                 <img src=<%= feed_post.post.image %> alt="">
@@ -164,16 +178,12 @@
     <% end %>
   <%end%>
       </div>
-
       <div class="tab-pane fade tab-content" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-
         <div data-search-music-target= "results" id="prof-overview">
             <div class="results-wrapper" id="prof-son" >
               <div class="results-container">
                 <strong><h2>saved playlists.</h2></strong>
-
                 <% @user_now.playlists.take(5).each do |playlist| %>
-
                   <div data-controller="spotify-card" >
                     <div class="result-card" data-action="click->spotify-card#hide" >
                     <% if playlist.images[0] != nil %>
@@ -186,14 +196,11 @@
                       </div>
                     </div>
                   </div>
-
                 <% end %>
               </div>
-
               <div class="results-container">
                 <strong><h2>top tracks.</h2></strong>
                 <% @user_now.top_tracks.take(5).each do |track| %>
-
                   <div data-controller="spotify-card" >
                     <div class="result-card" data-action="click->spotify-card#hide" >
                     <img src= <%= track.album.images[0]["url"] %> alt="" class="profile-playlist-image">
@@ -208,20 +215,15 @@
                           <p><%= @all_artists.length > 30 ? @all_artists[0..30]... :  @all_artists %></p>
                         </div>
                       </div>
-
                     </div>
                   </div>
-
-
                 <% end %>
               </div>
               <div class="results-container">
                 <strong><h2>top artists.</h2>
                 <% @user_now.top_artists.take(5).each do |artist| %>
-
                   <div data-controller="spotify-card">
                     <div class="result-card" data-action="click->spotify-card#hide" >
-
                       <%= @artist_photo = "" %>
                       <% if artist.images[0] != nil  %>
                         <% @artist_photo = artist.images[0]["url"] %>
@@ -246,4 +248,5 @@
 
     </div>
   </div>
+</div>
 </div>

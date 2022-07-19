@@ -1,143 +1,362 @@
-#profile-username {
-  writing-mode: vertical-lr;
-  transform: rotate(180deg);
-  font-size: 36px;
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-  color: white;
-  margin-right: 8px;
-}
-
-.profile-header {
-  margin-top: 18px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  min-height: 143px;
-}
-.user-header{
-  display: flex;
-  flex-direction: column;
-
-}
-.placehldr-elmn {
-  display: flex;
-  flex-direction: column;
-  margin-left: 33px;
-  height: 100px;
-
-  h2 {
-    margin-bottom: -2px;
+//desktop
+@media (min-width: 960px) {
+  #profile-username {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    color: white;
+    margin-right: -170px;
   }
+  .profile-container{
+    margin-left: 250px;
+    margin-right: 100px;
+    padding-left: 50px;
+    margin-top: 30px;
+  }
+  .friends-container-desktop{
+      margin-left: 250px;
+      margin-right: 100px;
+      padding-left: 50px;
+      margin-top: 50px;
+  }
+
+  .profile-header{
+    margin-top: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid yellow;
+    padding-left:10px;
+  }
+
+  .profile-img{
+    padding:30px;
+  }
+
+  .profile-stats{
+    display: flex;
+    flex-direction: flex-start;
+    padding-left: 80px;
+  }
+
+  .following-posts {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin-bottom: -2px;
+    }
+
+    .m-b-50{
+      margin-bottom: 50px;
+    }
+  }
+
+  .followers {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    height: 100px;
+
+    h2 {
+      margin-bottom: -2px;
+      font-size: 30px;
+    }
+  }
+
+  .user-header{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+
+  .profile-status{
+    display: flex;
+    justify-content: space-between;
+    *{
+      margin-left: 10px;
+    }
+  }
+  /* Style the tab */
+  .tab {
+    overflow: hidden;
+    background-color: #000;
+  }
+
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+
+  .nav-tabs {
+    display: flex;
+        justify-content: space-around;
+    border: none;
+  }
+
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link,
+  .nav-link {
+    color: white;
+    width: 30%;
+    font-weight: bold;
+    border-bottom: 1px solid white;
+    border-right: 0px solid white;
+    border-left: 0px solid white;
+    border-top: 0px solid white;
+    background-color: black;
+    flex-grow: 1;
+  }
+
+  .tab-content>.active {
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 4vh  ;
+    align-items: center;
+
+    height: 70vh;
+
+    overflow-y: scroll;
+  }
+
+  .friends-tabs {
+    min-height: 110vh;
+
+  }
+
+  #nav-tabContent {
+    height: 100%;
+    padding-bottom:15px;
+  }
+
+
+  .nav-tabs .nav-link {
+    margin-bottom: -1px;
+    background: none;
+  }
+///////////
+  .profile-page {
+    max-height: 93vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 20px;
+    // margin-left: 250px;
+    // margin-right: 100px;
+    // padding-left: 50px;
+    // margin-top: 30px;
+  }
+
+  .white-text{
+    color:white
+  }
+
+  .flex-grow {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .full-width{
+    width: 100%;
+  }
+
+  .padding-left{
+    padding-left: 10px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  .ovrvw {
+    width: 100% !important;
+  }
+
+  .friends-info-container{
+    margin-top: 20px;
+  }
+
 }
-.profile-status{
-  display: flex;
-  justify-content: space-between;
-  *{
+
+//mobile
+@media (max-width: 959px) {
+  #profile-username {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    color: white;
+    margin-right: 8px;
+  }
+  .profile-header {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    min-height: 143px;
     margin-left: 10px;
   }
-}
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
+  .following-posts {
+    display: flex;
+    flex-direction: column;
+    margin-left: 33px;
+    height: 100px;
 
-/* Style the buttons that are used to open the tab content */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-}
+    h2 {
+      margin-bottom: -2px;
+    }
+  }
 
-.nav-tabs {
-  display: flex;
-  border-bottom: none;
-  justify-content: space-around;
-  border: none;
-}
+  .followers {
+    display: flex;
+    flex-direction: column;
+    margin-left: 33px;
+    height: 100px;
 
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-item.show .nav-link,
-.nav-link {
-  color: white;
-  width: 30%;
-  border-radius: 16px 16px 0px 0px;
-  font-weight: bold;
-  background-color: #2054CD;
-  border: none;
-  flex-grow: 1;
-}
+    h2 {
+      margin-bottom: -2px;
+    }
+  }
 
-.tab-content>.active {
+  .overall {
+    width: 100%;
+    height: 64vh;
+  }
+  .user-header{
+    display: flex;
+    flex-direction: column;
 
-  display: flex;
-  flex-direction: column;
-  padding: 20px 20px 4vh  ;
-  align-items: center;
-  background: linear-gradient(360deg, #fd1d1d, #802db8, #1e55cd);
-
-  height: 70vh;
-
-  overflow-y: scroll;
-}
-
-.friends-tabs {
-  background: linear-gradient(360deg, #fcaf21, #802db8, #2c50d2) !important;
-  min-height: 110vh;
-
-}
-
-#nav-tabContent {
-  height: 100%;
-  padding-bottom:15px;
-}
+  }
 
 
-.nav-tabs .nav-link {
-  margin-bottom: -1px;
-  background: none;
-}
+  .profile-status{
+    display: flex;
+    justify-content: space-between;
+    *{
+      margin-left: 10px;
+    }
+  }
+  /* Style the tab */
+  .tab {
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
 
-.overall {
-  height: 64vh;
-}
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
 
-.profile-page {
-  height: 93vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
+  .nav-tabs {
+    display: flex;
+    border-bottom: none;
+    justify-content: space-around;
+    border: none;
+  }
 
-.white-text{
-  color:white
-}
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link,
+  .nav-link {
+    color: white;
+    width: 30%;
+    border-radius: 16px 16px 0px 0px;
+    font-weight: bold;
+    border: transparent;
+    background-color: #2054CD;
+    flex-grow: 1;
+  }
 
-.flex-grow {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-}
+  .tab-content>.active {
 
-.full-width{
-  width: 100%;
-}
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 4vh  ;
+    align-items: center;
+    background: linear-gradient(360deg, #fd1d1d, #802db8, #1e55cd);
 
-.padding-left{
-  padding-left: 10px;
-}
+    height: 70vh;
 
-h4 {
-  font-size: 16px;
-}
+    overflow-y: scroll;
+  }
 
-.ovrvw {
-  width: 100% !important;
+  .friends-tabs {
+    background: linear-gradient(360deg, #fcaf21, #802db8, #2c50d2) !important;
+    min-height: 110vh;
+
+  }
+
+  #nav-tabContent {
+    height: 100%;
+    padding-bottom:15px;
+  }
+
+
+  .nav-tabs .nav-link {
+    margin-bottom: -1px;
+    background: none;
+  }
+
+  .profile-page {
+    max-height: 93vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .profile-stats{
+    display: flex;
+    flex-direction: flex-start;
+  }
+
+  .white-text{
+    color:white
+  }
+
+  .flex-grow {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .full-width{
+    width: 100%;
+  }
+
+  .padding-left{
+    padding-left: 10px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  .ovrvw {
+    width: 100% !important;
+  }
+
 }

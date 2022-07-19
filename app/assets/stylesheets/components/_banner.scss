@@ -1,7 +1,151 @@
-.home-banner {
-  background-color: black;
-  height: 65vh;
+//desktop//
+@media (min-width: 959px) {
+
+  .home-flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home-container{
+    width: 100vw
+  }
+  .home-banner {
+    background-color: black;
+    height: 100vh;
+    padding: 30px;
+    h1 {
+      font-weight: bolder;
+      letter-spacing: -1px;
+      font-size: 110px;
+      margin-bottom: -4px;
+      margin-top: 180px;
+      text-align:center;
+      background: linear-gradient(95deg, #2c50d2, #fcaf21, #fd1d1d);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      font-size: 25px;
+      margin: 0px 0px 25px;
+      text-align:center;
+      background: linear-gradient(271deg, #2c50d2, #fcaf21, #fd1d1d);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+}
+#how-we-work {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 30px;
+  background-size: cover;
+  color: white;
+  margin-top: 20;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+    url('background.png');
+}
+
+.howto-content {
+  text-align: end;
+  font-size: 18px;
+}
+
+.howto-title {
+  h2 {
+    font-size: 41px;
+    text-align: start;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.banner-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom:-60px;
+
+}
+
+.logo {
+  height: 0px;
+}
+
+.loginscr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(183deg, #2c50d2, #fcaf21, #fd1d1d);
+  background-size: 600% 600%;
+  width: 100vw;
+
+  -webkit-animation: AnimationName 12s ease infinite;
+  -moz-animation: AnimationName 12s ease infinite;
+  animation: AnimationName 12s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 51% 0%
+  }
+
+  50% {
+    background-position: 50% 100%
+  }
+
+  100% {
+    background-position: 51% 0%
+  }
+}
+
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 51% 0%
+  }
+
+  50% {
+    background-position: 50% 100%
+  }
+
+  100% {
+    background-position: 51% 0%
+  }
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 51% 0%
+  }
+
+  50% {
+    background-position: 50% 100%
+  }
+
+  100% {
+    background-position: 51% 0%
+  }
+}
+
+}
+
+@media (max-width: 959px) {
+  .home-banner {
+    background-color: black;
+    height: 65vh;
+    padding: 30px;
+    position: relative;
+
+  .home-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   h1 {
     font-weight: bolder;
@@ -105,4 +249,5 @@
   100% {
     background-position: 51% 0%
   }
+}
 }

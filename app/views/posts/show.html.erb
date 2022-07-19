@@ -1,105 +1,107 @@
-<div class='post-card'>
-  <div class="profpic-username">
-    <% if current_user.id == @post.user_id %>
-      <%= link_to profile_path do %>
-        <img src="<%=@post.user.prof_pic%>" alt=""50>
-      <% end %>
-    <% else %>
-      <%= link_to user_path(@post.user_id) do %>
-        <img src="<%=@post.user.prof_pic%>" alt=""50>
-      <% end %>
-    <% end %>
-
-    <div class='username'>
-      <% if @post.user_id == current_user.id %>
+<div class='show-container'>
+  <div class='post-card'>
+    <div class="profpic-username">
+      <% if current_user.id == @post.user_id %>
         <%= link_to profile_path do %>
-        <h3 class='username-text'><%= @post.user.username %>.</h3>
+          <img src="<%=@post.user.prof_pic%>" alt=""50>
         <% end %>
       <% else %>
         <%= link_to user_path(@post.user_id) do %>
-          <h3 class='username-text' style="text-decoration: none; color:white;"><%=@post.user.username %></h3>
+          <img src="<%=@post.user.prof_pic%>" alt=""50>
         <% end %>
       <% end %>
-    </div>
 
-  </div>
-  <div class = 'content'>
-    <h2 class='post-title'> <%= @post.title.capitalize %> </h2>
-      <p class ='content-text'> <%= @post.content %> </p>
-    <a href= <%= @post.url %> target="_blank">
-      <div class="spotify-card">
-        <img src=<%= @post.image %> alt="">
-        <div class="spotify-card-info">
-          <p><%= @post.music.length > 30 ? @post.music[0..20]... : @post.music %></p>
-          <% if !@post.artist.nil? %>
-            <p><%= @post.artist.length > 30 ? @post.artist[0..20]... : @post.artist %></p>
+      <div class='username'>
+        <% if @post.user_id == current_user.id %>
+          <%= link_to profile_path do %>
+          <h3 class='username-text'><%= @post.user.username %>.</h3>
           <% end %>
-        </div>
-      </div>
-    </a>
-    <div class="social-icons">
-      <div>
-        <% if @post.id != @user.id%>
-          <%= link_to post_reposts_path(@post), method: :post do %>
-            <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
+        <% else %>
+          <%= link_to user_path(@post.user_id) do %>
+            <h3 class='username-text' style="text-decoration: none; color:white;"><%=@post.user.username %></h3>
           <% end %>
         <% end %>
       </div>
-      <div>
-        <div>
-          <%= link_to post_post_likes_path(@post), method: :post do %>
-            <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
-          <% end %>
-          <p><%=@post.post_likes.count%></p>
+
+    </div>
+    <div class = 'content'>
+      <h2 class='post-title'> <%= @post.title.capitalize %> </h2>
+        <p class ='content-text'> <%= @post.content %> </p>
+      <a href= <%= @post.url %> target="_blank">
+        <div class="spotify-card">
+          <img src=<%= @post.image %> alt="">
+          <div class="spotify-card-info">
+            <p><%= @post.music.length > 30 ? @post.music[0..20]... : @post.music %></p>
+            <% if !@post.artist.nil? %>
+              <p><%= @post.artist.length > 30 ? @post.artist[0..20]... : @post.artist %></p>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div>
+      </a>
+      <div class="social-icons">
         <div>
-          <i class="fa-solid fa-message mx-2"></i>
-          <p><%=@post.post_comments.count%></p>
+          <% if @post.id != @user.id%>
+            <%= link_to post_reposts_path(@post), method: :post do %>
+              <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
+            <% end %>
+          <% end %>
+        </div>
+        <div>
+          <div>
+            <%= link_to post_post_likes_path(@post), method: :post do %>
+              <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
+            <% end %>
+            <p><%=@post.post_likes.count%></p>
+          </div>
+        </div>
+        <div>
+          <div>
+            <i class="fa-solid fa-message mx-2"></i>
+            <p><%=@post.post_comments.count%></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+    <div class="comment-section">
+      <div class='flex-end'>
+        <% if current_user.id == @post.user_id %>
+          <%= link_to post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa-solid fa-trash" style="text-decoration: none; color:red;"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class='comments-card'>
+        <% if @post.post_comments.blank? %>
+          <p class=>leave a comment.</p>
+        <% else %>
+          <% @post.post_comments.each do |post_comment| %>
+            <div class='one-comment'>
+              <div class='comments-username-time'>
+
+                  <%if post_comment.user_id == current_user.id %>
+                    <%= link_to profile_path do %>
+                      <p class='username-horizontal margin-r-10'>@<%=User.find(post_comment.user_id).username%> </p>
+                    <% end %>
+                    <% else %>
+                      <%= link_to user_path(post_comment.user_id) do %>
+                      <p class='username-horizontal'>@<%=User.find(post_comment.user_id).username %></p>
+                    <% end %>
+                  <%end %>
+
+                <p class='content-text'><%= post_comment.created_at.strftime("%l:%M %p - %B %d, %Y")%></p>
+              </div>
+            <p><%= post_comment.content %></p>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+        <div class='comment-box'>
+          <%= simple_form_for([ @post, @post_comment ]) do |f| %>
+            <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %>
+            <%= f.submit 'post.', class:'comment-button' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
 </div>
-  <div class="comment-section">
-    <div class='flex-end'>
-      <% if current_user.id == @post.user_id %>
-        <%= link_to post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <i class="fa-solid fa-trash" style="text-decoration: none; color:red;"></i>
-        <% end %>
-      <% end %>
-    </div>
-    <div class='comments-card'>
-      <% if @post.post_comments.blank? %>
-        <p class=>leave a comment.</p>
-      <% else %>
-        <% @post.post_comments.each do |post_comment| %>
-          <div class='one-comment'>
-            <div class='comments-username-time'>
-
-                <%if post_comment.user_id == current_user.id %>
-                  <%= link_to profile_path do %>
-                    <p class='username-horizontal margin-r-10'>@<%=User.find(post_comment.user_id).username%> </p>
-                  <% end %>
-                  <% else %>
-                    <%= link_to user_path(post_comment.user_id) do %>
-                    <p class='username-horizontal'>@<%=User.find(post_comment.user_id).username %></p>
-                  <% end %>
-                <%end %>
-
-              <p class='content-text'><%= post_comment.created_at.strftime("%l:%M %p, %B %d, %Y")%></p>
-            </div>
-          <p><%= post_comment.content %></p>
-        </div>
-        <% end %>
-      <% end %>
-    </div>
-      <div class='comment-box'>
-        <%= simple_form_for([ @post, @post_comment ]) do |f| %>
-          <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %>
-          <%= f.submit 'post.', class:'comment-button' %>
-        <% end %>
-      </div>
-    </div>
-  </div>

@@ -1,90 +1,92 @@
-<div class='post-card'>
-  <div class="profpic-username">
-    <%= link_to user_path(@repost.post.user_id) do %>
-      <img src="<%=@repost.post.user.prof_pic%>" alt=""50>
-    <% end %>
-    <div class='username'>
+<div class='show-container'>
+  <div class='post-card'>
+    <div class="profpic-username">
       <%= link_to user_path(@repost.post.user_id) do %>
-      <h3 class='username-text'><%= @repost.post.user.username %>.</h3>
+        <img src="<%=@repost.post.user.prof_pic%>" alt=""50>
       <% end %>
-    </div>
-  </div>
-  <div class = 'content'>
-    <%= link_to profile_path do %>
-      <div class='repost-username pad-b-5'>
-        <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
-        <p class='white-text pad-l-5'><%=@repost.user.username %>.</p>
-      </div>
-    <% end %>
-    <h2 class='post-title'> <%= @repost.post.title.capitalize %> </h2>
-      <p class ='content-text'> <%= @repost.post.content %> </p>
-    <a href= <%= @repost.post.url %> target="_blank">
-      <div class="spotify-card">
-        <img src=<%= @repost.post.image %> alt="">
-        <div class="spotify-card-info">
-          <p><%= @repost.post.music %></p>
-          <% if !@repost.post.artist.nil? %>
-            <p><%= @repost.post.artist %></p>
-          <% end %>
-        </div>
-      </div>
-    </a>
-    <div class="social-icons">
-      <div>
-        <div>
-          <%= link_to repost_repost_likes_path(@repost), method: :post do %>
-            <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
-          <% end %>
-          <p><%=@repost.repost_likes.count%></p>
-        </div>
-      </div>
-      <div>
-        <div>
-          <i class="fa-solid fa-message mx-2"></i>
-          <p><%=@repost.repost_comments.count%></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-  <div class="comment-section">
-    <div class='flex-end'>
-      <% if current_user.id == @repost.user_id %>
-        <%= link_to repost_path(@repost), method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <i class="fa-solid fa-trash" style="text-decoration: none; color:red;"></i>
+      <div class='username'>
+        <%= link_to user_path(@repost.post.user_id) do %>
+        <h3 class='username-text'><%= @repost.post.user.username %>.</h3>
         <% end %>
-      <% end %>
+      </div>
     </div>
-    <div class='comments-card'>
-      <% if @repost.repost_comments.blank? %>
-        <p class=>Leave a comment</p>
-      <% else %>
-        <% @repost.repost_comments.each do |repost_comment| %>
-          <div class='one-comment'>
-            <div class='comments-username-time'>
+    <div class = 'content'>
+      <%= link_to profile_path do %>
+        <div class='repost-username pad-b-5'>
+          <i class="fa-solid fa-repeat" style="text-decoration: none; color:white;"></i>
+          <p class='white-text pad-l-5'><%=@repost.user.username %>.</p>
+        </div>
+      <% end %>
+      <h2 class='post-title'> <%= @repost.post.title.capitalize %> </h2>
+        <p class ='content-text'> <%= @repost.post.content %> </p>
+      <a href= <%= @repost.post.url %> target="_blank">
+        <div class="spotify-card">
+          <img src=<%= @repost.post.image %> alt="">
+          <div class="spotify-card-info">
+            <p><%= @repost.post.music %></p>
+            <% if !@repost.post.artist.nil? %>
+              <p><%= @repost.post.artist %></p>
+            <% end %>
+          </div>
+        </div>
+      </a>
+      <div class="social-icons">
+        <div>
+          <div>
+            <%= link_to repost_repost_likes_path(@repost), method: :post do %>
+              <i class="fa-solid fa-heart mx-2" style="text-decoration: none; color:white;"></i>
+            <% end %>
+            <p><%=@repost.repost_likes.count%></p>
+          </div>
+        </div>
+        <div>
+          <div>
+            <i class="fa-solid fa-message mx-2"></i>
+            <p><%=@repost.repost_comments.count%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="comment-section">
+      <div class='flex-end'>
+        <% if current_user.id == @repost.user_id %>
+          <%= link_to repost_path(@repost), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa-solid fa-trash" style="text-decoration: none; color:red;"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class='comments-card'>
+        <% if @repost.repost_comments.blank? %>
+          <p class=>Leave a comment</p>
+        <% else %>
+          <% @repost.repost_comments.each do |repost_comment| %>
+            <div class='one-comment'>
+              <div class='comments-username-time'>
 
-              <%if repost_comment.user_id == current_user.id %>
-              <%= link_to profile_path do %>
-                <p class='username-horizontal'>@<%=User.find(repost_comment.user_id).username %></p>
-                <% end %>
-              <% else %>
-                <%= link_to user_path(repost_comment.user_id) do %>
+                <%if repost_comment.user_id == current_user.id %>
+                <%= link_to profile_path do %>
                   <p class='username-horizontal'>@<%=User.find(repost_comment.user_id).username %></p>
-                <% end %>
-              <%end %>
+                  <% end %>
+                <% else %>
+                  <%= link_to user_path(repost_comment.user_id) do %>
+                    <p class='username-horizontal'>@<%=User.find(repost_comment.user_id).username %></p>
+                  <% end %>
+                <%end %>
 
-              <p class='content-text'><%= repost_comment.created_at.strftime("%l:%M %p, %B %d, %Y")%></p>
-            </div>
-          <p><%= repost_comment.content %></p>
-        </div>
-        <% end %>
-      <% end %>
-    </div>
-      <div class='comment-box'>
-        <%= simple_form_for([ @repost, @repost_comment ]) do |f| %>
-          <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %>
-          <%= f.submit 'post.', class:'comment-button' %>
+                <p class='content-text'><%= repost_comment.created_at.strftime("%l:%M %p - %B %d, %Y")%></p>
+              </div>
+            <p><%= repost_comment.content %></p>
+          </div>
+          <% end %>
         <% end %>
       </div>
+        <div class='comment-box'>
+          <%= simple_form_for([ @repost, @repost_comment ]) do |f| %>
+            <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %>
+            <%= f.submit 'post.', class:'comment-button' %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
+</div>

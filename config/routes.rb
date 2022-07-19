@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :user, only: [:show] do
     resources :friendships, only: [:create]
   end
+  get '/user/:id/friendship_index', to: 'user#friendship_index'
   resources :posts do
     resources :post_comments, only: [:new, :create, :destroy, :index]
     resources :reposts, only: [:create]
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
   patch '/friendships/:id/accept', to: 'friendships#accept', as: :accept_friendship
   patch '/friendships/:id/reject', to: 'friendships#reject', as: :reject_friendship
 
-  get 'log_out', to: 'pages#destroy_sesh'
+  get 'sign_out', to: 'pages#destroy_sesh'
   get 'search', to: 'pages#search'
   post "/user/:id/follow", to: "friendships#follow", as: :follow_user
 end

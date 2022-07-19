@@ -1,14 +1,30 @@
-<div class="navbar" id="myNavbar">
-  <%= link_to posts_path do %>
-    <i class="fa-solid fa-border-all"></i>
-  <% end %>
-  <%= link_to search_path do %>
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <% end %>
-  <%= link_to new_post_path do %>
-    <i class="fa-solid fa-plus"></i>
-  <% end %>
-  <%= link_to profile_path do  %>
-      <i class="fa-solid fa-circle-user"></i>
-  <% end %>
-</div>
+
+  <div class="navbar" id="myNavbar">
+    <%= link_to posts_path do %>
+      <i class="fa-solid fa-border-all"></i>
+    <% end %>
+    <%= link_to search_path do %>
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <% end %>
+    <%= link_to new_post_path do %>
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
+    <%= link_to profile_path do  %>
+        <i class="fa-solid fa-circle-user"></i>
+    <% end %>
+  </div>
+
+  <div class="desktop-nav" id="desktopNavbar">
+    <%= link_to posts_path do %>
+      <p class="nav-items">home.</p>
+    <% end %>
+    <%= link_to search_path do %>
+      <p class="nav-items">search.</p>
+    <% end %>
+    <%= link_to profile_path do  %>
+      <p class="nav-items">profile.</p>
+    <% end %>
+    <%= link_to new_post_path do %>
+      <p class="nav-items">post.</p>
+    <% end %>
+  </div>
