@@ -5,7 +5,7 @@
   "icons": [
     {
        "src": "apple-icon-57x57.png",
-       "sizes": "192x192",
+       "sizes": "57x57",
        "type": "image/png"
     }
   ],

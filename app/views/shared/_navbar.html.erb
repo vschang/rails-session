@@ -4,13 +4,16 @@
       <i class="fa-solid fa-border-all"></i>
     <% end %>
     <%= link_to search_path do %>
-    <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-magnifying-glass"></i>
     <% end %>
     <%= link_to new_post_path do %>
       <i class="fa-solid fa-plus"></i>
     <% end %>
+    <%= link_to root_path do %>
+      <i class="fa-solid fa-comment"></i>
+    <% end %>
     <%= link_to profile_path do  %>
-        <i class="fa-solid fa-circle-user"></i>
+      <i class="fa-solid fa-circle-user"></i>
     <% end %>
   </div>
 
@@ -23,6 +26,9 @@
     <% end %>
     <%= link_to profile_path do  %>
       <p class="nav-items">profile.</p>
+    <% end %>
+    <%= link_to root_path do %>
+      <p class="nav-items">messages.</p>
     <% end %>
     <%= link_to new_post_path do %>
       <p class="nav-items">post.</p>
