@@ -10,16 +10,19 @@ Rails.application.routes.draw do
     resources :reposts, only: [:create]
     resources :post_likes, only: [:create]
   end
+
   resources :reposts, only: [:create, :destroy, :show] do
     resources :repost_comments, only: [:new, :create]
     resources :repost_likes, only: [:create]
   end
+
   resources :repost_comments, only: [:destroy]
   resources :friendships, only: [:destroy, :index]
   resources :post_likes, only: [:destory]
   resources :repost_likes, only: [:destory]
-  resources :chatrooms, only: :show do
-    resources :messages, only: :create
+
+  resources :chatrooms, only: [:show, :index] do
+    resources :messages, only: [:create]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,8 @@
+<div class="posts-wrapper">
+  <h1>All chatrooms</h1>
+  <% @chatrooms.each do |chatroom| %>
+    <%= link_to chatroom_path(chatroom) do %>
+      <h3 class="chatroom-link">#<%= chatroom.name %></h3>
+    <% end %>
+  <% end %>
+</div>

@@ -20,8 +20,7 @@ export default class extends Controller {
   }
 
   resetForm(event) {
-    const form = event.target
-    form.reset()
+    event.target.reset()
   }
 
   #insertMessageAndScrollDown(data) {
