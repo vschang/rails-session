@@ -8,7 +8,6 @@
     margin: 0;
     padding: 0;
     color: white;
-    margin-right: -170px;
   }
   .profile-container{
     margin-left: 250px;
@@ -16,27 +15,24 @@
     padding-left: 50px;
     margin-top: 30px;
   }
-  .friends-container-desktop{
-      margin-left: 250px;
-      margin-right: 100px;
-      padding-left: 50px;
-      margin-top: 50px;
-  }
 
   .profile-header{
     margin-top: -10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding-bottom: 15px;
     margin-bottom: 25px;
     border-bottom: 1px solid yellow;
-    padding-left:10px;
   }
 
-  .profile-img{
-    padding:30px;
+  .profile-header-user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid yellow;
   }
 
   .profile-stats{
@@ -54,7 +50,7 @@
     }
 
     .m-b-50{
-      margin-bottom: 50px;
+      // margin-bottom: 50px;
     }
   }
 
@@ -121,6 +117,10 @@
     flex-grow: 1;
   }
 
+  .nav-link:hover{
+    color:yellow;
+  }
+
   .tab-content>.active {
 
     display: flex;
@@ -164,6 +164,9 @@
   .white-text{
     color:white
   }
+  .white-text:hover{
+    color: yellow;
+  }
 
   .flex-grow {
     display: flex;
@@ -199,14 +202,15 @@
   #profile-username {
     writing-mode: vertical-lr;
     transform: rotate(180deg);
-    font-size: 36px;
+    font-size: 32px;
     font-weight: bold;
     margin: 0;
     padding: 0;
     color: white;
     margin-right: 8px;
   }
-  .profile-header {
+
+  .profile-header, .profile-header-user {
     margin-top: 18px;
     display: flex;
     align-items: center;
@@ -294,7 +298,7 @@
 
     display: flex;
     flex-direction: column;
-    padding: 20px 20px 4vh  ;
+    padding: 20px 20px 50px 20px;
     align-items: center;
     background: linear-gradient(360deg, #fd1d1d, #802db8, #1e55cd);
 
@@ -325,6 +329,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow-y: hidden;
   }
 
   .profile-stats{
@@ -359,4 +364,8 @@
     width: 100% !important;
   }
 
+}
+.single-friend{
+  padding-top:5px;
+  padding-bottom: 5px;
 }

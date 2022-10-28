@@ -9,7 +9,7 @@
     font-weight: bold;
     background: linear-gradient(359deg, #fd1d1d, #802db8, #1e55cd);
     background-size: 600% 600%;
-    width: 138px;
+    // width: 138px;
     margin-top: 30px;
     -webkit-animation: AnimationName 6s ease infinite;
     -moz-animation: AnimationName 6s ease infinite;
@@ -18,9 +18,39 @@
 
   .yellow-icon{
     color: yellow;
-    margin-top: 70px;
+    margin-top: 30px;
     margin-left: 45px;
   }
+  a:hover, .back-btn {
+    color: yellow;
+  }
+
+  .x-btn:hover{
+    color: red;
+  }
+  .back-btn:hover{
+    transform: translate(-4px);
+    transition-duration: 2s;
+  }
+ .comment-button-follow{
+  padding: 7px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: yellow;
+  border-radius: 51px;
+  font-weight: bold;
+  border: -77px;
+  color: black;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-top: 15px;
+  font-size: 16px;
+}
 }
 
 @media (max-width: 959px) {
@@ -32,9 +62,9 @@
     transition: 0.3s ease-in-out;
     font-size: 20px;
     font-weight: bold;
-    position: absolute;
-    top: 31px;
-    right: 30px;
+    // position: absolute;
+    // top: 31px;
+    // right: 30px;
     background: linear-gradient(359deg, #fd1d1d, #802db8, #1e55cd);
     background-size: 600% 600%;
 
@@ -47,6 +77,10 @@
     color: yellow;
     margin-left: 47px;
     margin-top: 27px;
+  }
+
+  .back-btn{
+    display:none;
   }
 }
 @-webkit-keyframes AnimationName {
@@ -91,6 +125,14 @@
   }
 }
 
+.spotify-btn{
+  border: none;
+  background: #1CCC5B;
+  font-weight: bold;
+  font-size: 22px;
+  color: white;
+}
+
 #spotify_signin {
   padding: 10px 39px;
   border-radius: 30px;
@@ -117,6 +159,25 @@
     text-decoration: none;
     font-weight: bold;
     font-size: 22px;
+  }
+  .comment-button-follow{
+    padding: 7px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: yellow;
+    border-radius: 51px;
+    font-weight: bold;
+    border: -77px;
+    color: black;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-top: -15px;
+    font-size: 16px;
   }
 }
 
@@ -205,25 +266,7 @@ a {
   height: fit-content;
   width: fit-content;
 }
-.comment-button-follow{
-  padding: 7px 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: yellow;
-  border-radius: 51px;
-  font-weight: bold;
-  border: -77px;
-  color: black;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin-top: 15px;
-  font-size: 16px;
-}
+
 
 .post-margin{
   margin-right: 0px;
@@ -232,4 +275,8 @@ a {
 
 .margin-l-15{
   margin-left:15px;
+}
+.x-btn{
+  text-decoration: none;
+  color: white;
 }

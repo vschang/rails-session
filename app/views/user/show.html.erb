@@ -1,38 +1,40 @@
 <div class="profile-page profile-container" >
-  <div class="container profile">
-    <div class="profile-header">
+  <div class="">
+    <div class="profile-header-user">
       <h1 id="profile-username"><%=@user.username%></h1>
       <% if @user.prof_pic != nil %>
         <img src="<%= @user.prof_pic %>" alt="" class="profile-avatar">
       <% else %>
         <img src="app/assets/images/prof_pic.jpeg" alt="" class="profile-avatar">
       <% end %>
-      <div class="placehldr-elmn">
-        <%= link_to "/user/#{@user.id}/friendship_index", class: 'white-text' do %>
-
-          <h2><%= Friendship.where(requester_id: @user.id).count %></h2>
-          <p>following</p>
-        <% end %>
-        <div>
-          <h2><%= @user.posts.count + @user.reposts.count %> </h2>
-          <p><strong>posts</strong></p>
-        </div>
-      </div>
-      <div class="placehldr-elmn">
-        <div>
+      <div class="profile-stats">
+        <div class="following-posts">
           <%= link_to "/user/#{@user.id}/friendship_index", class: 'white-text' do %>
-            <h2><%= Friendship.where(receiver_id: @user.id).count %></h2>
-            <p class="mb-45">followers</p>
+
+            <h2><%= Friendship.where(requester_id: @user.id).count %></h2>
+            <p>following</p>
           <% end %>
+          <div>
+            <h2><%= @user.posts.count + @user.reposts.count %> </h2>
+            <p><strong>posts</strong></p>
+          </div>
         </div>
+        <div class="followers">
+          <div>
+            <%= link_to "/user/#{@user.id}/friendship_index", class: 'white-text' do %>
+              <h2><%= Friendship.where(receiver_id: @user.id).count %></h2>
+              <p class="mb-45">followers</p>
+            <% end %>
+          </div>
 
-        <% if !Friendship.where(receiver_id: @current_user.id, requester_id:@user.id, status:'accepted').empty? || !Friendship.where(requester_id: @current_user.id, receiver_id:@user.id, status:'accepted').empty? %>
-          <%= link_to "remove", friendship_path(@user_friendship), method: :delete, data: { confirm: 'Are you sure?' }, class:'comment-button-follow' %>
-        <% else %>
+          <% if !Friendship.where(receiver_id: @current_user.id, requester_id:@user.id, status:'accepted').empty? || !Friendship.where(requester_id: @current_user.id, receiver_id:@user.id, status:'accepted').empty? %>
+            <%= link_to "remove", friendship_path(@user_friendship), method: :delete, data: { confirm: 'Are you sure?' }, class:'comment-button-follow' %>
+          <% else %>
 
-          <%= link_to "follow", follow_user_path(@user), method: :post, class:'comment-button-follow mb-10' %>
-        <% end %>
+            <%= link_to "follow", follow_user_path(@user), method: :post, class:'comment-button-follow mb-10' %>
+          <% end %>
 
+        </div>
       </div>
     </div>
   </div>

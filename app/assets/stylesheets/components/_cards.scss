@@ -100,11 +100,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 8px;
-    margin-left: 250px;
-    margin-right: 100px;
-
-    padding-left: 50px;
+    position: relative;
+  }
+  .posts-container{
+    position: absolute;
+    right: 0px;
+    width: 75%;
+    padding-right: 70px;
+    padding-left: 10px;
+  }
+  .username-text:hover{
+    color:yellow;
+  }
   }
 
   .show-container{
@@ -114,20 +121,9 @@
     margin-top: 50px;
   }
 
-  .search-container-desktop{
-    margin-left: 250px;
-    margin-right: 100px;
-    padding-left: 50px;
-    margin-top: 0px;
+  .desktop-post-card{
+    border-radius: 0px;
   }
-
-  .create-container-desktop{
-    margin-left: 250px;
-    margin-right: 100px;
-    padding-left: 50px;
-    margin-top: 0px;
-  }
-}
 
 
 @media (max-width: 959px) {
@@ -136,28 +132,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 8px;
+    // margin-top: 8px;
+  }
+  .posts-container{
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
 }
 
-@media (min-width: 960px) {
-  .desktop-post-card{
-    border-radius: 0px;
-
-  }
-}
 .post-card, .repost-card{
   color: white;
   margin: 8px;
-  /* border-radius: 10px; */
-  padding: 15px 0;
   width: 100%;
   margin: auto;
   display: flex;
   margin-top: 10px;
   border-radius: 16px;
-  padding: 18px;
+  padding: 15px;
   margin-bottom: 12px;
   background-color: black;
 
@@ -206,6 +199,7 @@ width: 30px;
   color: white;
   font-weight: bold;
   margin-top: 14px;
+  font-size: 18px;
 }
 .username-horizontal{
   color: white;
@@ -222,6 +216,11 @@ width: 30px;
 }
 .content-text{
   font-size: 16px;
+  font-weight: 400;
+}
+
+.time-text{
+  font-size: 10px;
   font-weight: 400;
 }
 
@@ -278,7 +277,7 @@ width: 30px;
 .time-created{
   text-align: left;
   p{
-    font-size:16px;
+    font-size:14px;
     color:rgb(150, 150, 150)
   }
 }
@@ -366,6 +365,10 @@ width: 30px;
   .mb-10{
     margin-bottom: 10px;
   }
+  .feed-text{
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
 }
 @media (min-width: 960px) {
   .margin-t-15{
@@ -374,7 +377,6 @@ width: 30px;
     margin-bottom: 15px;
   }
   .feed-text{
-    margin-top:10px;
-    margin-right: 650px;
+    margin: 25px 0px;
   }
 }

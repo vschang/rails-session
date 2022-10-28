@@ -1,8 +1,61 @@
 <div class="posts-wrapper">
-  <h1>All chatrooms</h1>
-  <% @chatrooms.each do |chatroom| %>
-    <%= link_to chatroom_path(chatroom) do %>
-      <h3 class="chatroom-link">#<%= chatroom.name %></h3>
+  <div class="posts-container search-header">
+    <h2 class="mb-10">chats.</h2>
+    <div class="searchbar pb-4">
+      <%= form_tag chatrooms_path, method: :get do %>
+      <div class="search-form">
+        <%= text_field_tag :second_user,
+          params[:second_user],
+          class: "form-control search-bar",
+          placeholder: "find a user to start a chat."
+        %>
+        <%# <%= submit_tag "go.", class: 'comment-button margin-right' %>
+      </div>
+      <% end %>
+    </div>
+
+    <% if params[:second_user] == "" %>
+    <% elsif params[:second_user] && @users.empty? %>
+      <p class="text-center yellow-text font-weight-bold pt-5 pb-5">no results for <%=params[:second_user]%> </p>
+    <% else %>
+    <div class="search-res pb-1 pt-1">
+      <ul class="ul-style">
+        <% @users.each do |user| %>
+          <div class='d-flex pb-2 pt-2'>
+            <img src="<%= user.prof_pic %>" alt="" class="index-avatar" style="margin-right:8px;">
+            <li class="user-res li-style">
+            <%= form_with model: @chatroom do |form| %>
+              <%= form.hidden_field :second_user, value: user.id %>
+              <%= form.submit "@#{user.username}", class: "username-chat" %>
+            <% end %>
+            </li>
+          </div>
+        <% end %>
+      <% end %>
+      </ul>
+    <% unless @chatrooms.empty?%>
+      <div class="existing-chats">
+        <h3>your chats</h3>
+        <ul class="ul-style">
+        <% @chatrooms.each do |chatroom| %>
+        <div class="one-chat">
+          <div class="pic-username">
+            <img src="<%= chatroom.interlocutor_of(current_user).prof_pic %>" alt="" class="index-avatar" style="margin-right:15px;">
+            <%= link_to chatroom_path(chatroom) do %>
+              <li class="white-text"><%= chatroom.interlocutor_of(current_user).username %></li>
+            <% end %>
+          </div>
+          <div data-controller="delete-chat">
+            <%= form_with url: "/chatrooms/#{chatroom.id}", class:"x-btn", method: :delete do |f| %>
+              <i data-action="click->delete-chat#delete" class="fa-regular fa-trash-can" style="text-decoration: none; color:white;"></i>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
-  <% end %>
+    </div>
+
+  </div>
 </div>

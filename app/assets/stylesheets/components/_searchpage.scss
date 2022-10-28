@@ -4,18 +4,7 @@
   margin-left: 25px;
 
 }
-.search-bar{
-  width: 90%;
-  margin: auto;
-}
-.search-header{
-  h2{
-    width: 90%;
-    margin: auto;
-    margin-top: 40px;
-    margin-bottom: 10px;
-  }
-}
+
 .no-padding{
   padding:0px;
 }
@@ -33,9 +22,25 @@
   margin-left: 0px !important;
   padding-left: 0px !important;
 }
-.search-container{
-  padding: 24px;
-  h2{
-    padding-top:16px;
+@media (max-width: 959px) {
+
+  .search-header{
+    h2{
+      width: 90%;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+  }
+  .search-bar{
+    margin: auto;
+  }
+}
+
+@media (min-width: 959px) {
+
+  .search-header{
+    margin-top:25px;
+  }
+  .search-bar{
   }
 }

@@ -32,6 +32,38 @@
 .chatroom-link{
   color: white;
 }
-.chatroom-link:hover{
+.chatroom-link:hover, .username-chat:hover, .yellow-text{
   color: yellow;
+}
+
+.existing-chats{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.one-chat{
+  display: flex;
+  justify-content: space-between;
+}
+.pic-username{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.search-form{
+  display:flex;
+  justify-content: space-between;
+}
+
+.username-chat{
+  background: none;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.user-result{
+  
 }
