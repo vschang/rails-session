@@ -89,7 +89,7 @@
                     <% end %>
                   <%end %>
 
-                <p class='content-text'><%= post_comment.created_at.strftime("%l:%M %p - %B %d, %Y")%></p>
+                <p class='time-text'><%= post_comment.created_at.strftime("%l:%M %p - %B %d, %Y")%></p>
               </div>
             <p><%= post_comment.content %></p>
           </div>
@@ -98,7 +98,13 @@
       </div>
         <div class='comment-box'>
           <%= simple_form_for([ @post, @post_comment ]) do |f| %>
-            <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %>
+            <%# <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %> %>
+            <%= f.input :content,
+                        as: :search,
+                        label: false,
+                        placeholder: "find a friend to start a chat.",
+                        wrapper_html: {class: "flex-grow-1"}
+                    %>
             <%= f.submit 'post.', class:'comment-button' %>
           <% end %>
         </div>

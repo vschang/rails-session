@@ -1,6 +1,3 @@
-.white-text{
-  color:white;
-}
 
 .comment-box{
   textarea{
@@ -9,4 +6,10 @@
     color: white;
     border-radius: 16px;
   }
+}
+
+.form-control{
+  border: none;
+  border-radius: 5px;
+  color: black;
 }

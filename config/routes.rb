@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :post_likes, only: [:destory]
   resources :repost_likes, only: [:destory]
 
-  resources :chatrooms, only: [:show, :index] do
+  resources :chatrooms do
     resources :messages, only: [:create]
   end
 

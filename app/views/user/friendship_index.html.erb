@@ -1,4 +1,4 @@
-<div class="overall friends-container-desktop">
+<div class="overall posts-container search-header">
   <h2 class='margin-t-15 '>friends.</h2>
 
   <div class="friends-info-container">
@@ -12,7 +12,7 @@
       <div class="tab-pane fade show active friends-tabs" id="nav-following" role="tabpanel" aria-labelledby="nav-following-tab">
         <div class='full-width'>
           <% @following.each do |follower| %>
-            <div class='d-flex justify-content-start'>
+            <div class='d-flex justify-content-start single-friend'>
               <%= link_to user_path(follower.receiver_id) do %>
               <img src=<%= follower.receiver.prof_pic %> alt="" class="index-avatar">
               <% end %>
@@ -26,7 +26,7 @@
       <div class="tab-pane fade friends-tabs" id="nav-followers" role="tabpanel" aria-labelledby="nav-followers-tab">
         <div class='full-width'>
           <% @followers.each do |follower| %>
-            <div class='d-flex justify-content-start'>
+            <div class='d-flex justify-content-start single-friend'>
               <% if follower.requester != nil %>
                 <%= link_to user_path(follower.requester_id) do %>
                   <img src=<%= follower.requester.prof_pic %> alt="" class="index-avatar">

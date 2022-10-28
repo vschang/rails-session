@@ -14,7 +14,7 @@ class PagesController < ApplicationController
       "
       @users = User.where(sql_query, query: "%#{params[:query]}%")
     else
-      @users = User.all
+      @users = []
     end
   end
 

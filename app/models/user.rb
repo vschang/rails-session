@@ -8,10 +8,15 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :post_likes, dependent: :destroy
   has_many :repost_likes, dependent: :destroy
-  
   has_many :messages, dependent: :destroy
   # validates :first_name, :last_name, :username, presence: true
   # validates :username, uniqueness: true
+  has_many :chatrooms, -> (user) {
+              unscope(where: :user_id)
+              .where("first_user_id = :user_id OR second_user_id = :user_id", user_id: user.id)
+            },
+            class_name: 'Chatroom',
+            dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
