@@ -1,4 +1,4 @@
-<div class='show-container'>
+<div class='posts-container'>
   <div class='post-card'>
     <div class="profpic-username">
       <% if current_user.id == @post.user_id %>
@@ -64,16 +64,9 @@
     </div>
   </div>
     <div class="comment-section">
-      <div class='flex-end'>
-        <% if current_user.id == @post.user_id %>
-          <%= link_to post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="fa-solid fa-trash" style="text-decoration: none; color:red;"></i>
-          <% end %>
-        <% end %>
-      </div>
       <div class='comments-card'>
         <% if @post.post_comments.blank? %>
-          <p class=>leave a comment.</p>
+          <p>leave a comment.</p>
         <% else %>
           <% @post.post_comments.each do |post_comment| %>
             <div class='one-comment'>
@@ -98,14 +91,15 @@
       </div>
         <div class='comment-box'>
           <%= simple_form_for([ @post, @post_comment ]) do |f| %>
-            <%# <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %> %>
-            <%= f.input :content,
-                        as: :search,
-                        label: false,
-                        placeholder: "find a friend to start a chat.",
-                        wrapper_html: {class: "flex-grow-1"}
-                    %>
+            <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %>
             <%= f.submit 'post.', class:'comment-button' %>
+          <% end %>
+        </div>
+        <div class='flex-end'>
+          <% if current_user.id == @post.user_id %>
+            <%= link_to post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <p style="text-decoration: none; color:red; padding-top:10px">delete</p>
+            <% end %>
           <% end %>
         </div>
       </div>
