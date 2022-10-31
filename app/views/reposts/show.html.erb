@@ -1,4 +1,4 @@
-<div class='show-container'>
+<div class='posts-container'>
   <div class='post-card'>
     <div class="profpic-username">
       <%= link_to user_path(@repost.post.user_id) do %>
@@ -49,16 +49,9 @@
     </div>
   </div>
     <div class="comment-section">
-      <div class='flex-end'>
-        <% if current_user.id == @repost.user_id %>
-          <%= link_to repost_path(@repost), method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="fa-solid fa-trash" style="text-decoration: none; color:red;"></i>
-          <% end %>
-        <% end %>
-      </div>
       <div class='comments-card'>
         <% if @repost.repost_comments.blank? %>
-          <p class=>Leave a comment</p>
+          <p class>leave a comment</p>
         <% else %>
           <% @repost.repost_comments.each do |repost_comment| %>
             <div class='one-comment'>
@@ -85,6 +78,13 @@
           <%= simple_form_for([ @repost, @repost_comment ]) do |f| %>
             <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %>
             <%= f.submit 'post.', class:'comment-button' %>
+          <% end %>
+        </div>
+        <div class='flex-end'>
+          <% if current_user.id == @repost.user_id %>
+            <%= link_to repost_path(@repost), method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <p style="text-decoration: none; color:red; padding-top:10px">delete</p>
+            <% end %>
           <% end %>
         </div>
       </div>
