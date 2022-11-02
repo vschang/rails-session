@@ -1,11 +1,12 @@
 <% sender = message.user == current_user %>
 <div id="message-div" class="message <%= 'sender' if sender %>">
   <div class="message-content">
+    <img src="<%= message.user.prof_pic %>"  class="comment-avatar">
     <p><%= message.content %></p>
   </div>
   <div class="message-infos">
     <small>
-      <p><%= sender ? 'you' : message.user.username %> at <%= message.created_at.strftime("%H:%M") %></p>
+      <p><%= message.created_at.strftime("%H:%M") %></p>
     </small>
   </div>
 </div>

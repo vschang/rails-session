@@ -30,16 +30,6 @@ export default class extends Controller {
     event.target.reset()
   }
 
-  // #insertMessageAndScrollDown(data) {
-  //   console.log(data)
-  //   const sender = this.userIdValue = data.user_id
-  //   const msgDiv = document.getElementById('message-div')
-  //   console.log(msgDiv)
-  //   if (!sender) msgDiv.classList.remove('sender')
-  //   this.messagesTarget.insertAdjacentHTML("beforeend", data)
-  //   this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-  // }
-
   #processMessage(data) {
     console.log('processing!')
     const sender = this.userIdValue == data.user_id
