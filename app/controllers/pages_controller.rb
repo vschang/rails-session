@@ -34,7 +34,9 @@ class PagesController < ApplicationController
     time_now = Time.now
     @profile_posts.each do |post|
       time_diff = time_now - post.created_at
-      if time_diff < 3600.0
+      if time_diff < 60.0
+        @post_time << "now"
+      elsif time_diff < 3600.0
         @post_time << "#{(time_diff/1.minute).to_i.round}m"
       elsif time_diff > 3600.0 && time_diff < 86400.0
         @post_time << "#{(time_diff/1.hour).to_i.round}h"

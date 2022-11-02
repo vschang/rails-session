@@ -17,7 +17,7 @@
               <img src=<%= follower.receiver.prof_pic %> alt="" class="index-avatar">
               <% end %>
               <%= link_to user_path(follower.receiver_id) do %>
-              <strong><p class='padding-left' style="color: white;">@<%= follower.receiver.username %></p></strong>
+              <strong><p class='padding-left' style="color: white;"><%= follower.receiver.username %></p></strong>
               <% end %>
             </div>
           <% end %>
@@ -36,7 +36,7 @@
               <% end %>
               <% if follower.requester != nil %>
                 <%= link_to user_path(follower.requester_id) do %>
-                  <strong><p class='padding-left' style="color: white;">@<%= follower.requester.username %></p></strong>
+                  <strong><p class='padding-left' style="color: white;"><%= follower.requester.username %></p></strong>
                 <% end %>
               <% end %>
             </div>

@@ -1,7 +1,7 @@
 <div class='posts-container'>
   <div class="search-header">
     <h2 class="mb-2">search.</h2>
-      <div class="searchbar pb-4">
+      <div class="searchbar pb-2">
         <%= form_tag search_path, method: :get do %>
           <%= text_field_tag :query,
             params[:query],
@@ -21,7 +21,7 @@
             <% @users.each do |user| %>
               <div class='d-flex pb-3'>
               <img src="<%= user.prof_pic %>" alt="" class="index-avatar" style="margin-right:8px;">
-              <li class="user-res li-style">@<%= link_to user.username, user_path(user), class: 'white-text' %></li>
+              <li class="user-res li-style"><%= link_to user.username, user_path(user), class: 'white-text' %></li>
               </div>
             <% end %>
           </ul>

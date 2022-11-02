@@ -17,8 +17,9 @@ class ChatroomsController < ApplicationController
   end
 
   def index
+    #chatrooms should be ordered by the last message that was sent
     @chatrooms = current_user.chatrooms
-    # @chatroom = Chatroom.new
+
     if params[:second_user].present?
       sql_query = " \
         users.first_name ILIKE :second_user \
@@ -30,6 +31,23 @@ class ChatroomsController < ApplicationController
       @users = []
     end
     @chatroom = Chatroom.new
+
+    @message_time = []
+    time_now = Time.now
+    @chatrooms.each do |chatroom|
+      time_diff = time_now - chatroom.messages.last.created_at
+      if time_diff < 60.0
+        @message_time << "now"
+      elsif time_diff < 3600.0
+        @message_time << "#{(time_diff / 1.minute).to_i.round}m"
+      elsif time_diff > 3600.0 && time_diff < 86400.0
+        @message_time << "#{(time_diff / 1.hour).to_i.round}h"
+      elsif time_diff > 86400.0 && time_diff < 604800.0
+        @message_time << "#{(time_diff / 1.day).to_i.round}d"
+      else
+        @message_time << "#{(time_diff / 1.week).to_i.round}w"
+      end
+    end
   end
 
   def show

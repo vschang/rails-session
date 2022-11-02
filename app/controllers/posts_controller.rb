@@ -39,7 +39,9 @@ class PostsController < ApplicationController
     time_now = Time.now
     @feed_posts.each do |post|
       time_diff = time_now - post.created_at
-      if time_diff < 3600.0
+      if time_diff < 60.0
+        @post_time << "now"
+      elsif time_diff < 3600.0
         @post_time << "#{(time_diff / 1.minute).to_i.round}m"
       elsif time_diff > 3600.0 && time_diff < 86400.0
         @post_time << "#{(time_diff / 1.hour).to_i.round}h"
@@ -62,13 +64,10 @@ class PostsController < ApplicationController
     time_now = Time.now
     @post_comments.each do |comment|
       time_diff = time_now - comment.created_at
-      if time_diff < 3600.0
-        # x = (time_diff/1.minute).to_i.round
-        # if x >= 1.5
-        #   @post_comment_time << "#{(time_diff/1.minute).to_i.round} m"
-        # else
+      if time_diff < 60.0
+        @post_comment_time << "now"
+      elsif time_diff < 3600.0
         @post_comment_time << "#{(time_diff / 1.minute).to_i.round}m"
-        # end
       elsif time_diff > 3600.0 && time_diff < 86400.0
         @post_comment_time << "#{(time_diff / 1.hour).to_i.round}h"
       elsif time_diff > 86400.0 && time_diff < 604800.0
@@ -77,7 +76,7 @@ class PostsController < ApplicationController
         @post_comment_time << "#{(time_diff / 1.week).to_i.round}w"
       end
     end
-    
+
   end
 
   def new

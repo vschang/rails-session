@@ -1,6 +1,6 @@
 <div class="posts-wrapper">
-  <div class="posts-container">
-    <h1 class="mb-3">Chat with @<%= @chatroom.interlocutor_of(current_user).username %></h1>
+  <div class="chatroom-container">
+    <h1 class="mb-3">Chat with <%= @chatroom.interlocutor_of(current_user).username %></h1>
     <div class="container chatroom"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
@@ -29,13 +29,11 @@
               wrapper_html: {class: "form-outline flex-grow-1"},
               input_html: { class: 'form-control' }
           %>
-          <%= f.submit "send",
+          <%= f.submit "send.",
               class: "comment-button",
               style: "padding: 5px 5px 0px 10px" %>
       <% end %>
 
     </div>
-    <%= link_to "back", :back, class:"back-btn" %>
-
   </div>
 </div>

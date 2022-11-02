@@ -263,6 +263,17 @@ a {
   width: fit-content;
 }
 
+.post-button{
+  background: yellow;
+  padding: 4px 8px;
+  border-radius: 30px;
+  font-weight: bold;
+  border: 0px;
+  color: black;
+  height: fit-content;
+  width: fit-content;
+}
+
 .post-btn-div{
   display:flex;
   justify-content: flex-end;

@@ -1,7 +1,7 @@
 <div class="posts-wrapper">
   <div class="posts-container search-header">
-    <h2 class="mb-10">chats.</h2>
-    <div class="searchbar pb-4">
+    <h2 class="mb-10">messages.</h2>
+    <div class="searchbar pb-2">
       <%= form_tag chatrooms_path, method: :get do %>
       <div class="search-form">
         <%= text_field_tag :second_user,
@@ -26,36 +26,43 @@
             <li class="user-res li-style">
             <%= form_with model: @chatroom do |form| %>
               <%= form.hidden_field :second_user, value: user.id %>
-              <%= form.submit "@#{user.username}", class: "username-chat" %>
+              <%= form.submit "#{user.username}", class: "username-chat" %>
             <% end %>
             </li>
           </div>
         <% end %>
       <% end %>
       </ul>
-    <% unless @chatrooms.empty?%>
+    </div>
+    <% if @chatrooms.empty?%>
+      <h3>no messages yet.</h3>
+    <% else %>
       <div class="existing-chats">
-        <h3>your chats</h3>
         <ul class="ul-style">
-        <% @chatrooms.each do |chatroom| %>
+        <% @chatrooms.each_with_index do |chatroom, index| %>
         <div class="one-chat">
           <div class="pic-username">
-            <img src="<%= chatroom.interlocutor_of(current_user).prof_pic %>" alt="" class="index-avatar" style="margin-right:15px;">
-            <%= link_to chatroom_path(chatroom) do %>
-              <li class="white-text"><%= chatroom.interlocutor_of(current_user).username %></li>
-            <% end %>
+            <img src="<%= chatroom.interlocutor_of(current_user).prof_pic %>" alt="" class="chat-avatar" style="margin-right:15px;">
+              <div class="username-message">
+                <%= link_to chatroom_path(chatroom) do %>
+                  <li><h3 class="chat-name"><%= chatroom.interlocutor_of(current_user).username %>.</h3></li>
+                <% end %>
+                <p class="white-text comment-p"><%= chatroom.messages.last.content.truncate(80) %></p>
+              </div>
           </div>
-          <div data-controller="delete-chat">
-            <%= form_with url: "/chatrooms/#{chatroom.id}", class:"x-btn", method: :delete do |f| %>
-              <i data-action="click->delete-chat#delete" class="fa-regular fa-trash-can" style="text-decoration: none; color:white;"></i>
-            <% end %>
+          <div class="delete-time-chat">
+            <div data-controller="delete-chat">
+              <%= form_with url: "/chatrooms/#{chatroom.id}", class:"x-btn", data: { confirm: "⛔️ Are you sure you want to delete your messages history with this person? You will NOT be able to undo this action ⛔️" }, method: :delete do |f| %>
+                <i data-action="click->delete-chat#delete" class="fa-solid fa-xmark" style="text-decoration: none; color:white;"></i>
+              <% end %>
+            </div>
+            <p class="time-text"><%= @message_time[index] %></p>
           </div>
         </div>
         <% end %>
         </ul>
       </div>
     <% end %>
-    </div>
 
   </div>
 </div>

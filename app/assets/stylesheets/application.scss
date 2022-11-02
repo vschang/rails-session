@@ -20,11 +20,26 @@ body{
   /* for Internet Explorer, Edge */
   scrollbar-width: none;
   /* for Firefox */
-  overflow-y: scroll;
+  // overflow-y: scroll;
   margin-bottom: 61px;
 }
 
 body::-webkit-scrollbar {
   display: none;
   /* for Chrome, Safari, and Opera */
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color:grey;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  display: none;
 }

@@ -20,7 +20,7 @@
                   <% end %>
 
                   <%= link_to user_path(friendship.requester_id) do %>
-                  <strong><p class='padding-left margin-t-10' style="color: white;">@<%= User.find(friendship.requester_id).username %></p></strong>
+                  <strong><p class='padding-left margin-t-10' style="color: white;"><%= User.find(friendship.requester_id).username %></p></strong>
                   <% end %>
 
                 </div>
@@ -41,7 +41,7 @@
                 <img src=<%= follower.receiver.prof_pic %> alt="" class="index-avatar">
                 <% end %>
                 <%= link_to user_path(follower.receiver_id) do %>
-                <strong><p class='padding-left' style="color: white;">@<%= follower.receiver.username %></p></strong>
+                <strong><p class='padding-left' style="color: white;"><%= follower.receiver.username %></p></strong>
                 <% end %>
               </div>
               <div>
@@ -60,7 +60,7 @@
                   <img src=<%= follower.requester.prof_pic %> alt="" class="index-avatar">
                 <% end %>
                 <%= link_to user_path(follower.requester_id) do %>
-                  <strong><p class='padding-left' style="color: white;">@<%= follower.requester.username %></p></strong>
+                  <strong><p class='padding-left' style="color: white;"><%= follower.requester.username %></p></strong>
                 <% end %>
               </div>
               <div>

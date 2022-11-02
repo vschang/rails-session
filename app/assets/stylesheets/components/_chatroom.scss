@@ -20,7 +20,6 @@
   }
 
   #new_message {
-    border-top: 1px solid $gray-200;
     padding: 1rem;
 
     .form-group {
@@ -45,10 +44,13 @@
 .one-chat{
   display: flex;
   justify-content: space-between;
+  border-bottom: solid 1px white;
+  padding: 15px;
 }
 .pic-username{
   display: flex;
   justify-content: space-between;
+  align-items:center;
   padding: 10px 0px;
 }
 
@@ -64,6 +66,28 @@
   font-weight: bold;
 }
 
-.user-result{
+.chat-name{
+  font-weight: 700;
+  color: white;
+}
+.chat-name:hover{
+  color: yellow;
+}
 
+.username-message{
+  display:flex;
+  flex-direction: column;
+}
+
+.delete-time-chat{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.time-text{
+  color:grey;
+  font-size: 14px;
+  margin-bottom: 0px
 }
