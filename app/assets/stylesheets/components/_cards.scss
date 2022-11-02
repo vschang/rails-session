@@ -102,15 +102,22 @@
     align-items: center;
     position: relative;
   }
-  .posts-container{
+  .posts-container, .width-100, .posts-show-container, .profile-container{
     position: absolute;
     right: 0px;
     width: 75%;
-    padding-right: 70px;
-    padding-left: 10px;
+    padding-right: 12%;
+    padding-left: 7%;
   }
+
   .username-text:hover{
     color:yellow;
+  }
+  .comment-section{
+    padding: 0px 18px 28px 18px
+  }
+  .mt-20{
+    margin-top:20px;
   }
   }
 
@@ -120,7 +127,6 @@
 
 
 @media (max-width: 959px) {
-
   .posts-wrapper{
     display: flex;
     flex-direction: column;
@@ -132,7 +138,29 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+  .profile-container{
+    width: 100%;
+  }
+  .posts-show-container{
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    height: 90vh;
+  }
+  .width-100{
+    width: 100%
+  }
+  .comment-section{
+    padding: 0px 18px 40px 18px
+  }
+  .mt-20{
+    margin-top:0px;
+  }
+}
 
+.comment-p{
+  font-size: 14px;
 }
 
 .post-card, .repost-card{
@@ -144,7 +172,6 @@
   margin-top: 10px;
   border-radius: 16px;
   padding: 15px;
-  margin-bottom: 12px;
   background-color: black;
 
 
@@ -171,9 +198,9 @@
   }
 }
 .profpic-username{
-display: flex;
-flex-direction: column;
-width: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 30px;
   img{
     border-radius: 50%;
     width: 30px;
@@ -195,6 +222,7 @@ width: 30px;
   font-size: 18px;
 }
 .username-horizontal{
+  font-size:14px;
   color: white;
   font-weight: bold;
 }
@@ -210,6 +238,11 @@ width: 30px;
 .content-text{
   font-size: 16px;
   font-weight: 400;
+}
+.date-created{
+  font-size: 14px;
+  color: grey;
+  padding-left: 20px;
 }
 
 .time-text{
@@ -262,9 +295,6 @@ width: 30px;
     }
   }
 }
-.comment-section{
-  padding: 0px 18px 28px 18px
-}
 
 .time-created{
   text-align: left;
@@ -316,8 +346,8 @@ width: 30px;
 }
 
 .one-comment{
-  border-top: 0.5px white solid;
-  margin-top: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .repost-username{
@@ -330,7 +360,6 @@ width: 30px;
 .flex-end{
   display:flex;
   justify-content: flex-end;
-  margin-right: 10px;
 }
 
 .center{
@@ -361,6 +390,9 @@ width: 30px;
     margin-top: 30px;
     margin-bottom: 10px;
   }
+  .comments-card{
+    margin-bottom: 10px;
+  }
 }
 @media (min-width: 960px) {
   .margin-t-15{
@@ -370,5 +402,8 @@ width: 30px;
   }
   .feed-text{
     margin: 25px 0px;
+  }
+  .comments-card{
+    margin-bottom: 10px;
   }
 }

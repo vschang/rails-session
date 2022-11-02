@@ -1,13 +1,13 @@
-<div class='posts-container'>
+<div class='posts-show-container mt-20'>
   <div class='post-card'>
     <div class="profpic-username">
       <% if current_user.id == @post.user_id %>
         <%= link_to profile_path do %>
-          <img src="<%=@post.user.prof_pic%>" alt=""50>
+          <img src="<%=@post.user.prof_pic%>" alt="profile picture">
         <% end %>
       <% else %>
         <%= link_to user_path(@post.user_id) do %>
-          <img src="<%=@post.user.prof_pic%>" alt=""50>
+          <img src="<%=@post.user.prof_pic%>" alt="profile picture" >
         <% end %>
       <% end %>
 
@@ -57,48 +57,53 @@
         <div>
           <div>
             <i class="fa-solid fa-message mx-2"></i>
-            <p><%=@post.post_comments.count%></p>
+            <p><%=@post_comments.count%></p>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div>
+    <p class="date-created"><%= @post.created_at.strftime("%b %d") %>
+  </div>
     <div class="comment-section">
-      <div class='comments-card'>
-        <% if @post.post_comments.blank? %>
-          <p>leave a comment.</p>
-        <% else %>
-          <% @post.post_comments.each do |post_comment| %>
-            <div class='one-comment'>
-              <div class='comments-username-time'>
-
-                  <%if post_comment.user_id == current_user.id %>
-                    <%= link_to profile_path do %>
-                      <p class='username-horizontal margin-r-10'>@<%=User.find(post_comment.user_id).username%> </p>
-                    <% end %>
-                    <% else %>
-                      <%= link_to user_path(post_comment.user_id) do %>
-                      <p class='username-horizontal'>@<%=User.find(post_comment.user_id).username %></p>
-                    <% end %>
-                  <%end %>
-
-                <p class='time-text'><%= post_comment.created_at.strftime("%l:%M %p - %B %d, %Y")%></p>
-              </div>
-            <p><%= post_comment.content %></p>
+      <div class='comment-box'>
+        <%= simple_form_for([ @post, @post_comment ]) do |f| %>
+          <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %>
+          <div class="post-btn-div">
+            <%= f.submit 'post.', class:'comment-button' %>
           </div>
-          <% end %>
         <% end %>
       </div>
-        <div class='comment-box'>
-          <%= simple_form_for([ @post, @post_comment ]) do |f| %>
-            <%= f.input :content, placeholder:'your comment...', label: false, as: :text, class: 'comment-box' %>
-            <%= f.submit 'post.', class:'comment-button' %>
-          <% end %>
+      <div class='comments-card'>
+        <% @post_comments.each_with_index do |post_comment, index| %>
+          <div class='one-comment'>
+            <div class='comments-username-time'>
+                <%if post_comment.user_id == current_user.id %>
+                  <%= link_to profile_path do %>
+                    <div class="d-flex">
+                      <img src="<%=@post.user.prof_pic%>" class="comment-avatar">
+                      <p class='username-horizontal' style="margin-bottom: 0px;"><%=User.find(post_comment.user_id).username%> </p>
+                    </div>
+                  <% end %>
+                  <% else %>
+                    <%= link_to user_path(post_comment.user_id) do %>
+                    <div class="d-flex">
+                      <img src="<%=@post.user.prof_pic%>" class="comment-avatar">
+                      <p class='username-horizontal'><%=User.find(post_comment.user_id).username %></p>
+                    </div>
+                  <% end %>
+                <%end %>
+              <p class='time-text'><%=@post_comment_time[index] %></p>
+            </div>
+          <p class="comment-p"><%= post_comment.content %></p>
         </div>
+        <% end %>
+      </div>
         <div class='flex-end'>
           <% if current_user.id == @post.user_id %>
             <%= link_to post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <p style="text-decoration: none; color:red; padding-top:10px">delete</p>
+              <p style="text-decoration: none; color:red;">delete.</p>
             <% end %>
           <% end %>
         </div>

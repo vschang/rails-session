@@ -39,6 +39,22 @@ class RepostsController < ApplicationController
     @repost = Repost.find(params[:id])
     @repost_comment = RepostComment.new
     @repost_like = RepostLike.new
+    @repost_comments = RepostComment.where(repost: @repost).sort_by { |comment| comment.created_at }.reverse!
+
+    @repost_comment_time = []
+    time_now = Time.now
+    @repost_comments.each do |comment|
+      time_diff = time_now - comment.created_at
+      if time_diff < 3600.0
+        @repost_comment_time << "#{(time_diff / 1.minute).to_i.round}m"
+      elsif time_diff > 3600.0 && time_diff < 86400.0
+        @repost_comment_time << "#{(time_diff / 1.hour).to_i.round}h"
+      elsif time_diff > 86400.0 && time_diff < 604800.0
+        @repost_comment_time << "#{(time_diff / 1.day).to_i.round}d"
+      else
+        @repost_comment_time << "#{(time_diff / 1.week).to_i.round}w"
+      end
+    end
   end
 
   private
