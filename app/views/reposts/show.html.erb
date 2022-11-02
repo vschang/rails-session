@@ -67,14 +67,14 @@
               <%if repost_comment.user_id == current_user.id %>
               <%= link_to profile_path do %>
                 <div class="d-flex">
-                  <img src="<%=@repost.user.prof_pic%>" class="comment-avatar">
+                  <img src="<%=User.find(repost_comment.user_id).prof_pic%>" class="comment-avatar">
                   <p class='username-horizontal'><%=User.find(repost_comment.user_id).username %></p>
                 </div>
                 <% end %>
               <% else %>
                 <%= link_to user_path(repost_comment.user_id) do %>
                   <div class="d-flex">
-                    <img src="<%=@repost.user.prof_pic%>" class="comment-avatar">
+                    <img src="<%=User.find(repost_comment.user_id).prof_pic%>" class="comment-avatar">
                     <p class='username-horizontal'><%=User.find(repost_comment.user_id).username %></p>
                   </div>
                 <% end %>
