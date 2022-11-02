@@ -134,7 +134,7 @@
 }
 
 #spotify_signin {
-  padding: 10px 39px;
+  padding: 10px 22px;
   border-radius: 30px;
   background-color: #1CCC5B;
   text-align: center;
@@ -254,17 +254,20 @@ a {
 }
 
 .comment-button{
-  padding: 5px 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: yellow;
+  background: black;
   border-radius: 30px;
   font-weight: bold;
   border: 0px;
-  color: black;
+  color: yellow;
   height: fit-content;
   width: fit-content;
+}
+
+.post-btn-div{
+  display:flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 

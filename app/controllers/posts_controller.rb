@@ -39,30 +39,14 @@ class PostsController < ApplicationController
     time_now = Time.now
     @feed_posts.each do |post|
       time_diff = time_now - post.created_at
-      puts time_diff
       if time_diff < 3600.0
-        puts "less than 3600.0"
-        x = (time_diff/1.minute).to_i.round
-        if x >= 1.5
-          @post_time << "#{(time_diff/1.minute).to_i.round} minutes"
-          puts "pushed to post time"
-        else
-          @post_time << "#{(time_diff/1.minute).to_i.round} minute"
-        end
+        @post_time << "#{(time_diff / 1.minute).to_i.round}m"
       elsif time_diff > 3600.0 && time_diff < 86400.0
-        x = (time_diff/1.hour).to_i.round
-        if x >= 1.5
-          @post_time << "#{(time_diff/1.hour).to_i.round} hours"
-        else
-          @post_time << "#{(time_diff/1.hour).to_i.round} hour"
-        end
+        @post_time << "#{(time_diff / 1.hour).to_i.round}h"
+      elsif time_diff > 86400.0 && time_diff < 604800.0
+        @post_time << "#{(time_diff / 1.day).to_i.round}d"
       else
-        x = (time_diff/1.day).to_i.round
-        if x >= 1.5
-          @post_time << "#{(time_diff/1.day).to_i.round} days"
-        else
-          @post_time << "#{(time_diff/1.day).to_i.round} day"
-        end
+        @post_time << "#{(time_diff / 1.week).to_i.round}w"
       end
     end
   end
@@ -72,6 +56,28 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_like = PostLike.new
+    @post_comments = PostComment.where(post: @post).sort_by { |comment| comment.created_at }.reverse!
+
+    @post_comment_time = []
+    time_now = Time.now
+    @post_comments.each do |comment|
+      time_diff = time_now - comment.created_at
+      if time_diff < 3600.0
+        # x = (time_diff/1.minute).to_i.round
+        # if x >= 1.5
+        #   @post_comment_time << "#{(time_diff/1.minute).to_i.round} m"
+        # else
+        @post_comment_time << "#{(time_diff / 1.minute).to_i.round}m"
+        # end
+      elsif time_diff > 3600.0 && time_diff < 86400.0
+        @post_comment_time << "#{(time_diff / 1.hour).to_i.round}h"
+      elsif time_diff > 86400.0 && time_diff < 604800.0
+        @post_comment_time << "#{(time_diff / 1.day).to_i.round}d"
+      else
+        @post_comment_time << "#{(time_diff / 1.week).to_i.round}w"
+      end
+    end
+    
   end
 
   def new

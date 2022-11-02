@@ -34,30 +34,14 @@ class PagesController < ApplicationController
     time_now = Time.now
     @profile_posts.each do |post|
       time_diff = time_now - post.created_at
-      puts time_diff
       if time_diff < 3600.0
-        puts "less than 3600.0"
-        x = (time_diff/1.minute).to_i.round
-        if x >= 1.5
-          @post_time << "#{(time_diff/1.minute).to_i.round} minutes"
-          puts "pushed to post time"
-        else
-          @post_time << "#{(time_diff/1.minute).to_i.round} minute"
-        end
+        @post_time << "#{(time_diff/1.minute).to_i.round}m"
       elsif time_diff > 3600.0 && time_diff < 86400.0
-        x = (time_diff/1.hour).to_i.round
-        if x >= 1.5
-          @post_time << "#{(time_diff/1.hour).to_i.round} hours"
-        else
-          @post_time << "#{(time_diff/1.hour).to_i.round} hour"
-        end
+        @post_time << "#{(time_diff/1.hour).to_i.round}h"
+      elsif time_diff > 86400.0 && time_diff < 604800.0
+        @post_time << "#{(time_diff / 1.day).to_i.round}d"
       else
-        x = (time_diff/1.day).to_i.round
-        if x >= 1.5
-          @post_time << "#{(time_diff/1.day).to_i.round} days"
-        else
-          @post_time << "#{(time_diff/1.day).to_i.round} day"
-        end
+        @post_time << "#{(time_diff / 1.week).to_i.round}w"
       end
     end
   end

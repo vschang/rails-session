@@ -9,12 +9,6 @@
     padding: 0;
     color: white;
   }
-  .profile-container{
-    margin-left: 250px;
-    margin-right: 100px;
-    padding-left: 50px;
-    margin-top: 30px;
-  }
 
   .profile-header{
     margin-top: -10px;
@@ -148,17 +142,14 @@
     margin-bottom: -1px;
     background: none;
   }
-///////////
+
   .profile-page {
     max-height: 93vh;
     display: flex;
     flex-direction: column;
     position: relative;
     margin-top: 20px;
-    // margin-left: 250px;
-    // margin-right: 100px;
-    // padding-left: 50px;
-    // margin-top: 30px;
+
   }
 
   .white-text{
@@ -194,7 +185,9 @@
   .friends-info-container{
     margin-top: 20px;
   }
-
+  .overall {
+    height: 64vh;
+  }
 }
 
 //mobile
@@ -227,6 +220,9 @@
     h2 {
       margin-bottom: -2px;
     }
+    .overall {
+      width: 100%;
+    }
   }
 
   .followers {
@@ -240,10 +236,6 @@
     }
   }
 
-  .overall {
-    width: 100%;
-    height: 64vh;
-  }
   .user-header{
     display: flex;
     flex-direction: column;
@@ -298,7 +290,7 @@
 
     display: flex;
     flex-direction: column;
-    padding: 20px 20px 50px 20px;
+    padding: 20px 20px 80px 20px;
     align-items: center;
     background: linear-gradient(360deg, #fd1d1d, #802db8, #1e55cd);
 
