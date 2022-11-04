@@ -1,27 +1,31 @@
-<div class="posts-wrapper">
-  <div class="posts-container search-header">
-    <h2 class="mb-10">messages.</h2>
-    <div class="searchbar pb-2">
-      <%= form_tag chatrooms_path, method: :get do %>
-      <div class="search-form">
-        <%= text_field_tag :second_user,
-          params[:second_user],
-          class: "form-control search-bar",
-          placeholder: "find a user to start a chat."
-        %>
-        <%# <%= submit_tag "go.", class: 'comment-button margin-right' %>
-      </div>
-      <% end %>
+<%# <div class="posts-wrapper"> %>
+<div class="chatroom-index-show">
+  <div class="chatroom-sidebar">
+    <div class="message-sticky">
+      <h2 class="messages-text">messages.</h2>
     </div>
+    <div class="searchbar-wrapper">
+      <div class="searchbar pb-2">
+        <%= form_tag chatrooms_path, method: :get do %>
+        <div class="search-form">
+          <%= text_field_tag :second_user,
+            params[:second_user],
+            class: "form-control search-bar",
+            placeholder: "send a message to..."
+          %>
+        </div>
+        <% end %>
+      </div>
+  </div>
 
+    <div class="search-res pb-1 pt-1">
     <% if params[:second_user] == "" %>
     <% elsif params[:second_user] && @users.empty? %>
-      <p class="text-center yellow-text font-weight-bold pt-5 pb-5">no results for <%=params[:second_user]%> </p>
+      <p class="text-center yellow-text font-weight-bold pt-3 pb-3">no results for <%=params[:second_user]%> </p>
     <% else %>
-    <div class="search-res pb-1 pt-1">
       <ul class="ul-style">
         <% @users.each do |user| %>
-          <div class='d-flex pb-2 pt-2'>
+          <div class='message-user-res'>
             <img src="<%= user.prof_pic %>" alt="" class="index-avatar" style="margin-right:8px;">
             <li class="user-res li-style">
             <%= form_with model: @chatroom do |form| %>
@@ -34,12 +38,13 @@
       <% end %>
       </ul>
     </div>
+
     <% if @chatrooms.empty?%>
       <h3>no messages yet.</h3>
     <% else %>
       <div class="existing-chats">
         <ul class="ul-style">
-        <% @chatrooms.each_with_index do |chatroom, index| %>
+        <% @chatrooms_in_order.each_with_index do |chatroom, index| %>
         <div class="one-chat">
           <div class="pic-username">
             <img src="<%= chatroom.interlocutor_of(current_user).prof_pic %>" alt="" class="chat-avatar" style="margin-right:15px;">
@@ -47,16 +52,13 @@
                 <%= link_to chatroom_path(chatroom) do %>
                   <li><h3 class="chat-name"><%= chatroom.interlocutor_of(current_user).username %>.</h3></li>
                 <% end %>
-                <p class="white-text comment-p"><%= chatroom.messages.last.content.truncate(80) %></p>
+                <% unless chatroom.messages.empty? %>
+                  <p class="white-text comment-p"><%= chatroom.messages.last.content.truncate(50) %></p>
+                <% end %>
               </div>
           </div>
           <div class="delete-time-chat">
-            <div data-controller="delete-chat">
-              <%= form_with url: "/chatrooms/#{chatroom.id}", class:"x-btn", data: { confirm: "⛔️ Are you sure you want to delete your messages history with this person? You will NOT be able to undo this action ⛔️" }, method: :delete do |f| %>
-                <i data-action="click->delete-chat#delete" class="fa-solid fa-xmark" style="text-decoration: none; color:white;"></i>
-              <% end %>
-            </div>
-            <p class="time-text"><%= @message_time[index] %></p>
+            <p class="time-text"><%= @message_time.reverse[index] %></p>
           </div>
         </div>
         <% end %>
@@ -65,4 +67,11 @@
     <% end %>
 
   </div>
+  <div class="chat-right-index">
+    <h3>
+      your messages.
+      <i class="fa-solid fa-paper-plane"></i>
+    </h3>
+  </div>
 </div>
+<%# </div> %>

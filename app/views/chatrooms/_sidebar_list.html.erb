@@ -1,0 +1,32 @@
+<div class="posts-wrapper">
+  <div class="message-sticky">
+    <h2 class="messages-text">messages.</h2>
+  </div>
+  <% if @chatrooms.empty?%>
+    <h3>no messages yet.</h3>
+  <% else %>
+    <div class="existing-chats">
+      <ul class="ul-style">
+      <% @chatrooms_in_order.each_with_index do |chatroom, index| %>
+      <div class="one-chat">
+        <div class="pic-username">
+          <img src="<%= chatroom.interlocutor_of(current_user).prof_pic %>" alt="" class="chat-avatar" style="margin-right:15px;">
+            <div class="username-message">
+              <%= link_to chatroom_path(chatroom) do %>
+                <li><h3 class="chat-name"><%= chatroom.interlocutor_of(current_user).username %>.</h3></li>
+              <% end %>
+              <% unless chatroom.messages.empty? %>
+                <p class="white-text comment-p"><%= chatroom.messages.last.content.truncate(50) %></p>
+              <% end %>
+            </div>
+        </div>
+        <div class="delete-time-chat">
+          <p class="time-text"><%= @message_time.reverse[index] %></p>
+        </div>
+      </div>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+</div>

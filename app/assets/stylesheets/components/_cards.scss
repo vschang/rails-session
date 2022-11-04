@@ -96,13 +96,13 @@
   background-color: black;
 }
 @media (min-width: 960px) {
-  .posts-wrapper{
+  .posts-wrapper, .searchbar-wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
   }
-  .posts-container, .width-100, .posts-show-container, .profile-container, .chatroom-container{
+  .posts-container, .width-100, .posts-show-container, .profile-container{
     position: absolute;
     right: 0px;
     width: 75%;
@@ -160,6 +160,9 @@
   }
   .mt-20{
     margin-top:0px;
+  }
+  .searchbar-wrapper{
+
   }
 }
 
@@ -392,7 +395,7 @@
   .mb-10{
     margin-bottom: 10px;
   }
-  .feed-text{
+  .feed-text, .messages-text{
     margin-top: 30px;
     margin-bottom: 10px;
   }
@@ -412,4 +415,10 @@
   .comments-card{
     margin-bottom: 10px;
   }
+}
+
+.delete-time-div{
+  display:flex;
+  flex-direction: column;
+  align-content: flex-end;
 }
