@@ -79,7 +79,14 @@
                   </div>
                 <% end %>
               <%end %>
+              <div class="delete-time-div">
+                <%if repost_comment.user_id == current_user.id %>
+                  <%= button_to repost_repost_comment_path(@repost, repost_comment.id), method: :delete, class:"delete-btn" do %>
+                    <i class="fa-solid fa-xmark" style="font-size: 12px;"></i>
+                  <% end %>
+                <% end %>
               <p class='time-text'><%=@repost_comment_time[index] %></p>
+              </div>
             </div>
           <p class="comment-p"><%= repost_comment.content %></p>
         </div>
