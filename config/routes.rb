@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :reposts, only: [:create, :destroy, :show] do
-    resources :repost_comments, only: [:new, :create]
+    resources :repost_comments, only: [:new, :create, :destroy]
     resources :repost_likes, only: [:create]
   end
 
