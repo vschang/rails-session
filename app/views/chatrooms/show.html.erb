@@ -1,39 +1,51 @@
-<div class="posts-wrapper">
-  <div class="chatroom-container">
-    <h1 class="mb-3">Chat with <%= @chatroom.interlocutor_of(current_user).username %></h1>
-    <div class="container chatroom"
-    data-controller="chatroom-subscription"
-    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
-    data-chatroom-subscription-user-id-value="<%= current_user.id %>">
 
-      <div class="messages" data-chatroom-subscription-target="messages">
-        <% @chatroom.messages.each do |message| %>
-          <%# <div class="message-row d-flex = message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start'"> %>
-            <%# <div class = "= message.sender?(current_user) ? 'sender-style' : 'receiver-style'" > %>
-              <%= render "messages/message", message: message %>
-          <%# </div> %>
-        <%# </div> %>
-      <% end %>
-      </div>
+  <div class="chatroom-index-show">
 
-      <%= simple_form_for [@chatroom, @message],
-          remote: true,
-          html: {
-            data: { action: "ajax:complete->chatroom-subscription#resetForm" },
-            class: "d-flex input-group"
-            } do |f| %>
-          <%= f.input :content,
-              as: :string,
-              label: false,
-              placeholder: "message #{@chatroom.name}",
-              wrapper_html: {class: "form-outline flex-grow-1"},
-              input_html: { class: 'form-control' }
-          %>
-          <%= f.submit "send.",
-              class: "comment-button",
-              style: "padding: 5px 5px 0px 10px" %>
-      <% end %>
-
+    <div class="chatroom-sidebar-show">
+      <%= render "chatrooms/sidebar_list", posts: @posts, users: @users %>
     </div>
+
+    <div class="chat-right">
+      <div class="chatroom-pic-username">
+        <div class="d-flex">
+          <img src="<%= @chatroom.interlocutor_of(current_user).prof_pic %>" alt="" class="chatroom-avatar" style="margin-right:15px;">
+          <%= link_to user_path(@chatroom.interlocutor_of(current_user)) do %>
+            <h3 class="chatroom-name"><%= @chatroom.interlocutor_of(current_user).username %>.</h3>
+          <% end %>
+        </div>
+        <%= form_with url: "/chatrooms/#{@chatroom.id}", class:"x-btn", data: { confirm: "⛔️ Are you sure you want to delete your messages history with this person? You will NOT be able to undo this action ⛔️" }, method: :delete do |f| %>
+          <i data-action="click->delete-chat#delete" class="fa-regular fa-trash-can" style="text-decoration: none; color:white;"></i>
+        <% end %>
+      </div>
+      <div class="container chatroom"
+      data-controller="chatroom-subscription"
+      data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+      data-chatroom-subscription-user-id-value="<%= current_user.id %>">
+
+        <div class="messages" data-chatroom-subscription-target="messages">
+          <% @chatroom.messages.each do |message| %>
+            <%= render "messages/message", message: message %>
+          <% end %>
+        </div>
+
+        <%= simple_form_for [@chatroom, @message],
+            remote: true,
+            html: {
+              data: { action: "ajax:complete->chatroom-subscription#resetForm" },
+              class: "d-flex input-group"
+              } do |f| %>
+            <%= f.input :content,
+                as: :string,
+                label: false,
+                placeholder: "message #{@chatroom.name}",
+                wrapper_html: {class: "form-outline flex-grow-1"},
+                input_html: { class: 'form-control' }
+            %>
+            <%= f.submit "send.",
+                class: "comment-button",
+                style: "padding: 5px 5px 0px 10px" %>
+        <% end %>
+      </div>
+    </div>
+
   </div>
-</div>

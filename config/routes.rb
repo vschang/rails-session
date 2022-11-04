@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   get '/user/:id/friendship_index', to: 'user#friendship_index'
   resources :posts do
-    resources :post_comments, only: [:new, :create, :destroy, :index]
+    resources :post_comments, only: [:new, :create, :destroy]
     resources :reposts, only: [:create]
     resources :post_likes, only: [:create]
   end

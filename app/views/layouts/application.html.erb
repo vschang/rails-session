@@ -34,10 +34,10 @@
   </head>
 
   <body style="overscroll-behavior-y:none;">
-      <%= yield %>
     <%= render 'shared/flashes' if user_signed_in? %>
     <% unless action_name == "home" %>
       <%= render 'shared/navbar' if user_signed_in? %>
     <% end %>
+    <%= yield %>
   </body>
 </html>

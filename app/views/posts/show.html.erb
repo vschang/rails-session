@@ -94,7 +94,14 @@
                     </div>
                   <% end %>
                 <%end %>
-              <p class='time-text'><%=@post_comment_time[index] %></p>
+              <div class="delete-time-div">
+                <%if post_comment.user_id == current_user.id %>
+                  <%= button_to post_post_comment_path(@post, post_comment.id), method: :delete, class:"delete-btn" do %>
+                    <i class="fa-solid fa-xmark" style="font-size: 12px;"></i>
+                  <% end %>
+                <% end %>
+                <p class='time-text'><%=@post_comment_time[index] %></p>
+              </div>
             </div>
           <p class="comment-p"><%= post_comment.content %></p>
         </div>

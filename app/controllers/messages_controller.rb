@@ -19,7 +19,16 @@ class MessagesController < ApplicationController
     else
       render "chatrooms/show", status: :unprocessable_entity
     end
+
   end
+
+  # def destroy
+  #   @message = Message.find(params[:id])
+  #   @message.destroy
+  #   @message.chatroom = chatroom
+
+  #   redirect_to chatroom_path(chatroom)
+  # end
 
   private
 
