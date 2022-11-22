@@ -25,7 +25,6 @@ class PostsController < ApplicationController
     #     @really_all_posts << friend_repost
     #   end
     # end
-    # raise
     @receiving_friends_id = @friends.map(&:receiver_id)
     # @requesting_friends_id = @friends.map(&:requester_id)
     @everyone_id = (@user_id_arr + @receiving_friends_id ).uniq
