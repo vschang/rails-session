@@ -12,17 +12,18 @@
 @import "components/index";
 @import "pages/index";
 
-body{
-  background-color: black;
-  margin: auto;
-  color: white;
-  -ms-overflow-style: none;
-  /* for Internet Explorer, Edge */
-  scrollbar-width: none;
-  /* for Firefox */
-  // overflow-y: scroll;
-  margin-bottom: 61px;
-}
+  body{
+    background-color: black;
+    margin: auto;
+    color: white;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+    // overflow-y: scroll;
+    // margin-bottom: 61px;
+  }
+
 
 body::-webkit-scrollbar {
   display: none;

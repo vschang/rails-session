@@ -4,7 +4,7 @@
     <div class="message-sticky">
       <h2 class="messages-text">messages.</h2>
     </div>
-    <div class="searchbar-wrapper">
+    <div class="p-l-r-20">
       <div class="searchbar pb-2">
         <%= form_tag chatrooms_path, method: :get do %>
         <div class="search-form">
@@ -58,7 +58,7 @@
               </div>
           </div>
           <div class="delete-time-chat">
-            <p class="time-text"><%= @message_time.reverse[index] %></p>
+            <p class="time-text"><%= chatroom.messages.last.created_at.strftime("at %H:%M on %a, %b %e %Y") %></p>
           </div>
         </div>
         <% end %>
